@@ -33,12 +33,12 @@ namespace MasterPages.Page
         {
             Collections col = new Collections();
             dgPerfildeCargo.ItemsSource = col.ReadAllPerfilesdeCargo();
-            dgPerfildeCargo.Columns[0].Visibility = Visibility.Collapsed;
+            /*dgPerfildeCargo.Columns[0].Visibility = Visibility.Collapsed;
             dgPerfildeCargo.Columns[2].Visibility = Visibility.Collapsed;
             dgPerfildeCargo.Columns[3].Visibility = Visibility.Collapsed;
             dgPerfildeCargo.Columns[1].Header = "Descripción";
             dgPerfildeCargo.Columns[4].Header = "Obsoleto";
-            dgPerfildeCargo.Columns[5].Visibility = Visibility.Collapsed;
+            dgPerfildeCargo.Columns[5].Visibility = Visibility.Collapsed;*/
 
 
         }

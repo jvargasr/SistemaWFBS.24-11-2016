@@ -12,6 +12,7 @@ namespace WFBS.Business.Entities
         public string DESCRIPCION { get; set; }
         public decimal OBSOLETO { get; set; }
         public string Obs { get; set; }
+        public string areas { get; set; }
         public PerfildeCargo()
         {
             this.Init();

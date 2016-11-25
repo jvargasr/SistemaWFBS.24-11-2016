@@ -35,9 +35,9 @@ namespace MasterPages.Page
             pc.ID_PERFIL_DE_CARGO = id;
             pc.ID_PERFIL_DE_CARGO = id;
             perfilOp.Read();
-            /*string[] areaspc = new string[] {""}; ***************
-            if(pc.id_areas!=null)
-                areaspc = pc.id_areas.Split(',');
+            string[] areaspc = new string[] {""}; 
+            if(pc.areas!=null)
+                areaspc = pc.areas.Split(',');
             foreach (Area item in areas)
             {
                 if (item.obs == "No")
@@ -51,7 +51,7 @@ namespace MasterPages.Page
                         lbArea.Items.Add(item.NOMBRE);
                     }
                 }
-            }*/
+            }
             txtDescripcion.Text = pc.DESCRIPCION;
             if (pc.OBSOLETO == 0)
                 rbNoObsoleto.IsChecked = true;

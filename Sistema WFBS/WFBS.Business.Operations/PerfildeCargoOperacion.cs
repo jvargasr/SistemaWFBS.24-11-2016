@@ -8,6 +8,7 @@ using WFBS.Business.Contracts;
 using WFBS.Business.Entities;
 using WFBS.DAL;
 using WFBS.Business.Log;
+using WFBS.Business.Operations;
 
 namespace WFBS.Business.Operations
 {
@@ -32,10 +33,18 @@ namespace WFBS.Business.Operations
             {
                 DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
                 DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
+                Area a = new Area();
+                AreaOperacion ao = new AreaOperacion(a);
 
                 this._perfildeCargo.ID_PERFIL_DE_CARGO = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
                 this._perfildeCargo.DESCRIPCION = pc.DESCRIPCION;
                 this._perfildeCargo.OBSOLETO = Convert.ToInt32(pc.OBSOLETO);
+                string txt="";
+                foreach (AREA item in pc.AREA)
+                {
+                    txt +=item.ID_AREA.ToString()+",";
+                }
+                this._perfildeCargo.areas = txt;
 
                 perfilesDC = null;
                 return true;
@@ -82,16 +91,23 @@ namespace WFBS.Business.Operations
         {
             try
             {
-                DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
-                DAL.PERFIL_DE_CARGO pc = new PERFIL_DE_CARGO();
-
-                string areas = string.Empty;
-                pc.OBSOLETO = this._perfildeCargo.OBSOLETO;
-                pc.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
-                perfilesDC.PERFIL_DE_CARGO.Add(pc);
-                perfilesDC.SaveChanges();
-                perfilesDC = null;
+                DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+                DAL.PERFIL_DE_CARGO p = new PERFIL_DE_CARGO();
+                DAL.AREA a = new AREA();
+                p.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
+                p.OBSOLETO = this._perfildeCargo.OBSOLETO;
+                modelo.PERFIL_DE_CARGO.Add(p);
+                foreach (Area areaselec in areasSelec)
+                {
+                    a = modelo.AREA.First(b => b.ID_AREA == areaselec.ID_AREA);
+                    p.AREA.Add(a);
+                }
+                
+                modelo.PERFIL_DE_CARGO.Add(p);
+                modelo.SaveChanges();
+                modelo = null;
                 return true;
+
             }
             catch (Exception ex)
             {
@@ -105,13 +121,28 @@ namespace WFBS.Business.Operations
             string areas = string.Empty;
             try
             {
-                DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
-                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
-                pc.ID_PERFIL_DE_CARGO = this._perfildeCargo.ID_PERFIL_DE_CARGO;
-                pc.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
-                pc.OBSOLETO = this._perfildeCargo.OBSOLETO;
-                perfilesDC.SaveChanges();
-                perfilesDC = null;
+                DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+                DAL.PERFIL_DE_CARGO p = modelo.PERFIL_DE_CARGO.First(pc => pc.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
+                DAL.AREA a = new AREA();
+                var AreasBDD = CommonBC.ModeloWFBS.AREA;
+                p.ID_PERFIL_DE_CARGO = this._perfildeCargo.ID_PERFIL_DE_CARGO;
+                p.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
+                p.OBSOLETO = this._perfildeCargo.OBSOLETO;
+                foreach (AREA item in AreasBDD)
+                {
+                    var delete= modelo.AREA.First(b => b.ID_AREA == item.ID_AREA);
+                    p.AREA.Remove(delete);
+                    modelo.SaveChanges();
+                }
+                
+                foreach (Area areaselec in areasSelec)
+                {
+                    a = modelo.AREA.First(b => b.ID_AREA == areaselec.ID_AREA);
+                    p.AREA.Add(a);
+                }
+
+                modelo.SaveChanges();
+                modelo = null;
                 return true;
             }
             catch (Exception ex)

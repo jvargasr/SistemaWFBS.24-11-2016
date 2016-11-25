@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID_AREA" />
           </Key>
-          <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="ABREVIACION" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="OBSOLETA" Type="number" Precision="38" Scale="0" Nullable="false" />
@@ -97,7 +97,7 @@
           <Key>
             <PropertyRef Name="ID_PERFIL_DE_CARGO" />
           </Key>
-          <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="OBSOLETO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
@@ -428,7 +428,7 @@
           <Key>
             <PropertyRef Name="ID_AREA" />
           </Key>
-          <Property Name="ID_AREA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_AREA" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ABREVIACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
@@ -537,7 +537,7 @@
           <Key>
             <PropertyRef Name="ID_PERFIL_DE_CARGO" />
           </Key>
-          <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="AREA" Relationship="Self.R_A_P" FromRole="PERFIL_DE_CARGO" ToRole="AREA" />
