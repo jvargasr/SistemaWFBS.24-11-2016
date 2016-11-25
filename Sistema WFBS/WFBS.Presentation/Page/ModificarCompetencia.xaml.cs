@@ -36,18 +36,18 @@ namespace MasterPages.Page
         {
             InitializeComponent();
 
-            com.Id_competencia = id;
+            com.ID_COMPETENCIA = id;
             comOp.Read();
 
-            if (com.Obsoleta == 0)
+            if (com.OBSOLETA == 0)
                 rbNo.IsChecked = true;
             else
                 rbSi.IsChecked = true;
-            txtId_Competencia.Text = com.Id_competencia.ToString();
-            txtNombre.Text = com.Nombre;
-            txtDescripcion.Text = com.Descripcion;
-            txtSigla.Text = com.Sigla;
-            txtPregunta.Text = com.Pregunta_Asociada;
+            txtId_Competencia.Text = com.ID_COMPETENCIA.ToString();
+            txtNombre.Text = com.NOMBRE;
+            txtDescripcion.Text = com.DESCRIPCION;
+            txtSigla.Text = com.SIGLA;
+            txtPregunta.Text = com.PREGUNTA_ASOCIADA;
         }
 
         private void RadioButtonChecked(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace MasterPages.Page
             cmbNivel.Items.Add("3");
             cmbNivel.Items.Add("4");
             cmbNivel.Items.Add("5");
-            cmbNivel.SelectedIndex = com.Nivel_Optimo;
+            cmbNivel.SelectedIndex = Convert.ToInt32(com.NIVEL_OPTIMO_ESPERADO);
         }
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
@@ -98,7 +98,7 @@ namespace MasterPages.Page
             try
             {
                 Competencia com = new Competencia();
-                com.Id_competencia = int.Parse(txtId_Competencia.Text);
+                com.ID_COMPETENCIA = int.Parse(txtId_Competencia.Text);
                 if (comOp.Read())
                 {
 
@@ -109,41 +109,41 @@ namespace MasterPages.Page
                         {
                             if ((txtSigla.Text.Length > 0 && txtSigla.Text.Length <= 10) && txtSigla.Text.Trim() != "")
                             {
-                                com.Nombre = txtNombre.Text;
-                                com.Descripcion = txtDescripcion.Text;
-                                com.Sigla = txtSigla.Text;
+                                com.NOMBRE = txtNombre.Text;
+                                com.DESCRIPCION = txtDescripcion.Text;
+                                com.SIGLA = txtSigla.Text;
                                 if (rbNo.IsChecked == true)
-                                    com.Obsoleta = 0;
+                                    com.OBSOLETA = 0;
                                 if (rbSi.IsChecked == true)
-                                    com.Obsoleta = 1;
+                                    com.OBSOLETA = 1;
                                 #region Nivel
                                 switch (cmbNivel.SelectedIndex)
                                 {
                                     case 0:
-                                        com.Nivel_Optimo = 0;
+                                        com.NIVEL_OPTIMO_ESPERADO = 0;
                                         break;
                                     case 1:
-                                        com.Nivel_Optimo = 1;
+                                        com.NIVEL_OPTIMO_ESPERADO = 1;
                                         break;
                                     case 2:
-                                        com.Nivel_Optimo = 2;
+                                        com.NIVEL_OPTIMO_ESPERADO = 2;
                                         break;
                                     case 3:
-                                        com.Nivel_Optimo = 3;
+                                        com.NIVEL_OPTIMO_ESPERADO = 3;
                                         break;
                                     case 4:
-                                        com.Nivel_Optimo = 4;
+                                        com.NIVEL_OPTIMO_ESPERADO = 4;
                                         break;
                                     case 5:
-                                        com.Nivel_Optimo = 5;
+                                        com.NIVEL_OPTIMO_ESPERADO = 5;
                                         break;
 
                                     default:
-                                        com.Nivel_Optimo = 0;
+                                        com.NIVEL_OPTIMO_ESPERADO = 0;
                                         break;
                                 }
                                 #endregion
-                                com.Pregunta_Asociada = txtPregunta.Text;
+                                com.PREGUNTA_ASOCIADA = txtPregunta.Text;
 
                                 XML formato = new XML();
                                 string xml = formato.Serializar(com);

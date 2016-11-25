@@ -13,14 +13,14 @@ namespace PruebasUnitarias
         {
 
             WFBS.Business.Entities.Usuario a = new WFBS.Business.Entities.Usuario();
-            a.Rut = "5555555-5";
-            a.Id_Perfil = 2;
-            a.Id_Area = 3;
-            a.Nombre = "miguel";
-            a.Sexo = "M";
-            a.Jefe = null;
-            a.Password = "1111111";
-            a.Obsoleto = 0;
+            a.RUT = "5555555-5";
+            a.ID_PERFIL = 2;
+            a.ID_AREA = 3;
+            a.NOMBRE = "miguel";
+            a.SEXO = "M";
+            a.JEFE_RESPECTIVO = null;
+            a.PASSWORD = "1111111";
+            a.OBSOLETO = 0;
 
             bool esperando = true;
             UsuarioOperacion usOp = new UsuarioOperacion(a);
@@ -37,14 +37,14 @@ namespace PruebasUnitarias
         {
 
             WFBS.Business.Entities.Usuario a = new WFBS.Business.Entities.Usuario();
-            a.Rut = "5555555-5";
-            a.Id_Perfil = 2;
-            a.Id_Area = 3;
-            a.Nombre = "miguel";
-            a.Sexo = "M";
-            a.Jefe = null;
-            a.Password = "1111111";
-            a.Obsoleto = 1;
+            a.RUT = "5555555-5";
+            a.ID_PERFIL = 2;
+            a.ID_AREA = 3;
+            a.NOMBRE = "miguel";
+            a.SEXO = "M";
+            a.JEFE_RESPECTIVO = null;
+            a.PASSWORD = "1111111";
+            a.OBSOLETO = 1;
 
 
             bool esperando = true;
@@ -62,7 +62,7 @@ namespace PruebasUnitarias
         {
 
             WFBS.Business.Entities.Usuario a = new WFBS.Business.Entities.Usuario();
-            a.Rut = "18661447-k";
+            a.RUT = "18661447-k";
 
             bool esperando = true;
             UsuarioOperacion usOp = new UsuarioOperacion(a);

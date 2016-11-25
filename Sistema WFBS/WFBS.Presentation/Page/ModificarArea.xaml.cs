@@ -30,16 +30,16 @@ namespace MasterPages.Page
 
             Area ar = new Area();
             AreaOperacion arOp = new AreaOperacion(ar);
-            ar.id_area = id;
+            ar.ID_AREA = id;
             arOp.Read();
 
-            if (ar.obsoleta == 0)
+            if (ar.OBSOLETA == 0)
                 rbNo.IsChecked = true;
             else
                 rbSi.IsChecked = true;
-            txtIdArea.Text = ar.id_area.ToString();
-            txtNombre.Text = ar.area;
-            txtAbreviacion.Text = ar.abreviacion;
+            txtIdArea.Text = ar.ID_AREA.ToString();
+            txtNombre.Text = ar.NOMBRE;
+            txtAbreviacion.Text = ar.ABREVIACION;
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
@@ -61,7 +61,7 @@ namespace MasterPages.Page
             try
             {
                 Area ar = new Area();
-                ar.id_area = int.Parse(txtIdArea.Text);
+                ar.ID_AREA = int.Parse(txtIdArea.Text);
                 AreaOperacion arOp = new AreaOperacion(ar);
                 if (arOp.Read())
                 {
@@ -69,12 +69,12 @@ namespace MasterPages.Page
                     {
                         if (txtAbreviacion.Text.Length > 0 && txtAbreviacion.Text.Trim() != "")
                         {
-                            ar.area = txtNombre.Text;
-                            ar.abreviacion = txtAbreviacion.Text;
+                            ar.NOMBRE = txtNombre.Text;
+                            ar.ABREVIACION = txtAbreviacion.Text;
                             if (rbNo.IsChecked == true)
-                                ar.obsoleta = 0;
+                                ar.OBSOLETA = 0;
                             if (rbSi.IsChecked == true)
-                                ar.obsoleta = 1;
+                                ar.OBSOLETA = 1;
 
                             XML formato = new XML();
                             string xml = formato.Serializar(ar);

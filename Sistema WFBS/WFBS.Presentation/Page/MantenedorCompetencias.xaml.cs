@@ -66,7 +66,7 @@ namespace MasterPages.Page
             if (dgCompetencias.SelectedItem != null)
             {
                 Competencia com = (Competencia)dgCompetencias.SelectedItem;
-                int id = Convert.ToInt32(com.Id_competencia);
+                int id = Convert.ToInt32(com.ID_COMPETENCIA);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarCompetencia nextPage = new ModificarCompetencia(id);
                 navService.Navigate(nextPage);
@@ -83,7 +83,7 @@ namespace MasterPages.Page
             {
                 Competencia com = (Competencia)dgCompetencias.SelectedItem;
 
-                if (com.Obsoleta == 1)
+                if (com.OBSOLETA == 1)
                 {
                     MessageBox.Show("La Competencia seleccionada se encuentra desactivada", "Aviso");
                 }
@@ -117,7 +117,7 @@ namespace MasterPages.Page
             if (dgCompetencias.SelectedItem != null)
             {
                 Competencia com = (Competencia)dgCompetencias.SelectedItem;
-                int id = Convert.ToInt32(com.Id_competencia);
+                int id = Convert.ToInt32(com.ID_COMPETENCIA);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 MantenedorHabilidades nextPage = new MantenedorHabilidades(id);
                 navService.Navigate(nextPage);

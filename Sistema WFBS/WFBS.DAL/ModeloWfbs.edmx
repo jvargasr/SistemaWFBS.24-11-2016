@@ -21,7 +21,7 @@
           <Property Name="ID_AUDITORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IP_CONEXION" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="RUT" Type="varchar2" MaxLength="25" Nullable="false" />
-          <Property Name="FECHA_INGRESO" Type="date" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="date" />
         </EntityType>
         <EntityType Name="COMPETENCIA">
           <Key>
@@ -100,7 +100,6 @@
           <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="OBSOLETO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_AREAS" Type="varchar2" MaxLength="255" />
         </EntityType>
         <EntityType Name="PERIODO_EVALUACION">
           <Key>
@@ -446,7 +445,7 @@
           <Property Name="ID_AUDITORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IP_CONEXION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RUT" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FECHA_INGRESO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" />
         </EntityType>
         <EntityType Name="COMPETENCIA">
           <Key>
@@ -541,7 +540,6 @@
           <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ID_AREAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AREA" Relationship="Self.R_A_P" FromRole="PERFIL_DE_CARGO" ToRole="AREA" />
         </EntityType>
         <EntityType Name="PERIODO_EVALUACION">
@@ -910,7 +908,6 @@
                 <ScalarProperty Name="ID_PERFIL_DE_CARGO" ColumnName="ID_PERFIL_DE_CARGO" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="OBSOLETO" ColumnName="OBSOLETO" />
-                <ScalarProperty Name="ID_AREAS" ColumnName="ID_AREAS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

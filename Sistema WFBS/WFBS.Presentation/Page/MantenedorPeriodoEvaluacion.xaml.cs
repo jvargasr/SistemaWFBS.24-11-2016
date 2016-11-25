@@ -52,7 +52,7 @@ namespace MasterPages.Page
             if (dgPeriodo.SelectedItem != null)
             {
                 PeriodoEvaluacion ar = (PeriodoEvaluacion)dgPeriodo.SelectedItem;
-                int id = Convert.ToInt32(ar.idPeriodo);
+                int id = Convert.ToInt32(ar.ID_PERIODO_EVALUACION);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarPeriodo nextPage = new ModificarPeriodo(id);
                 navService.Navigate(nextPage);
@@ -68,7 +68,7 @@ namespace MasterPages.Page
             if (dgPeriodo.SelectedItem != null)
             {
                 PeriodoEvaluacion pe = (PeriodoEvaluacion)dgPeriodo.SelectedItem;
-                if (pe.vigencia == 0)
+                if (pe.VIGENCIA == 0)
                 {
                     MessageBox.Show("El Periodo de Evaluación se encuentra desactivado", "Aviso");
                 }

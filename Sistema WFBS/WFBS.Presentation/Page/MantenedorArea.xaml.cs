@@ -34,7 +34,7 @@ namespace MasterPages.Page
             if (dgArea.SelectedItem != null)
             {
                 Area ar = (Area)dgArea.SelectedItem;
-                int id = Convert.ToInt32(ar.Id_area);
+                int id = Convert.ToInt32(ar.ID_AREA);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarArea nextPage = new ModificarArea(id);
                 navService.Navigate(nextPage);
@@ -56,7 +56,7 @@ namespace MasterPages.Page
                 }
                 else
                 {
-                    ar.id_area = Convert.ToInt32(ar.Id_area);
+                    ar.ID_AREA = ar.ID_AREA;
                     XML formato = new XML();
                     string xml = formato.Serializar(ar);
                     WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
@@ -93,9 +93,8 @@ namespace MasterPages.Page
             Area ar = new Area();
             AreaOperacion arOp = new AreaOperacion(ar);
             dgArea.ItemsSource = arOp.Listar();
-            dgArea.Columns[3].Visibility = Visibility.Hidden;
-            dgArea.Columns[4].Visibility = Visibility.Hidden;
-            dgArea.Columns[5].Header = "Obsoleta";
+
+           dgArea.Columns[3].Header = "OBSOLETA";
             //dgArea.Columns[6].Visibility = Visibility.Hidden;
 
 

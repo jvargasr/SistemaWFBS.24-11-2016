@@ -32,28 +32,28 @@ namespace MasterPages.Page
             InitializeComponent();
             lblUserInfo.Content = Global.NombreUsuario;
             areas = col.ReadAllAreas();
-            pc.id_perfil_de_cargo = id;
-            pc.Id_PC = id;
+            pc.ID_PERFIL_DE_CARGO = id;
+            pc.ID_PERFIL_DE_CARGO = id;
             perfilOp.Read();
-            string[] areaspc = new string[] {""};
+            /*string[] areaspc = new string[] {""}; ***************
             if(pc.id_areas!=null)
                 areaspc = pc.id_areas.Split(',');
             foreach (Area item in areas)
             {
                 if (item.obs == "No")
                 {
-                    if (areaspc.Contains(item.Id_area.ToString()))
+                    if (areaspc.Contains(item.ID_AREA.ToString()))
                     {
-                        lbAreaSeleccionadas.Items.Add(item.area);
+                        lbAreaSeleccionadas.Items.Add(item.NOMBRE);
                     }
                     else
                     {
-                        lbArea.Items.Add(item.area);
+                        lbArea.Items.Add(item.NOMBRE);
                     }
                 }
-            }
-            txtDescripcion.Text = pc.descripcion;
-            if (pc.Obsoleto == 0)
+            }*/
+            txtDescripcion.Text = pc.DESCRIPCION;
+            if (pc.OBSOLETO == 0)
                 rbNoObsoleto.IsChecked = true;
             else
                 rbSiObsoleto.IsChecked = true;
@@ -93,7 +93,7 @@ namespace MasterPages.Page
             {
                 foreach (Area a in areas)
                 {
-                    if (a.area == item)
+                    if (a.NOMBRE == item)
                     {
                         areasSelec.Add(a);
                     }
@@ -113,11 +113,11 @@ namespace MasterPages.Page
                 {
                     try
                     {
-                        pc.descripcion = txtDescripcion.Text;
+                        pc.DESCRIPCION = txtDescripcion.Text;
                         if (rbNoObsoleto.IsChecked == true)
-                            pc.Obsoleto = 0;
+                            pc.OBSOLETO = 0;
                         if (rbSiObsoleto.IsChecked == true)
-                            pc.Obsoleto = 1;
+                            pc.OBSOLETO = 1;
                         if (perfilOp.Actualize(areasSelec))
                         {
                                 MessageBox.Show("Actualizado correctamente", "Éxito!");

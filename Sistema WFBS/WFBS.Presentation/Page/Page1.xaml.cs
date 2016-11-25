@@ -36,8 +36,8 @@ namespace MasterPages.Page
         {
             us = new Usuario();
             UsuarioOperacion usOp = new UsuarioOperacion(us);
-            us.Rut = txtUser.Text;
-            us.Password = (string)txtPass.Password;
+            us.RUT = txtUser.Text;
+            us.PASSWORD = (string)txtPass.Password;
             try
             {
 
@@ -54,10 +54,10 @@ namespace MasterPages.Page
                             usOp.Read();
                             if (servicio.Desactivado(xml))
                             {
-                                Global.RutUsuario = us.Rut;
-                                Global.NombreUsuario = us.Nombre;
+                                Global.RutUsuario = us.RUT;
+                                Global.NombreUsuario = us.NOMBRE;
                                 Global.AreaInvestigacion = "Por definir";
-                                Global.JefeUsuario = us.Jefe;
+                                Global.JefeUsuario = us.JEFE_RESPECTIVO;
                                 NavigationService navService = NavigationService.GetNavigationService(this);
                                 Page2 nextPage = new Page2();
                                 navService.Navigate(nextPage);

@@ -8,14 +8,14 @@ namespace WFBS.Business.Entities
 {
     public class Usuario
     {
-        public string Rut { get; set; }
-        public string Nombre { get; set; }
-        public string Sexo { get; set; }
-        public int Id_Area { get; set; }
-        public int Id_Perfil { get; set; }
-        public string Jefe { get; set; }
-        public string Password { get; set; }
-        public int Obsoleto { get; set; }
+        public string RUT { get; set; }
+        public string NOMBRE { get; set; }
+        public string SEXO { get; set; }
+        public decimal ID_AREA { get; set; }
+        public decimal ID_PERFIL { get; set; }
+        public string JEFE_RESPECTIVO { get; set; }
+        public string PASSWORD { get; set; }
+        public decimal OBSOLETO { get; set; }
         public string Area { get; set; }
         public string Perfil { get; set; }
         public string Obs { get; set; }
@@ -27,14 +27,14 @@ namespace WFBS.Business.Entities
 
         private void Init()
         {
-            this.Rut = string.Empty;
-            this.Nombre = string.Empty;
-            this.Sexo = string.Empty;
-            this.Id_Area = 0;
-            this.Id_Perfil = 0;
-            this.Jefe = string.Empty;
-            this.Password = string.Empty;
-            this.Obsoleto = 0;
+            this.RUT = string.Empty;
+            this.NOMBRE = string.Empty;
+            this.SEXO = string.Empty;
+            this.ID_AREA = 0;
+            this.ID_PERFIL = 0;
+            this.JEFE_RESPECTIVO = string.Empty;
+            this.PASSWORD = string.Empty;
+            this.OBSOLETO = 0;
         }
     }
 }

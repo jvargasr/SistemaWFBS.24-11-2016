@@ -14,11 +14,11 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.PeriodoEvaluacion p = new WFBS.Business.Entities.PeriodoEvaluacion();
 
-            p.Id_Periodo = 3;
-            p.fechaInicio = DateTime.Parse("10/12/2016");
-            p.vigencia = 28;
-            p.porcentajeE = 40;
-            p.porcentajeAE = 60;
+            p.ID_PERIODO_EVALUACION = 3;
+            p.FECHA_INICIO = DateTime.Parse("10/12/2016");
+            p.VIGENCIA = 28;
+            p.PORCENTAJE_EVALUACION = 40;
+            p.PORCENTAJE_AUTOEVALUACION = 60;
           
 
             bool esperando = true;
@@ -37,11 +37,11 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.PeriodoEvaluacion p = new WFBS.Business.Entities.PeriodoEvaluacion();
 
-            p.idPeriodo = 24;
-            p.fechaInicio = DateTime.Parse("10/10/2016");
-            p.vigencia = 30;
-            p.porcentajeE = 60;
-            p.porcentajeAE = 40;
+            p.ID_PERIODO_EVALUACION = 24;
+            p.FECHA_INICIO = DateTime.Parse("10/10/2016");
+            p.VIGENCIA = 30;
+            p.PORCENTAJE_EVALUACION = 60;
+            p.PORCENTAJE_AUTOEVALUACION = 40;
 
 
             bool esperando = true;
@@ -58,7 +58,7 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.PeriodoEvaluacion p = new WFBS.Business.Entities.PeriodoEvaluacion();
 
-            p.idPeriodo = 24;
+            p.ID_PERIODO_EVALUACION = 24;
 
             bool esperando = true;
             PeriodoEvaluacionOperacion periodoOp = new PeriodoEvaluacionOperacion(p);

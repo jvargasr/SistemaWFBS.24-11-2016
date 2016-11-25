@@ -14,10 +14,10 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Area a = new WFBS.Business.Entities.Area();
 
-            a.id_area = 6;
-            a.area = "prueba6";
-            a.abreviacion = "p6";
-            a.obsoleta = 0;
+            a.ID_AREA = 6;
+            a.NOMBRE = "prueba6";
+            a.ABREVIACION = "p6";
+            a.OBSOLETA = 0;
 
             bool esperando = true;
             AreaOperacion arOp = new AreaOperacion(a);
@@ -36,11 +36,10 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Area a = new WFBS.Business.Entities.Area();
 
-            a.id_area = 3;
-            
-               a.area = "ppppppp";
-                a.abreviacion = "p67";
-                a.obsoleta = 0;
+            a.ID_AREA = 3;            
+            a.NOMBRE = "ppppppp";
+            a.ABREVIACION = "p67";
+            a.OBSOLETA = 0;
             
 
             bool esperando = true;
@@ -59,7 +58,7 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Area a = new WFBS.Business.Entities.Area();
 
-            a.Id_area = 1;
+            a.ID_AREA = 1;
 
             bool esperando = true;
             AreaOperacion arOp = new AreaOperacion(a);

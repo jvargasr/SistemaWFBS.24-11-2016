@@ -15,12 +15,12 @@ namespace PruebasUnitarias
         {
 
             WFBS.Business.Entities.PerfildeCargo pc = new WFBS.Business.Entities.PerfildeCargo();
-            pc.descripcion = "Descripción de prueba";
-            pc.Obsoleto = 0;
+            pc.DESCRIPCION = "Descripción de prueba";
+            pc.OBSOLETO = 0;
 
             List<WFBS.Business.Entities.Area> areas = new List<WFBS.Business.Entities.Area>();
             WFBS.Business.Entities.Area a = new WFBS.Business.Entities.Area();
-            a.id_area = 1;
+            a.ID_AREA = 1;
             areas.Add(a);
 
             bool esperando = true;
@@ -38,13 +38,13 @@ namespace PruebasUnitarias
         {
 
             WFBS.Business.Entities.PerfildeCargo pc = new WFBS.Business.Entities.PerfildeCargo();
-            pc.Id_PC = 21;
-            pc.descripcion = "Actualización de prueba";
-            pc.Obsoleto = 0;
+            pc.ID_PERFIL_DE_CARGO = 21;
+            pc.DESCRIPCION = "Actualización de prueba";
+            pc.OBSOLETO = 0;
 
             List<WFBS.Business.Entities.Area> areas = new List<WFBS.Business.Entities.Area>();
             WFBS.Business.Entities.Area a = new WFBS.Business.Entities.Area();
-            a.id_area = 2;
+            a.ID_AREA = 2;
             areas.Add(a);
 
 
@@ -64,7 +64,7 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.PerfildeCargo pc = new WFBS.Business.Entities.PerfildeCargo();
 
-            pc.Id_PC = 22;
+            pc.ID_PERFIL_DE_CARGO = 22;
 
             bool esperando = true;
             PerfildeCargoOperacion perfilOp = new PerfildeCargoOperacion(pc);

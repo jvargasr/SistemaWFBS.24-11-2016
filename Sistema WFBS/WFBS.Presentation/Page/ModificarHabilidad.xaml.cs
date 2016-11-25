@@ -35,15 +35,14 @@ namespace MasterPages.Page
         public ModificarHabilidad(int id, int id_com)
         {
             InitializeComponent();
-            hab.Id_Habilidad = id;
-            hab.Id_Hab = id;
+            hab.ID_HABILIDAD = id;
             habOp.Read();
             id_comp = id_com;
 
-            txtId_Habilidad.Text = hab.Id_Hab.ToString();
-            /* cmbId_Competencia.SelectedIndex = hab.Id_Competencia;*/
-            txtNombre.Text = hab.Nombre;
-            txtAlternativa.Text = hab.Alternativa_Pregunta;
+            txtId_Habilidad.Text = hab.ID_HABILIDAD.ToString();
+            /* cmbId_Competencia.SelectedIndex = hab.ID_COMPETENCIA;*/
+            txtNombre.Text = hab.NOMBRE;
+            txtAlternativa.Text = hab.ALTERNATIVA_PREGUNTA;
         }
 
         private void cmbId_Competencia_Loaded(object sender, RoutedEventArgs e)
@@ -54,9 +53,9 @@ namespace MasterPages.Page
             List<Competencia> competencias = comOp.Listar();
             foreach (Competencia item in competencias)
             {
-                if (item.Id_competencia == hab.Id_Competencia)
+                if (item.ID_COMPETENCIA == hab.ID_COMPETENCIA)
                 {
-                    cmbId_Competencia.Items.Add(item.Nombre);
+                    cmbId_Competencia.Items.Add(item.NOMBRE);
                     select = i;
                     i++;
                 }
@@ -74,7 +73,7 @@ namespace MasterPages.Page
             cmbOrden.Items.Add("3");
             cmbOrden.Items.Add("4");
             cmbOrden.Items.Add("5");
-            cmbOrden.SelectedIndex = hab.Orden_Asignado;
+            cmbOrden.SelectedIndex = Convert.ToInt32(hab.ORDEN_ASIGNADO);
         }
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
@@ -95,43 +94,42 @@ namespace MasterPages.Page
             {
                 Habilidad hab = new Habilidad();
                 HabilidadOperacion habOp = new HabilidadOperacion(hab);
-                hab.Id_Habilidad = int.Parse(txtId_Habilidad.Text);
-                hab.Id_Hab = int.Parse(txtId_Habilidad.Text);
+                hab.ID_HABILIDAD = int.Parse(txtId_Habilidad.Text);
                 if (habOp.Read())
                 {
                     if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
                     {
 
-                        hab.Nombre = txtNombre.Text;
+                        hab.NOMBRE = txtNombre.Text;
                         #region Nivel
                         switch (cmbOrden.SelectedIndex)
                         {
                             case 0:
-                                hab.Orden_Asignado = 0;
+                                hab.ORDEN_ASIGNADO = 0;
                                 break;
                             case 1:
-                                hab.Orden_Asignado = 1;
+                                hab.ORDEN_ASIGNADO = 1;
                                 break;
                             case 2:
-                                hab.Orden_Asignado = 2;
+                                hab.ORDEN_ASIGNADO = 2;
                                 break;
                             case 3:
-                                hab.Orden_Asignado = 3;
+                                hab.ORDEN_ASIGNADO = 3;
                                 break;
                             case 4:
-                                hab.Orden_Asignado = 4;
+                                hab.ORDEN_ASIGNADO = 4;
                                 break;
                             case 5:
-                                hab.Orden_Asignado = 5;
+                                hab.ORDEN_ASIGNADO = 5;
                                 break;
 
                             default:
-                                hab.Orden_Asignado = 0;
+                                hab.ORDEN_ASIGNADO = 0;
                                 break;
                         }
                         #endregion Nivel
-                        hab.Alternativa_Pregunta = txtAlternativa.Text;
-                        hab.Id_Competencia = id_comp;
+                        hab.ALTERNATIVA_PREGUNTA = txtAlternativa.Text;
+                        hab.ID_COMPETENCIA = id_comp;
 
                         XML formato = new XML();
                         string xml = formato.Serializar(hab) ;

@@ -8,8 +8,8 @@ namespace WFBS.Business.Entities
 {
     public class Perfil
     {
-        public int id_pefil { get; set; }
-        public string perfil { get; set; }
+        public decimal ID_PERFIL { get; set; }
+        public string TIPO_USUARIO { get; set; }
 
         public Perfil()
         {
@@ -18,8 +18,8 @@ namespace WFBS.Business.Entities
 
         private void Init()
         {
-            this.id_pefil = 0;
-            this.perfil = string.Empty;
+            this.ID_PERFIL = 0;
+            this.TIPO_USUARIO = string.Empty;
         }
 
         /*

@@ -34,7 +34,7 @@ namespace MasterPages.Page
             {
                 if (item.obs == "No")
                 {
-                    lbArea.Items.Add(item.area);
+                    lbArea.Items.Add(item.NOMBRE);
                 }
             }
             rbNoObsoleto.IsChecked = true;
@@ -67,7 +67,7 @@ namespace MasterPages.Page
             {
                 foreach (Area a in areas)
                 {
-                    if(a.area==item)
+                    if(a.NOMBRE==item)
                     {
                         areasSelec.Add(a);
                     }
@@ -87,11 +87,11 @@ namespace MasterPages.Page
                 {
                     try
                     {
-                        pc.descripcion = txtDescripcion.Text;
+                        pc.DESCRIPCION = txtDescripcion.Text;
                         if (rbNoObsoleto.IsChecked == true)
-                            pc.Obsoleto = 0;
+                            pc.OBSOLETO = 0;
                         if (rbSiObsoleto.IsChecked == true)
-                            pc.Obsoleto = 1;
+                            pc.OBSOLETO = 1;
                         PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(pc);
                         if (perfilCOp.Insert(areasSelec))
                         {

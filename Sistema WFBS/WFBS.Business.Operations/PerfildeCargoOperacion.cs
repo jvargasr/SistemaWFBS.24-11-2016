@@ -31,12 +31,11 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
-                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.Id_PC);
+                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
 
-                this._perfildeCargo.id_perfil_de_cargo = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
-                this._perfildeCargo.descripcion = pc.DESCRIPCION;
-                this._perfildeCargo.Obsoleto = Convert.ToInt32(pc.OBSOLETO);
-                this._perfildeCargo.id_areas = pc.ID_AREAS;
+                this._perfildeCargo.ID_PERFIL_DE_CARGO = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
+                this._perfildeCargo.DESCRIPCION = pc.DESCRIPCION;
+                this._perfildeCargo.OBSOLETO = Convert.ToInt32(pc.OBSOLETO);
 
                 perfilesDC = null;
                 return true;
@@ -58,7 +57,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
-                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.Id_PC);
+                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
                 // pcargo.OBSOLETA = 1;
                 pc.OBSOLETO = 1;
                 perfilesDC.SaveChanges();
@@ -87,14 +86,8 @@ namespace WFBS.Business.Operations
                 DAL.PERFIL_DE_CARGO pc = new PERFIL_DE_CARGO();
 
                 string areas = string.Empty;
-                pc.OBSOLETO = this._perfildeCargo.Obsoleto;
-                pc.DESCRIPCION = this._perfildeCargo.descripcion;
-                foreach (Area a in areasSelec)
-                {
-                    areas = areas + a.Id_area.ToString() + ",";
-                }
-                pc.ID_AREAS = areas;
-
+                pc.OBSOLETO = this._perfildeCargo.OBSOLETO;
+                pc.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
                 perfilesDC.PERFIL_DE_CARGO.Add(pc);
                 perfilesDC.SaveChanges();
                 perfilesDC = null;
@@ -113,15 +106,10 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities perfilesDC = new DAL.WFBSEntities();
-                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.Id_PC);
-                pc.ID_PERFIL_DE_CARGO = this._perfildeCargo.id_perfil_de_cargo;
-                pc.DESCRIPCION = this._perfildeCargo.descripcion;
-                pc.OBSOLETO = this._perfildeCargo.Obsoleto;
-                foreach (Area a in areasSelec)
-                {
-                    areas = areas + a.Id_area.ToString() + ",";
-                }
-                pc.ID_AREAS = areas;
+                DAL.PERFIL_DE_CARGO pc = perfilesDC.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == this._perfildeCargo.ID_PERFIL_DE_CARGO);
+                pc.ID_PERFIL_DE_CARGO = this._perfildeCargo.ID_PERFIL_DE_CARGO;
+                pc.DESCRIPCION = this._perfildeCargo.DESCRIPCION;
+                pc.OBSOLETO = this._perfildeCargo.OBSOLETO;
                 perfilesDC.SaveChanges();
                 perfilesDC = null;
                 return true;
@@ -139,10 +127,9 @@ namespace WFBS.Business.Operations
 
                             select new PerfildeCargo
                             {
-                                Id_PC = pc.ID_PERFIL_DE_CARGO,
-                                descripcion = pc.DESCRIPCION,
+                                ID_PERFIL_DE_CARGO = pc.ID_PERFIL_DE_CARGO,
+                                DESCRIPCION = pc.DESCRIPCION,
                                 Obs = (pc.OBSOLETO == 0 ? "No" : pc.OBSOLETO == 1 ? "Si" : "No determinado"),
-                                id_areas = pc.ID_AREAS,
                             };
             return PCargoBDD.ToList();
         }
@@ -155,9 +142,9 @@ namespace WFBS.Business.Operations
             {
                 PerfildeCargo pc = new PerfildeCargo();
 
-                pc.Id_PC = Convert.ToInt32(item.ID_PERFIL_DE_CARGO);
-                pc.descripcion = item.DESCRIPCION;
-                pc.Obsoleto = Convert.ToInt32(item.OBSOLETO);
+                pc.ID_PERFIL_DE_CARGO = item.ID_PERFIL_DE_CARGO;
+                pc.DESCRIPCION = item.DESCRIPCION;
+                pc.OBSOLETO = Convert.ToInt32(item.OBSOLETO);
 
                 perfilesdecargoController.Add(pc);
             }

@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Area.cs" />
+    <Compile Include="Auditoria.cs" />
     <Compile Include="Competencia.cs" />
+    <Compile Include="Evaluacion.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Habilidad.cs" />
     <Compile Include="Perfil.cs" />

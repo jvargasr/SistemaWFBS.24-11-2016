@@ -28,14 +28,14 @@ namespace WFBS.Business.Operations
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
                 DAL.USUARIO us = new USUARIO();
 
-                us.RUT = this._usuario.Rut;
-                us.NOMBRE = this._usuario.Nombre;
-                us.ID_AREA = this._usuario.Id_Area;
-                us.ID_PERFIL = this._usuario.Id_Perfil;
-                us.SEXO = this._usuario.Sexo;
-                us.JEFE_RESPECTIVO = this._usuario.Jefe;
-                us.PASSWORD = this._usuario.Password;
-                us.OBSOLETO = this._usuario.Obsoleto;
+                us.RUT = this._usuario.RUT;
+                us.NOMBRE = this._usuario.NOMBRE;
+                us.ID_AREA = this._usuario.ID_AREA;
+                us.ID_PERFIL = this._usuario.ID_PERFIL;
+                us.SEXO = this._usuario.SEXO;
+                us.JEFE_RESPECTIVO = this._usuario.JEFE_RESPECTIVO;
+                us.PASSWORD = this._usuario.PASSWORD;
+                us.OBSOLETO = this._usuario.OBSOLETO;
 
                 user.USUARIO.Add(us);
                 user.SaveChanges();
@@ -54,16 +54,16 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
-                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.Rut);
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT);
 
-                this._usuario.Rut = us.RUT;
-                this._usuario.Nombre = us.NOMBRE;
-                this._usuario.Sexo = us.SEXO;
-                this._usuario.Id_Area = Convert.ToInt32(us.ID_AREA);
-                this._usuario.Id_Perfil = Convert.ToInt32(us.ID_PERFIL);
-                this._usuario.Jefe = us.JEFE_RESPECTIVO;
-                this._usuario.Password = us.PASSWORD;
-                this._usuario.Obsoleto = Convert.ToInt32(us.OBSOLETO);
+                this._usuario.RUT = us.RUT;
+                this._usuario.NOMBRE = us.NOMBRE;
+                this._usuario.SEXO = us.SEXO;
+                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
+                this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
+                this._usuario.PASSWORD = us.PASSWORD;
+                this._usuario.OBSOLETO = Convert.ToInt32(us.OBSOLETO);
 
                 user = null;
                 return true;
@@ -80,15 +80,15 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
-                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.Rut);
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT);
 
-                us.NOMBRE = this._usuario.Nombre;
-                us.ID_AREA = this._usuario.Id_Area;
-                us.ID_PERFIL = this._usuario.Id_Perfil;
-                us.SEXO = this._usuario.Sexo;
-                us.JEFE_RESPECTIVO = this._usuario.Jefe;
-                us.PASSWORD = this._usuario.Password;
-                us.OBSOLETO = this._usuario.Obsoleto;
+                us.NOMBRE = this._usuario.NOMBRE;
+                us.ID_AREA = this._usuario.ID_AREA;
+                us.ID_PERFIL = this._usuario.ID_PERFIL;
+                us.SEXO = this._usuario.SEXO;
+                us.JEFE_RESPECTIVO = this._usuario.JEFE_RESPECTIVO;
+                us.PASSWORD = this._usuario.PASSWORD;
+                us.OBSOLETO = this._usuario.OBSOLETO;
 
                 user.SaveChanges();
                 user = null;
@@ -106,7 +106,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
-                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.Rut);
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT);
 
                 us.OBSOLETO = 1;
 
@@ -129,13 +129,13 @@ namespace WFBS.Business.Operations
 
                               select new Usuario
                               {
-                                  Rut = u.RUT,
-                                  Nombre = u.NOMBRE,
-                                  Sexo = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
-                                  Jefe = u.JEFE_RESPECTIVO,
+                                  RUT = u.RUT,
+                                  NOMBRE = u.NOMBRE,
+                                  SEXO = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
+                                  JEFE_RESPECTIVO = u.JEFE_RESPECTIVO,
                                   Perfil = p.TIPO_USUARIO,
                                   Area = (p.TIPO_USUARIO == "administrador" ? "" : (p.TIPO_USUARIO == "jefe" || p.TIPO_USUARIO == "funcionario") ? a.NOMBRE : "No determinado"),
-                                  Password = u.PASSWORD,
+                                  PASSWORD = u.PASSWORD,
                                   Obs = (u.OBSOLETO == 0 ? "No" : u.OBSOLETO == 1 ? "Si" : "No determinado"),
                               };
             return usuariosBDD.ToList();
@@ -149,16 +149,16 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
-                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.Rut && b.PASSWORD == this._usuario.Password && b.ID_PERFIL == 1);
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT && b.PASSWORD == this._usuario.PASSWORD && b.ID_PERFIL == 1);
 
-                this._usuario.Rut = us.RUT;
-                this._usuario.Nombre = us.NOMBRE;
-                this._usuario.Sexo = us.SEXO;
-                this._usuario.Id_Area = Convert.ToInt32(us.ID_AREA);
-                this._usuario.Id_Perfil = Convert.ToInt32(us.ID_PERFIL);
-                this._usuario.Jefe = us.JEFE_RESPECTIVO;
-                this._usuario.Password = us.JEFE_RESPECTIVO;
-                this._usuario.Obsoleto = Convert.ToInt32(us.OBSOLETO);
+                this._usuario.RUT = us.RUT;
+                this._usuario.NOMBRE = us.NOMBRE;
+                this._usuario.SEXO = us.SEXO;
+                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
+                this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
+                this._usuario.PASSWORD = us.JEFE_RESPECTIVO;
+                this._usuario.OBSOLETO = Convert.ToInt32(us.OBSOLETO);
 
                 user = null;
                 return true;
@@ -175,7 +175,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities user = new DAL.WFBSEntities();
-                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.Rut);
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT);
 
                 if (us.OBSOLETO == 0)
                 {
@@ -200,13 +200,13 @@ namespace WFBS.Business.Operations
             {
                 Usuario us = new Usuario();
 
-                us.Rut = item.RUT;
-                us.Nombre = item.NOMBRE;
-                us.Sexo = item.SEXO;
-                us.Id_Area = Convert.ToInt32(item.ID_AREA);
-                us.Id_Perfil = Convert.ToInt32(item.ID_PERFIL);
-                us.Jefe = item.JEFE_RESPECTIVO;
-                us.Obsoleto = Convert.ToInt32(item.OBSOLETO);
+                us.RUT = item.RUT;
+                us.NOMBRE = item.NOMBRE;
+                us.SEXO = item.SEXO;
+                us.ID_AREA = Convert.ToInt32(item.ID_AREA);
+                us.ID_PERFIL = Convert.ToInt32(item.ID_PERFIL);
+                us.JEFE_RESPECTIVO = item.JEFE_RESPECTIVO;
+                us.OBSOLETO = Convert.ToInt32(item.OBSOLETO);
 
                 usuariosController.Add(us);
             }

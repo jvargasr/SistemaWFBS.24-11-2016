@@ -83,42 +83,42 @@ namespace MasterPages.Page
                         if ((txtSigla.Text.Length > 0 && txtSigla.Text.Length <= 10) && txtSigla.Text.Trim() != "")
                         {
 
-                            com.Nombre = txtNombre.Text;
-                            com.Descripcion = txtDescripcion.Text;
-                            com.Sigla = txtSigla.Text;
+                            com.NOMBRE = txtNombre.Text;
+                            com.DESCRIPCION = txtDescripcion.Text;
+                            com.SIGLA = txtSigla.Text;
                             if (rbNo.IsChecked == true)
-                                com.Obsoleta = 0;
+                                com.OBSOLETA = 0;
                             if (rbSi.IsChecked == true)
-                                com.Obsoleta = 1;
-                            com.Nivel_Optimo = int.Parse(cmbNivel.SelectedItem.ToString());
+                                com.OBSOLETA = 1;
+                            com.NIVEL_OPTIMO_ESPERADO = int.Parse(cmbNivel.SelectedItem.ToString());
                             #region Nivel
                             switch (cmbNivel.SelectedIndex)
                             {
                                 case 0:
-                                    com.Nivel_Optimo = 0;
+                                    com.NIVEL_OPTIMO_ESPERADO = 0;
                                     break;
                                 case 1:
-                                    com.Nivel_Optimo = 1;
+                                    com.NIVEL_OPTIMO_ESPERADO = 1;
                                     break;
                                 case 2:
-                                    com.Nivel_Optimo = 2;
+                                    com.NIVEL_OPTIMO_ESPERADO = 2;
                                     break;
                                 case 3:
-                                    com.Nivel_Optimo = 3;
+                                    com.NIVEL_OPTIMO_ESPERADO = 3;
                                     break;
                                 case 4:
-                                    com.Nivel_Optimo = 4;
+                                    com.NIVEL_OPTIMO_ESPERADO = 4;
                                     break;
                                 case 5:
-                                    com.Nivel_Optimo = 5;
+                                    com.NIVEL_OPTIMO_ESPERADO = 5;
                                     break;
 
                                 default:
-                                    com.Nivel_Optimo = 0;
+                                    com.NIVEL_OPTIMO_ESPERADO = 0;
                                     break;
                             }
                             #endregion
-                            com.Pregunta_Asociada = txtPregunta.Text;
+                            com.PREGUNTA_ASOCIADA = txtPregunta.Text;
                             XML formato = new XML();
                             string xml = formato.Serializar(com);
                             WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();

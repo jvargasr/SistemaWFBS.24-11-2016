@@ -42,12 +42,12 @@ namespace MasterPages.Page
         {
             PerfildeCargo PerfilSeleccionado=(PerfildeCargo)TabControl1.SelectedItem;
             string[] areaspc = new string[] { "" };
-            if (PerfilSeleccionado.id_areas != null)
+            /*if (PerfilSeleccionado.id_areas != null)************************
             {
                 areaspc = PerfilSeleccionado.id_areas.Split(',');
                 this.dgEvaluaciones_Loaded(areaspc);
 
-            }
+            }*/
         }
         private void dgEvaluaciones_Loaded(string[] areaspc)
         {
@@ -64,11 +64,11 @@ namespace MasterPages.Page
               
             foreach (Area a in areas)
             {
-                if(areaspc.Contains(a.Id_area.ToString()))
+                if(areaspc.Contains(a.ID_AREA.ToString()))
                 { 
                     foreach (Competencia com in competencias)
                     {
-                        brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                        brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                         if (brechas.Count > nbrechas)
                             nbrechas = brechas.Count;
 
@@ -103,17 +103,17 @@ namespace MasterPages.Page
 
             foreach (Area a in areas)
             {
-                if (areaspc.Contains(a.Id_area.ToString()))
+                if (areaspc.Contains(a.ID_AREA.ToString()))
                 {
                     foreach (Competencia com in competencias)
                     {
                         sumabrechas = 0;
-                        brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                        brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                         if (brechas.Count > 0)
                         {
                             row = table.NewRow();
-                            row["Cargo"] = a.area;
-                            row["Competencia"] = com.Nombre;
+                            row["Cargo"] = a.NOMBRE;
+                            row["Competencia"] = com.NOMBRE;
                             for (int i = 0; i < brechas.Count; i++)
                             {
                                 row["N" + (i + 1)] = brechas[i];
@@ -178,7 +178,7 @@ namespace MasterPages.Page
             {
                 foreach (Competencia com in competencias)
                 {
-                    brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                     if (brechas.Count > nbrechas)
                         nbrechas = brechas.Count;
 
@@ -214,19 +214,19 @@ namespace MasterPages.Page
                 foreach (Competencia com in competencias)
                 {
                     sumabrechas = 0;
-                    brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                     if (brechas.Count > 0)
                     {
                         row = table.NewRow();
-                        row["Cargo"] = a.area;
-                        row["Competencia"] = com.Nombre;
+                        row["Cargo"] = a.NOMBRE;
+                        row["Competencia"] = com.NOMBRE;
                         for (int i = 0; i < brechas.Count; i++)
                         {
                             row["N" + (i + 1)] = brechas[i];
                             sumabrechas = brechas[i] + sumabrechas;
                         }
                         row["Brecha Promedio"] = (sumabrechas / brechas.Count).ToString("0.0");
-                        if((sumabrechas / brechas.Count)<com.Nivel_Optimo)
+                        if((sumabrechas / brechas.Count)<Convert.ToInt32(com.NIVEL_OPTIMO_ESPERADO))
                         table.Rows.Add(row);
                     }
                 }

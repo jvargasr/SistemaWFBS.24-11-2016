@@ -24,7 +24,7 @@ namespace PruebasUnitarias
             {
                 foreach (WFBS.Business.Entities.Competencia com in competencias)
                 {
-                    brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                     if (brechas.Count > nbrechas)
                         nbrechas = brechas.Count;
 
@@ -47,12 +47,12 @@ namespace PruebasUnitarias
                 foreach (WFBS.Business.Entities.Competencia com in competencias)
                 {
                     sumabrechas = 0;
-                    brechas = col.ObtenerNotasCompetencia((int)a.Id_area, (int)com.Id_com);
+                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
                     if (brechas.Count > 0)
                     {
                         row = table.NewRow();
-                        row["Cargo"] = a.area;
-                        row["Competencia"] = com.Nombre;
+                        row["Cargo"] = a.NOMBRE;
+                        row["Competencia"] = com.NOMBRE;
                         for (int i = 0; i < brechas.Count; i++)
                         {
                             row["N" + (i + 1)] = brechas[i];

@@ -66,7 +66,7 @@ namespace MasterPages.Page
                 Usuario us = (Usuario)dgUsuarios.SelectedItem;
                 //MessageBox.Show(us.Rut, "Éxito!");
                 NavigationService navService = NavigationService.GetNavigationService(this);
-                ModificarUsuario nextPage = new ModificarUsuario(us.Rut);
+                ModificarUsuario nextPage = new ModificarUsuario(us.RUT);
                 navService.Navigate(nextPage);
             }
             else

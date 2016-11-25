@@ -17,6 +17,6 @@ namespace WFBS.DAL
         public decimal ID_AUDITORIA { get; set; }
         public string IP_CONEXION { get; set; }
         public string RUT { get; set; }
-        public System.DateTime FECHA_INGRESO { get; set; }
+        public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
     }
 }

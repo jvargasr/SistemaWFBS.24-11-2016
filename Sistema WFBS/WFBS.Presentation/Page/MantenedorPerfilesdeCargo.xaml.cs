@@ -62,7 +62,7 @@ namespace MasterPages.Page
             if (dgPerfildeCargo.SelectedItem != null)
             {
                 PerfildeCargo pc = (PerfildeCargo)dgPerfildeCargo.SelectedItem;
-                id = Convert.ToInt32(pc.Id_PC);
+                id = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
                 //MessageBox.Show(us.Rut, "Éxito!");
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarPerfildeCargo nextPage = new ModificarPerfildeCargo(id);
@@ -88,7 +88,7 @@ namespace MasterPages.Page
                     string xml = formato.Serializar(pc);
                     WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
 
-                    pc.id_perfil_de_cargo = Convert.ToInt32(pc.Id_PC);
+                    pc.ID_PERFIL_DE_CARGO = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
                     if (servicio.EliminarPerfildeCargo(xml))
                     {
                         MessageBox.Show("El Perfil de Cargo seleccionado ha sido desactivado", "Éxito!");

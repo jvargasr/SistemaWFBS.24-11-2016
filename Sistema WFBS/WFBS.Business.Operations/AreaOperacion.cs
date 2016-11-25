@@ -28,10 +28,10 @@ namespace WFBS.Business.Operations
                 DAL.WFBSEntities area = new DAL.WFBSEntities();
                 DAL.AREA ar = new AREA();
 
-                ar.ID_AREA = this._area.id_area;
-                ar.NOMBRE = this._area.area;
-                ar.ABREVIACION = this._area.abreviacion;
-                ar.OBSOLETA = this._area.obsoleta;
+                ar.ID_AREA = this._area.ID_AREA;
+                ar.NOMBRE = this._area.NOMBRE;
+                ar.ABREVIACION = this._area.ABREVIACION;
+                ar.OBSOLETA = this._area.OBSOLETA;
 
                 area.AREA.Add(ar);
                 area.SaveChanges();
@@ -50,12 +50,12 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities area = new DAL.WFBSEntities();
-                DAL.AREA ar = area.AREA.First(b => b.ID_AREA == this._area.id_area);
+                DAL.AREA ar = area.AREA.First(b => b.ID_AREA == this._area.ID_AREA);
 
-                this._area.id_area = Convert.ToInt32(ar.ID_AREA);
-                this._area.area = ar.NOMBRE;
-                this._area.abreviacion = ar.ABREVIACION;
-                this._area.obsoleta = Convert.ToInt32(ar.OBSOLETA);
+                this._area.ID_AREA = ar.ID_AREA;
+                this._area.NOMBRE = ar.NOMBRE;
+                this._area.ABREVIACION = ar.ABREVIACION;
+                this._area.OBSOLETA = ar.OBSOLETA;
                 area = null;
                 return true;
             }
@@ -71,12 +71,12 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities area = new DAL.WFBSEntities();
-                DAL.AREA ar = area.AREA.First(b => b.ID_AREA == this._area.id_area);
+                DAL.AREA ar = area.AREA.First(b => b.ID_AREA == this._area.ID_AREA);
 
-                ar.NOMBRE = this._area.area;
-                ar.ID_AREA = this._area.id_area;
-                ar.ABREVIACION = this._area.abreviacion;
-                ar.OBSOLETA = this._area.obsoleta;
+                ar.NOMBRE = this._area.NOMBRE;
+                ar.ID_AREA = this._area.ID_AREA;
+                ar.ABREVIACION = this._area.ABREVIACION;
+                ar.OBSOLETA = this._area.OBSOLETA;
 
                 area.SaveChanges();
                 area = null;
@@ -94,7 +94,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities area = new DAL.WFBSEntities();
-                DAL.AREA ar = area.AREA.First(c => c.ID_AREA == this._area.id_area);
+                DAL.AREA ar = area.AREA.First(c => c.ID_AREA == this._area.ID_AREA);
 
                 ar.OBSOLETA = 1;
 
@@ -115,9 +115,9 @@ namespace WFBS.Business.Operations
 
                            select new Area
                            {
-                               Id_area = c.ID_AREA,
-                               area = c.NOMBRE,
-                               abreviacion = c.ABREVIACION,
+                               ID_AREA = c.ID_AREA,
+                               NOMBRE = c.NOMBRE,
+                               ABREVIACION = c.ABREVIACION,
                                obs = (c.OBSOLETA == 0 ? "No" : c.OBSOLETA == 1 ? "Si" : "No determinado"),
                            };
             return AreasBDD.ToList();
@@ -133,10 +133,10 @@ namespace WFBS.Business.Operations
             {
                 Area ar = new Area();
 
-                ar.id_area = Convert.ToInt32(item.ID_AREA);
-                ar.obsoleta = Convert.ToInt32(item.OBSOLETA);
-                ar.abreviacion = item.ABREVIACION;
-                ar.area = item.NOMBRE;
+                ar.ID_AREA = item.ID_AREA;
+                ar.OBSOLETA = item.OBSOLETA;
+                ar.ABREVIACION = item.ABREVIACION;
+                ar.NOMBRE = item.NOMBRE;
                 Read();
 
                 areasController.Add(ar);

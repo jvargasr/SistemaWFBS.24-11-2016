@@ -22,7 +22,6 @@ namespace WFBS.DAL
         public decimal ID_PERFIL_DE_CARGO { get; set; }
         public string DESCRIPCION { get; set; }
         public decimal OBSOLETO { get; set; }
-        public string ID_AREAS { get; set; }
     
         public virtual ICollection<AREA> AREA { get; set; }
     }

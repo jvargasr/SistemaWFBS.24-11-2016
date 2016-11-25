@@ -14,12 +14,12 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Competencia a = new WFBS.Business.Entities.Competencia();
 
-            a.Id_com = 2;
-            a.Nombre = "Prueba 3";
-            a.Descripcion = "Descripcion de prueba";
-            a.Sigla = "p3";
-            a.Obsoleta = 0;
-            a.Nivel_Optimo = 3 ;
+            a.ID_COMPETENCIA = 2;
+            a.NOMBRE = "Prueba 3";
+            a.DESCRIPCION = "Descripcion de prueba";
+            a.SIGLA = "p3";
+            a.OBSOLETA = 0;
+            a.NIVEL_OPTIMO_ESPERADO = 3 ;
 
             bool esperando = true;
             CompetenciaOperacion comOp = new CompetenciaOperacion(a);
@@ -37,13 +37,13 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Competencia a = new WFBS.Business.Entities.Competencia();
 
-            a.Id_competencia = 1;
+            a.ID_COMPETENCIA = 1;
 
-            a.Nombre = "Prueba 5";
-            a.Descripcion = "Descripcion de prueba";
-            a.Sigla = "pu5";
-            a.Obsoleta = 0;
-            a.Nivel_Optimo = 4;
+            a.NOMBRE = "Prueba 5";
+            a.DESCRIPCION = "Descripcion de prueba";
+            a.SIGLA = "pu5";
+            a.OBSOLETA = 0;
+            a.NIVEL_OPTIMO_ESPERADO = 4;
 
 
             bool esperando = true;
@@ -62,7 +62,7 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Competencia a = new WFBS.Business.Entities.Competencia();
 
-            a.Id_com = 21;
+            a.ID_COMPETENCIA = 21;
 
             bool esperando = true;
             CompetenciaOperacion comOp = new CompetenciaOperacion(a);

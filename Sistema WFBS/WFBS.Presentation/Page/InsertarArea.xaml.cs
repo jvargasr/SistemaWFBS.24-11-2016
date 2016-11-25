@@ -49,12 +49,12 @@ namespace MasterPages.Page
                 {
                     if (txtAbreviacion.Text.Length > 0 && txtAbreviacion.Text.Trim() != "")
                     {
-                        ar.area = txtNombre.Text;
-                        ar.abreviacion = txtAbreviacion.Text;
+                        ar.NOMBRE = txtNombre.Text;
+                        ar.ABREVIACION = txtAbreviacion.Text;
                         if (rbNo.IsChecked == true)
-                            ar.obsoleta = 0;
+                            ar.OBSOLETA = 0;
                         if (rbSi.IsChecked == true)
-                            ar.obsoleta = 1;
+                            ar.OBSOLETA = 1;
 
                         XML formato = new XML();
                         string xml = formato.Serializar(ar);

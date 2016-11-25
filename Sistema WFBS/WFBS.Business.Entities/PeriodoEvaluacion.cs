@@ -8,12 +8,12 @@ namespace WFBS.Business.Entities
 {
     public class PeriodoEvaluacion
     {
-        public int idPeriodo { get; set; }
-        public DateTime fechaInicio { get; set; }
-        public int vigencia { get; set; }
-        public int porcentajeE { get; set; }
-        public int porcentajeAE { get; set; }
-        public decimal Id_Periodo { get; set; }
+        public decimal ID_PERIODO_EVALUACION { get; set; }
+        public DateTime FECHA_INICIO { get; set; }
+        public decimal VIGENCIA { get; set; }
+        public decimal PORCENTAJE_EVALUACION { get; set; }
+        public decimal PORCENTAJE_AUTOEVALUACION { get; set; }
+
 
         public PeriodoEvaluacion()
         {
@@ -22,11 +22,11 @@ namespace WFBS.Business.Entities
 
         private void Init()
         {
-            this.idPeriodo = 0;
-            this.fechaInicio = DateTime.Now;
-            this.vigencia = 0;
-            this.porcentajeE = 0;
-            this.porcentajeAE = 0;
+            this.ID_PERIODO_EVALUACION = 0;
+            this.FECHA_INICIO = DateTime.Now;
+            this.VIGENCIA = 0;
+            this.PORCENTAJE_EVALUACION = 0;
+            this.PORCENTAJE_AUTOEVALUACION = 0;
         }
     }
 }

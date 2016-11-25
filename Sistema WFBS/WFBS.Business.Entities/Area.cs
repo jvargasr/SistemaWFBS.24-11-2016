@@ -8,11 +8,10 @@ namespace WFBS.Business.Entities
 {
     public class Area
     {
-        public int id_area { get; set; }
-        public string area { get; set; }
-        public string abreviacion { get; set; }
-        public int obsoleta { get; set; }
-        public decimal Id_area { get; set; }
+        public decimal ID_AREA { get; set; }
+        public string NOMBRE { get; set; }
+        public string ABREVIACION { get; set; }
+        public decimal OBSOLETA { get; set; }
         public string obs { get; set; }
 
         public Area()
@@ -22,10 +21,10 @@ namespace WFBS.Business.Entities
 
         private void Init()
         {
-            this.abreviacion = string.Empty;
-            this.area = string.Empty;
-            this.id_area = 0;
-            this.obsoleta = 0;
+            this.ID_AREA = 0;
+            this.NOMBRE = string.Empty;
+            this.ABREVIACION = string.Empty;
+            this.OBSOLETA = 0;
         }
     }
 }

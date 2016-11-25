@@ -28,11 +28,11 @@ namespace WFBS.Business.Operations
                 DAL.WFBSEntities periodo = new DAL.WFBSEntities();
                 DAL.PERIODO_EVALUACION pe = new PERIODO_EVALUACION();
 
-                pe.ID_PERIODO_EVALUACION = this._periodoEvaluacion.idPeriodo;
-                pe.FECHA_INICIO = this._periodoEvaluacion.fechaInicio;
-                pe.VIGENCIA = this._periodoEvaluacion.vigencia;
-                pe.PORCENTAJE_EVALUACION = this._periodoEvaluacion.porcentajeE;
-                pe.PORCENTAJE_AUTOEVALUACION = this._periodoEvaluacion.porcentajeAE;
+                pe.ID_PERIODO_EVALUACION = this._periodoEvaluacion.ID_PERIODO_EVALUACION;
+                pe.FECHA_INICIO = this._periodoEvaluacion.FECHA_INICIO;
+                pe.VIGENCIA = this._periodoEvaluacion.VIGENCIA;
+                pe.PORCENTAJE_EVALUACION = this._periodoEvaluacion.PORCENTAJE_EVALUACION;
+                pe.PORCENTAJE_AUTOEVALUACION = this._periodoEvaluacion.PORCENTAJE_AUTOEVALUACION;
 
                 periodo.PERIODO_EVALUACION.Add(pe);
                 periodo.SaveChanges();
@@ -51,13 +51,13 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities periodo = new DAL.WFBSEntities();
-                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.idPeriodo);
+                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.ID_PERIODO_EVALUACION);
 
-                this._periodoEvaluacion.idPeriodo = Convert.ToInt32(pe.ID_PERIODO_EVALUACION);
-                this._periodoEvaluacion.fechaInicio = pe.FECHA_INICIO;
-                this._periodoEvaluacion.vigencia = Convert.ToInt32(pe.VIGENCIA);
-                this._periodoEvaluacion.porcentajeE = Convert.ToInt32(pe.PORCENTAJE_EVALUACION);
-                this._periodoEvaluacion.porcentajeAE = Convert.ToInt32(pe.PORCENTAJE_AUTOEVALUACION);
+                this._periodoEvaluacion.ID_PERIODO_EVALUACION = Convert.ToInt32(pe.ID_PERIODO_EVALUACION);
+                this._periodoEvaluacion.FECHA_INICIO = pe.FECHA_INICIO;
+                this._periodoEvaluacion.VIGENCIA = Convert.ToInt32(pe.VIGENCIA);
+                this._periodoEvaluacion.PORCENTAJE_EVALUACION = Convert.ToInt32(pe.PORCENTAJE_EVALUACION);
+                this._periodoEvaluacion.PORCENTAJE_AUTOEVALUACION = Convert.ToInt32(pe.PORCENTAJE_AUTOEVALUACION);
 
                 periodo = null;
                 return true;
@@ -74,13 +74,13 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities periodo = new DAL.WFBSEntities();
-                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.idPeriodo);
+                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.ID_PERIODO_EVALUACION);
 
-                pe.ID_PERIODO_EVALUACION = this._periodoEvaluacion.idPeriodo;
-                pe.FECHA_INICIO = this._periodoEvaluacion.fechaInicio;
-                pe.VIGENCIA = this._periodoEvaluacion.vigencia;
-                pe.PORCENTAJE_EVALUACION = this._periodoEvaluacion.porcentajeE;
-                pe.PORCENTAJE_AUTOEVALUACION = this._periodoEvaluacion.porcentajeAE;
+                pe.ID_PERIODO_EVALUACION = this._periodoEvaluacion.ID_PERIODO_EVALUACION;
+                pe.FECHA_INICIO = this._periodoEvaluacion.FECHA_INICIO;
+                pe.VIGENCIA = this._periodoEvaluacion.VIGENCIA;
+                pe.PORCENTAJE_EVALUACION = this._periodoEvaluacion.PORCENTAJE_EVALUACION;
+                pe.PORCENTAJE_AUTOEVALUACION = this._periodoEvaluacion.PORCENTAJE_AUTOEVALUACION;
 
                 periodo.SaveChanges();
                 periodo = null;
@@ -98,7 +98,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities periodo = new DAL.WFBSEntities();
-                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.idPeriodo);
+                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.First(b => b.ID_PERIODO_EVALUACION == this._periodoEvaluacion.ID_PERIODO_EVALUACION);
 
                 pe.VIGENCIA = 0;
 
@@ -129,11 +129,11 @@ namespace WFBS.Business.Operations
             {
                 PeriodoEvaluacion pe = new PeriodoEvaluacion();
 
-                pe.idPeriodo = Convert.ToInt32(item.ID_PERIODO_EVALUACION);
-                pe.fechaInicio = item.FECHA_INICIO;
-                pe.vigencia = Convert.ToInt32(item.VIGENCIA);
-                pe.porcentajeE = Convert.ToInt32(item.PORCENTAJE_EVALUACION);
-                pe.porcentajeAE = Convert.ToInt32(item.PORCENTAJE_AUTOEVALUACION);
+                pe.ID_PERIODO_EVALUACION = Convert.ToInt32(item.ID_PERIODO_EVALUACION);
+                pe.FECHA_INICIO = item.FECHA_INICIO;
+                pe.VIGENCIA = Convert.ToInt32(item.VIGENCIA);
+                pe.PORCENTAJE_EVALUACION = Convert.ToInt32(item.PORCENTAJE_EVALUACION);
+                pe.PORCENTAJE_AUTOEVALUACION = Convert.ToInt32(item.PORCENTAJE_AUTOEVALUACION);
                 PeriodoEvaluacionOperacion periodoOp = new PeriodoEvaluacionOperacion(pe);
                 periodoOp.Read();
                 periodoOp = null;

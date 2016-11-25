@@ -20,13 +20,13 @@ namespace WFBS.Business.Operations
 
                               select new Usuario
                               {
-                                  Rut = u.RUT,
-                                  Nombre = u.NOMBRE,
-                                  Sexo = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
-                                  Jefe = u.JEFE_RESPECTIVO,
+                                  RUT = u.RUT,
+                                  NOMBRE = u.NOMBRE,
+                                  SEXO = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
+                                  JEFE_RESPECTIVO = u.JEFE_RESPECTIVO,
                                   Perfil = p.TIPO_USUARIO,
                                   Area = (p.TIPO_USUARIO == "administrador" ? "" : (p.TIPO_USUARIO == "jefe" || p.TIPO_USUARIO == "funcionario") ? a.NOMBRE : "No determinado"),
-                                  Password = u.PASSWORD,
+                                  PASSWORD = u.PASSWORD,
                                   Obs = (u.OBSOLETO == 0 ? "No" : u.OBSOLETO == 1 ? "Si" : "No determinado"),
                               };
             return usuariosBDD.ToList();
@@ -41,13 +41,13 @@ namespace WFBS.Business.Operations
             {
                 Usuario us = new Usuario();
 
-                us.Rut = item.RUT;
-                us.Nombre = item.NOMBRE;
-                us.Sexo = item.SEXO;
-                us.Id_Area = Convert.ToInt32(item.ID_AREA);
-                us.Id_Perfil = Convert.ToInt32(item.ID_PERFIL);
-                us.Jefe = item.JEFE_RESPECTIVO;
-                us.Obsoleto = Convert.ToInt32(item.OBSOLETO);
+                us.RUT = item.RUT;
+                us.NOMBRE = item.NOMBRE;
+                us.SEXO = item.SEXO;
+                us.ID_AREA = Convert.ToInt32(item.ID_AREA);
+                us.ID_PERFIL = Convert.ToInt32(item.ID_PERFIL);
+                us.JEFE_RESPECTIVO = item.JEFE_RESPECTIVO;
+                us.OBSOLETO = Convert.ToInt32(item.OBSOLETO);
 
                 usuariosController.Add(us);
             }
@@ -63,9 +63,9 @@ namespace WFBS.Business.Operations
 
                            select new Area
                            {
-                               Id_area = c.ID_AREA,
-                               area = c.NOMBRE,
-                               abreviacion = c.ABREVIACION,
+                               ID_AREA = c.ID_AREA,
+                               NOMBRE = c.NOMBRE,
+                               ABREVIACION = c.ABREVIACION,
                                obs = (c.OBSOLETA == 0 ? "No" : c.OBSOLETA == 1 ? "Si" : "No determinado"),
                            };
             return AreasBDD.ToList();
@@ -79,10 +79,10 @@ namespace WFBS.Business.Operations
             {
                 Area ar = new Area();
 
-                ar.id_area = Convert.ToInt32(item.ID_AREA);
-                ar.obsoleta = Convert.ToInt32(item.OBSOLETA);
-                ar.abreviacion = item.ABREVIACION;
-                ar.area = item.NOMBRE;
+                ar.ID_AREA =item.ID_AREA;
+                ar.OBSOLETA = item.OBSOLETA;
+                ar.ABREVIACION = item.ABREVIACION;
+                ar.NOMBRE = item.NOMBRE;
 
                 areasController.Add(ar);
             }
@@ -98,10 +98,9 @@ namespace WFBS.Business.Operations
 
                             select new PerfildeCargo
                             {
-                                Id_PC = pc.ID_PERFIL_DE_CARGO,
-                                descripcion = pc.DESCRIPCION,
+                                ID_PERFIL_DE_CARGO = pc.ID_PERFIL_DE_CARGO,
+                                DESCRIPCION = pc.DESCRIPCION,
                                 Obs = (pc.OBSOLETO == 0 ? "No" : pc.OBSOLETO == 1 ? "Si" : "No determinado"),
-                                id_areas = pc.ID_AREAS,
                             };
             return PCargoBDD.ToList();
         }
@@ -114,9 +113,9 @@ namespace WFBS.Business.Operations
             {
                 PerfildeCargo pc = new PerfildeCargo();
 
-                pc.Id_PC = Convert.ToInt32(item.ID_PERFIL_DE_CARGO);
-                pc.descripcion = item.DESCRIPCION;
-                pc.Obsoleto = Convert.ToInt32(item.OBSOLETO);
+                pc.ID_PERFIL_DE_CARGO = Convert.ToInt32(item.ID_PERFIL_DE_CARGO);
+                pc.DESCRIPCION = item.DESCRIPCION;
+                pc.OBSOLETO = Convert.ToInt32(item.OBSOLETO);
 
                 perfilesdecargoController.Add(pc);
             }
@@ -139,8 +138,8 @@ namespace WFBS.Business.Operations
             {
                 Perfil p = new Perfil();
 
-                p.id_pefil = Convert.ToInt32(item.ID_PERFIL);
-                p.perfil = item.TIPO_USUARIO;
+                p.ID_PERFIL = Convert.ToInt32(item.ID_PERFIL);
+                p.TIPO_USUARIO = item.TIPO_USUARIO;
 
                 perfilesController.Add(p);
             }
@@ -202,13 +201,13 @@ namespace WFBS.Business.Operations
 
                                   select new Competencia
                                   {
-                                      Id_com = c.ID_COMPETENCIA,
-                                      Nombre = c.NOMBRE,
-                                      Descripcion = c.DESCRIPCION,
-                                      Sigla = c.SIGLA,
+                                      ID_COMPETENCIA = c.ID_COMPETENCIA,
+                                      NOMBRE = c.NOMBRE,
+                                      DESCRIPCION = c.DESCRIPCION,
+                                      SIGLA = c.SIGLA,
                                       Obs = (c.OBSOLETA == 0 ? "No" : c.OBSOLETA == 1 ? "Si" : "No determinado"),
-                                      Nivel_O = c.NIVEL_OPTIMO_ESPERADO,
-                                      Pregunta_Asociada = c.PREGUNTA_ASOCIADA
+                                      NIVEL_OPTIMO_ESPERADO = c.NIVEL_OPTIMO_ESPERADO,
+                                      PREGUNTA_ASOCIADA = c.PREGUNTA_ASOCIADA
                                   };
             return CompetenciasBDD.ToList();
         }
@@ -221,13 +220,13 @@ namespace WFBS.Business.Operations
             {
                 Competencia com = new Competencia();
 
-                com.Id_competencia = Convert.ToInt32(item.ID_COMPETENCIA);
-                com.Nombre = item.NOMBRE;
-                com.Descripcion = item.DESCRIPCION;
-                com.Sigla = item.SIGLA;
-                com.Obsoleta = Convert.ToInt32(item.OBSOLETA);
-                com.Nivel_Optimo = Convert.ToInt32(item.NIVEL_OPTIMO_ESPERADO);
-                com.Pregunta_Asociada = item.PREGUNTA_ASOCIADA;
+                com.ID_COMPETENCIA = Convert.ToInt32(item.ID_COMPETENCIA);
+                com.NOMBRE = item.NOMBRE;
+                com.DESCRIPCION = item.DESCRIPCION;
+                com.SIGLA = item.SIGLA;
+                com.OBSOLETA = Convert.ToInt32(item.OBSOLETA);
+                com.NIVEL_OPTIMO_ESPERADO = Convert.ToInt32(item.NIVEL_OPTIMO_ESPERADO);
+                com.PREGUNTA_ASOCIADA = item.PREGUNTA_ASOCIADA;
 
                 competenciasController.Add(com);
             }
@@ -251,11 +250,11 @@ namespace WFBS.Business.Operations
             {
                 PeriodoEvaluacion ar = new PeriodoEvaluacion();
 
-                ar.idPeriodo = Convert.ToInt32(item.ID_PERIODO_EVALUACION);
-                ar.fechaInicio = item.FECHA_INICIO;
-                ar.vigencia = Convert.ToInt32(item.VIGENCIA);
-                ar.porcentajeE = Convert.ToInt32(item.PORCENTAJE_EVALUACION);
-                ar.porcentajeAE = Convert.ToInt32(item.PORCENTAJE_AUTOEVALUACION);
+                ar.ID_PERIODO_EVALUACION = Convert.ToInt32(item.ID_PERIODO_EVALUACION);
+                ar.FECHA_INICIO = item.FECHA_INICIO;
+                ar.VIGENCIA = Convert.ToInt32(item.VIGENCIA);
+                ar.PORCENTAJE_EVALUACION = Convert.ToInt32(item.PORCENTAJE_EVALUACION);
+                ar.PORCENTAJE_AUTOEVALUACION = Convert.ToInt32(item.PORCENTAJE_AUTOEVALUACION);
 
                 periodosController.Add(ar);
             }
@@ -279,11 +278,11 @@ namespace WFBS.Business.Operations
             {
                 Habilidad hab = new Habilidad();
 
-                hab.Id_Habilidad = Convert.ToInt32(item.ID_HABILIDAD);
-                hab.Id_Competencia = Convert.ToInt32(item.ID_COMPETENCIA);
-                hab.Nombre = item.NOMBRE;
-                hab.Orden_Asignado = Convert.ToInt32(item.ORDEN_ASIGNADO);
-                hab.Alternativa_Pregunta = item.ALTERNATIVA_PREGUNTA;
+                hab.ID_HABILIDAD = Convert.ToInt32(item.ID_HABILIDAD);
+                hab.ID_COMPETENCIA = Convert.ToInt32(item.ID_COMPETENCIA);
+                hab.NOMBRE = item.NOMBRE;
+                hab.ORDEN_ASIGNADO = Convert.ToInt32(item.ORDEN_ASIGNADO);
+                hab.ALTERNATIVA_PREGUNTA = item.ALTERNATIVA_PREGUNTA;
 
                 habilidadesController.Add(hab);
             }
@@ -301,11 +300,11 @@ namespace WFBS.Business.Operations
                           where h.ID_COMPETENCIA == id_com
                           select new Habilidad
                           {
-                              Id_Hab = h.ID_HABILIDAD,
+                              ID_HABILIDAD = h.ID_HABILIDAD,
                               Competencia = c.NOMBRE,
-                              Nombre = h.NOMBRE,
+                              NOMBRE = h.NOMBRE,
                               Orden = h.ORDEN_ASIGNADO,
-                              Alternativa_Pregunta = h.ALTERNATIVA_PREGUNTA
+                              ALTERNATIVA_PREGUNTA = h.ALTERNATIVA_PREGUNTA
                           };
             return HabiBDD.ToList();
             //return (GenerarListado(habilidad.ToList()));

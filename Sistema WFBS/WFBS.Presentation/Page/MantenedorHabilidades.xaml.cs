@@ -36,7 +36,7 @@ namespace MasterPages.Page
         {
             InitializeComponent();
             HabilidadOperacion habOp = new HabilidadOperacion(hab);
-            com.Id_competencia = id;
+            com.ID_COMPETENCIA = id;
             id_com = id;
             dgHabilidades.ItemsSource = habOp.ObtenerHabPorCom(id);
         }
@@ -73,7 +73,7 @@ namespace MasterPages.Page
             if (dgHabilidades.SelectedItem != null)
             {
                 Habilidad hab = (Habilidad)dgHabilidades.SelectedItem;
-                int id_habi = Convert.ToInt32(hab.Id_Hab);
+                int id_habi = Convert.ToInt32(hab.ID_HABILIDAD);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarHabilidad nextPage = new ModificarHabilidad(id_habi, id_com);
                 navService.Navigate(nextPage);
@@ -88,8 +88,8 @@ namespace MasterPages.Page
             if (dgHabilidades.SelectedItem != null)
             {
                 Habilidad hab = (Habilidad)dgHabilidades.SelectedItem;
-                int id_habi = Convert.ToInt32(hab.Id_Hab);
-                hab.Id_Habilidad = id_habi;
+                int id_habi = Convert.ToInt32(hab.ID_HABILIDAD);
+                hab.ID_HABILIDAD = id_habi;
 
                 XML formato = new XML();
                 string xml = formato.Serializar(hab);

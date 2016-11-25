@@ -14,11 +14,11 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Habilidad a = new WFBS.Business.Entities.Habilidad();
 
-            a.Id_Competencia = 1;
-            a.Id_Habilidad = 2;
-            a.Nombre = "aaaaaa";
-            a.Orden_Asignado = 3;
-            a.Alternativa_Pregunta = "¿lololo?";
+            a.ID_COMPETENCIA = 1;
+            a.ID_HABILIDAD = 2;
+            a.NOMBRE = "aaaaaa";
+            a.ORDEN_ASIGNADO = 3;
+            a.ALTERNATIVA_PREGUNTA = "¿lololo?";
 
             bool esperando = true;
             HabilidadOperacion habOp = new HabilidadOperacion(a);
@@ -36,11 +36,11 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Habilidad a = new WFBS.Business.Entities.Habilidad();
 
-            a.Id_Competencia = 1;
-            a.Id_Habilidad = 1;
-            a.Nombre = "palala";
-            a.Orden_Asignado = 3;
-            a.Alternativa_Pregunta = "¿pololo?";
+            a.ID_COMPETENCIA = 1;
+            a.ID_HABILIDAD = 1;
+            a.NOMBRE = "palala";
+            a.ORDEN_ASIGNADO = 3;
+            a.ALTERNATIVA_PREGUNTA = "¿pololo?";
 
     
             bool esperando = true;
@@ -59,7 +59,7 @@ namespace PruebasUnitarias
 
             WFBS.Business.Entities.Habilidad a = new WFBS.Business.Entities.Habilidad();
 
-            a.Id_Habilidad = 2;
+            a.ID_HABILIDAD = 2;
 
             bool esperando = true;
             HabilidadOperacion habOp = new HabilidadOperacion(a);

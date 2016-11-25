@@ -28,13 +28,13 @@ namespace WFBS.Business.Operations
                 DAL.WFBSEntities compe = new DAL.WFBSEntities();
                 DAL.COMPETENCIA com = new COMPETENCIA();
 
-                com.ID_COMPETENCIA = this._competencia.Id_competencia;
-                com.NOMBRE = this._competencia.Nombre;
-                com.DESCRIPCION = this._competencia.Descripcion;
-                com.SIGLA = this._competencia.Sigla;
-                com.OBSOLETA = this._competencia.Obsoleta;
-                com.NIVEL_OPTIMO_ESPERADO = this._competencia.Nivel_Optimo;
-                com.PREGUNTA_ASOCIADA = this._competencia.Pregunta_Asociada;
+                com.ID_COMPETENCIA = this._competencia.ID_COMPETENCIA;
+                com.NOMBRE = this._competencia.NOMBRE;
+                com.DESCRIPCION = this._competencia.DESCRIPCION;
+                com.SIGLA = this._competencia.SIGLA;
+                com.OBSOLETA = this._competencia.OBSOLETA;
+                com.NIVEL_OPTIMO_ESPERADO = this._competencia.NIVEL_OPTIMO_ESPERADO;
+                com.PREGUNTA_ASOCIADA = this._competencia.PREGUNTA_ASOCIADA;
 
                 compe.COMPETENCIA.Add(com);
                 compe.SaveChanges();
@@ -53,16 +53,16 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities compe = new DAL.WFBSEntities();
-                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.Id_competencia);
+                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.ID_COMPETENCIA);
 
-                this._competencia.Id_competencia = Convert.ToInt32(com.ID_COMPETENCIA);
-                this._competencia.Nombre = com.NOMBRE;
-                this._competencia.Descripcion = com.DESCRIPCION;
-                this._competencia.Sigla = com.SIGLA;
-                this._competencia.Obsoleta = Convert.ToInt32(com.OBSOLETA);
-                this._competencia.Nivel_Optimo = Convert.ToInt32(com.NIVEL_OPTIMO_ESPERADO);
-                this._competencia.Pregunta_Asociada = com.PREGUNTA_ASOCIADA;
-                if (this._competencia.Obsoleta == 0)
+                this._competencia.ID_COMPETENCIA = Convert.ToInt32(com.ID_COMPETENCIA);
+                this._competencia.NOMBRE = com.NOMBRE;
+                this._competencia.DESCRIPCION = com.DESCRIPCION;
+                this._competencia.SIGLA = com.SIGLA;
+                this._competencia.OBSOLETA = Convert.ToInt32(com.OBSOLETA);
+                this._competencia.NIVEL_OPTIMO_ESPERADO = Convert.ToInt32(com.NIVEL_OPTIMO_ESPERADO);
+                this._competencia.PREGUNTA_ASOCIADA = com.PREGUNTA_ASOCIADA;
+                if (this._competencia.OBSOLETA == 0)
                 {
                     this._competencia.Obs = "No";
                 }
@@ -86,15 +86,15 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities compe = new DAL.WFBSEntities();
-                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.Id_competencia);
+                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.ID_COMPETENCIA);
 
-                com.ID_COMPETENCIA = this._competencia.Id_competencia;
-                com.NOMBRE = this._competencia.Nombre;
-                com.DESCRIPCION = this._competencia.Descripcion;
-                com.SIGLA = this._competencia.Sigla;
-                com.OBSOLETA = this._competencia.Obsoleta;
-                com.NIVEL_OPTIMO_ESPERADO = this._competencia.Nivel_Optimo;
-                com.PREGUNTA_ASOCIADA = this._competencia.Pregunta_Asociada;
+                com.ID_COMPETENCIA = this._competencia.ID_COMPETENCIA;
+                com.NOMBRE = this._competencia.NOMBRE;
+                com.DESCRIPCION = this._competencia.DESCRIPCION;
+                com.SIGLA = this._competencia.SIGLA;
+                com.OBSOLETA = this._competencia.OBSOLETA;
+                com.NIVEL_OPTIMO_ESPERADO = this._competencia.NIVEL_OPTIMO_ESPERADO;
+                com.PREGUNTA_ASOCIADA = this._competencia.PREGUNTA_ASOCIADA;
 
                 compe.SaveChanges();
                 compe = null;
@@ -112,7 +112,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities compe = new DAL.WFBSEntities();
-                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.Id_competencia);
+                DAL.COMPETENCIA com = compe.COMPETENCIA.First(c => c.ID_COMPETENCIA == this._competencia.ID_COMPETENCIA);
 
                 com.OBSOLETA = 1;
                 compe.SaveChanges();
@@ -143,13 +143,13 @@ namespace WFBS.Business.Operations
             {
                 Competencia com = new Competencia();
 
-                com.Id_competencia = Convert.ToInt32(item.ID_COMPETENCIA);
-                com.Nombre = item.NOMBRE;
-                com.Descripcion = item.DESCRIPCION;
-                com.Sigla = item.SIGLA;
-                com.Obsoleta = Convert.ToInt32(item.OBSOLETA);
-                com.Nivel_Optimo = Convert.ToInt32(item.NIVEL_OPTIMO_ESPERADO);
-                com.Pregunta_Asociada = item.PREGUNTA_ASOCIADA;
+                com.ID_COMPETENCIA = Convert.ToInt32(item.ID_COMPETENCIA);
+                com.NOMBRE = item.NOMBRE;
+                com.DESCRIPCION = item.DESCRIPCION;
+                com.SIGLA = item.SIGLA;
+                com.OBSOLETA = Convert.ToInt32(item.OBSOLETA);
+                com.NIVEL_OPTIMO_ESPERADO = Convert.ToInt32(item.NIVEL_OPTIMO_ESPERADO);
+                com.PREGUNTA_ASOCIADA = item.PREGUNTA_ASOCIADA;
                 CompetenciaOperacion comOp = new CompetenciaOperacion(com);
                 comOp.Read();
                 comOp = null;

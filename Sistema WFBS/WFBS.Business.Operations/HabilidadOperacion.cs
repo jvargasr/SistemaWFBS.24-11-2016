@@ -27,11 +27,11 @@ namespace WFBS.Business.Operations
             {
                 DAL.WFBSEntities habi = new DAL.WFBSEntities();
                 DAL.HABILIDAD hab = new HABILIDAD();
-                hab.ID_HABILIDAD = this._habilidad.Id_Habilidad;
-                hab.ID_COMPETENCIA = this._habilidad.Id_Competencia;
-                hab.NOMBRE = this._habilidad.Nombre;
-                hab.ORDEN_ASIGNADO = this._habilidad.Orden_Asignado;
-                hab.ALTERNATIVA_PREGUNTA = this._habilidad.Alternativa_Pregunta;
+                hab.ID_HABILIDAD = this._habilidad.ID_HABILIDAD;
+                hab.ID_COMPETENCIA = this._habilidad.ID_COMPETENCIA;
+                hab.NOMBRE = this._habilidad.NOMBRE;
+                hab.ORDEN_ASIGNADO = this._habilidad.ORDEN_ASIGNADO;
+                hab.ALTERNATIVA_PREGUNTA = this._habilidad.ALTERNATIVA_PREGUNTA;
 
                 habi.HABILIDAD.Add(hab);
                 habi.SaveChanges();
@@ -50,13 +50,13 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities habi = new DAL.WFBSEntities();
-                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.Id_Habilidad);
+                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.ID_HABILIDAD);
 
-                this._habilidad.Id_Habilidad = Convert.ToInt32(hab.ID_HABILIDAD);
-                this._habilidad.Id_Competencia = Convert.ToInt32(hab.ID_COMPETENCIA);
-                this._habilidad.Nombre = hab.NOMBRE;
-                this._habilidad.Orden_Asignado = Convert.ToInt32(hab.ORDEN_ASIGNADO);
-                this._habilidad.Alternativa_Pregunta = hab.ALTERNATIVA_PREGUNTA;
+                this._habilidad.ID_HABILIDAD = Convert.ToInt32(hab.ID_HABILIDAD);
+                this._habilidad.ID_COMPETENCIA = Convert.ToInt32(hab.ID_COMPETENCIA);
+                this._habilidad.NOMBRE = hab.NOMBRE;
+                this._habilidad.ORDEN_ASIGNADO = Convert.ToInt32(hab.ORDEN_ASIGNADO);
+                this._habilidad.ALTERNATIVA_PREGUNTA = hab.ALTERNATIVA_PREGUNTA;
 
                 habi = null;
                 return true;
@@ -73,13 +73,13 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities habi = new DAL.WFBSEntities();
-                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.Id_Habilidad);
+                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.ID_HABILIDAD);
 
-                hab.ID_HABILIDAD = this._habilidad.Id_Habilidad;
-                hab.ID_COMPETENCIA = this._habilidad.Id_Competencia;
-                hab.NOMBRE = this._habilidad.Nombre;
-                hab.ORDEN_ASIGNADO = this._habilidad.Orden_Asignado;
-                hab.ALTERNATIVA_PREGUNTA = this._habilidad.Alternativa_Pregunta;
+                hab.ID_HABILIDAD = this._habilidad.ID_HABILIDAD;
+                hab.ID_COMPETENCIA = this._habilidad.ID_COMPETENCIA;
+                hab.NOMBRE = this._habilidad.NOMBRE;
+                hab.ORDEN_ASIGNADO = this._habilidad.ORDEN_ASIGNADO;
+                hab.ALTERNATIVA_PREGUNTA = this._habilidad.ALTERNATIVA_PREGUNTA;
 
                 habi.SaveChanges();
                 habi = null;
@@ -97,7 +97,7 @@ namespace WFBS.Business.Operations
             try
             {
                 DAL.WFBSEntities habi = new DAL.WFBSEntities();
-                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.Id_Habilidad);
+                DAL.HABILIDAD hab = habi.HABILIDAD.First(h => h.ID_HABILIDAD == this._habilidad.ID_HABILIDAD);
 
                 habi.HABILIDAD.Remove(hab);
                 habi.SaveChanges();
@@ -126,11 +126,11 @@ namespace WFBS.Business.Operations
             {
                 Habilidad hab = new Habilidad();
 
-                hab.Id_Habilidad = Convert.ToInt32(item.ID_HABILIDAD);
-                hab.Id_Competencia = Convert.ToInt32(item.ID_COMPETENCIA);
-                hab.Nombre = item.NOMBRE;
-                hab.Orden_Asignado = Convert.ToInt32(item.ORDEN_ASIGNADO);
-                hab.Alternativa_Pregunta = item.ALTERNATIVA_PREGUNTA;
+                hab.ID_HABILIDAD = Convert.ToInt32(item.ID_HABILIDAD);
+                hab.ID_COMPETENCIA = Convert.ToInt32(item.ID_COMPETENCIA);
+                hab.NOMBRE = item.NOMBRE;
+                hab.ORDEN_ASIGNADO = Convert.ToInt32(item.ORDEN_ASIGNADO);
+                hab.ALTERNATIVA_PREGUNTA = item.ALTERNATIVA_PREGUNTA;
 
                 habilidadesController.Add(hab);
             }
@@ -148,11 +148,11 @@ namespace WFBS.Business.Operations
                           where h.ID_COMPETENCIA == id_com
                           select new Habilidad
                           {
-                              Id_Hab = h.ID_HABILIDAD,
+                              ID_HABILIDAD = h.ID_HABILIDAD,
                               Competencia = c.NOMBRE,
-                              Nombre = h.NOMBRE,
+                              NOMBRE = h.NOMBRE,
                               Orden = h.ORDEN_ASIGNADO,
-                              Alternativa_Pregunta = h.ALTERNATIVA_PREGUNTA
+                              ALTERNATIVA_PREGUNTA = h.ALTERNATIVA_PREGUNTA
                           };
             return HabiBDD.ToList();
             //return (GenerarListado(habilidad.ToList()));

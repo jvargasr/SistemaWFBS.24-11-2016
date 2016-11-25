@@ -42,9 +42,9 @@ namespace MasterPages.Page
             List<Competencia> competencias = comOp.Listar();
             foreach (Competencia item in competencias)
             {
-                if (item.Id_competencia == id_comp)
+                if (item.ID_COMPETENCIA == id_comp)
                 {
-                    cmbId_Competencia.Items.Add(item.Nombre);
+                    cmbId_Competencia.Items.Add(item.NOMBRE);
                     select = i;
                     i++;
                 }
@@ -62,7 +62,7 @@ namespace MasterPages.Page
             cmbOrden.Items.Add("3");
             cmbOrden.Items.Add("4");
             cmbOrden.Items.Add("5");
-            cmbOrden.SelectedIndex = hab.Orden_Asignado;
+            cmbOrden.SelectedIndex = Convert.ToInt32(hab.ORDEN_ASIGNADO);
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
@@ -90,40 +90,40 @@ namespace MasterPages.Page
                 {
                     foreach (Competencia c in competencias)
                     {
-                        if (c.Nombre == (string)cmbId_Competencia.SelectedItem)
+                        if (c.NOMBRE == (string)cmbId_Competencia.SelectedItem)
                         {
-                            hab.Id_Competencia = Convert.ToInt32(c.Id_competencia);
+                            hab.ID_COMPETENCIA = Convert.ToInt32(c.ID_COMPETENCIA);
                         }
                     }
-                    hab.Nombre = txtNombre.Text;
+                    hab.NOMBRE = txtNombre.Text;
                     #region Nivel
                     switch (cmbOrden.SelectedIndex)
                     {
                         case 0:
-                            hab.Orden_Asignado = 0;
+                            hab.ORDEN_ASIGNADO = 0;
                             break;
                         case 1:
-                            hab.Orden_Asignado = 1;
+                            hab.ORDEN_ASIGNADO = 1;
                             break;
                         case 2:
-                            hab.Orden_Asignado = 2;
+                            hab.ORDEN_ASIGNADO = 2;
                             break;
                         case 3:
-                            hab.Orden_Asignado = 3;
+                            hab.ORDEN_ASIGNADO = 3;
                             break;
                         case 4:
-                            hab.Orden_Asignado = 4;
+                            hab.ORDEN_ASIGNADO = 4;
                             break;
                         case 5:
-                            hab.Orden_Asignado = 5;
+                            hab.ORDEN_ASIGNADO = 5;
                             break;
 
                         default:
-                            hab.Orden_Asignado = 0;
+                            hab.ORDEN_ASIGNADO = 0;
                             break;
                     }
                     #endregion Nivel
-                    hab.Alternativa_Pregunta = txtAlternativa.Text;
+                    hab.ALTERNATIVA_PREGUNTA = txtAlternativa.Text;
 
                     XML formato = new XML();
                     string xml = formato.Serializar(hab);
@@ -134,7 +134,7 @@ namespace MasterPages.Page
                         MessageBox.Show("Habilidad agregada correctamente", "Éxito!");
                         this.Limpiar();
                         NavigationService navService = NavigationService.GetNavigationService(this);
-                        MantenedorHabilidades nextPage = new MantenedorHabilidades(hab.Id_Competencia);
+                        MantenedorHabilidades nextPage = new MantenedorHabilidades(Convert.ToInt32(hab.ID_COMPETENCIA));
                         navService.Navigate(nextPage);
                     }
                     else

@@ -36,17 +36,17 @@ namespace MasterPages.Page
         {
             InitializeComponent();
 
-            us.Rut = rut;
+            us.RUT = rut;
             usOp.Read();
-            if (us.Sexo[0] == 'M')
+            if (us.SEXO[0] == 'M')
                 rbMasculino.IsChecked = true;
             else
                 rbFemenino.IsChecked = true;
-            txtNombre.Text = us.Nombre;
-            txtPassword.Password = us.Password;
-            txtPassword2.Password = us.Password;
-            txtRut.Text = us.Rut;
-            if (us.Obsoleto == 0)
+            txtNombre.Text = us.NOMBRE;
+            txtPassword.Password = us.PASSWORD;
+            txtPassword2.Password = us.PASSWORD;
+            txtRut.Text = us.RUT;
+            if (us.OBSOLETO == 0)
                 rbNoObsoleto.IsChecked = true;
             else
                 rbSiObsoleto.IsChecked = true;
@@ -63,9 +63,9 @@ namespace MasterPages.Page
             List<Area> areas = col.ReadAllAreas();
             foreach (Area item in areas)
             {
-                var = Convert.ToInt32(item.Id_area);
-                cmbArea.Items.Add(item.area);
-                if (var == us.Id_Area)
+                var = Convert.ToInt32(item.ID_AREA);
+                cmbArea.Items.Add(item.NOMBRE);
+                if (var == us.ID_AREA)
                     select = i;
                 i++;
             }
@@ -77,8 +77,8 @@ namespace MasterPages.Page
             List<Usuario> jefes = col.ObtenerJefes();
             foreach (Usuario item in jefes)
             {
-                cmbJefe.Items.Add(item.Nombre);
-                if (item.Nombre == us.Jefe)
+                cmbJefe.Items.Add(item.NOMBRE);
+                if (item.NOMBRE == us.JEFE_RESPECTIVO)
                     select = i;
                 i++;
             }
@@ -90,8 +90,8 @@ namespace MasterPages.Page
             List<Perfil> perfiles = col.ReadAllPerfiles();
             foreach (Perfil item in perfiles)
             {
-                cmbPerfil.Items.Add(item.perfil);
-                if (item.id_pefil == us.Id_Perfil)
+                cmbPerfil.Items.Add(item.TIPO_USUARIO);
+                if (item.ID_PERFIL == us.ID_PERFIL)
                     select = i;
                 i++;
             }
@@ -146,41 +146,41 @@ namespace MasterPages.Page
             try
             {
                 Usuario us = new Usuario();
-                us.Rut = txtRut.Text;
+                us.RUT = txtRut.Text;
                 if (usOp.Read())
                 {
                     if (txtNombre.Text.Length > 0 && txtRut.Text.Length > 0 && txtPassword.Password.Length > 0)
                     {
                         if (txtPassword.Password == txtPassword2.Password)
                         {
-                            us.Nombre = txtNombre.Text;
-                            us.Password = txtPassword.Password;
+                            us.NOMBRE = txtNombre.Text;
+                            us.PASSWORD = txtPassword.Password;
                             if (cmbPerfil.SelectedIndex == 2)
-                                us.Jefe = cmbJefe.SelectedItem.ToString();
+                                us.JEFE_RESPECTIVO = cmbJefe.SelectedItem.ToString();
                             else
-                                us.Jefe = "";
+                                us.JEFE_RESPECTIVO = "";
                             if (rbFemenino.IsChecked == true)
-                                us.Sexo = "F";
+                                us.SEXO = "F";
                             if (rbMasculino.IsChecked == true)
-                                us.Sexo = "M";
+                                us.SEXO = "M";
                             foreach (Area a in areas)
                             {
-                                if (a.area == (string)cmbArea.SelectedItem)
+                                if (a.NOMBRE == (string)cmbArea.SelectedItem)
                                 {
-                                    us.Id_Area = Convert.ToInt32(a.Id_area);
+                                    us.ID_AREA = Convert.ToInt32(a.ID_AREA);
                                 }
                             }
                             foreach (Perfil p in perfiles)
                             {
-                                if (p.perfil == (string)cmbPerfil.SelectedItem)
+                                if (p.TIPO_USUARIO == (string)cmbPerfil.SelectedItem)
                                 {
-                                    us.Id_Perfil = p.id_pefil;
+                                    us.ID_PERFIL = Convert.ToInt32(p.ID_PERFIL);
                                 }
                             }
                             if (rbNoObsoleto.IsChecked == true)
-                                us.Obsoleto = 0;
+                                us.OBSOLETO = 0;
                             if (rbSiObsoleto.IsChecked == true)
-                                us.Obsoleto = 1;
+                                us.OBSOLETO = 1;
 
                             XML formato = new XML();
                             string xml = formato.Serializar(us);

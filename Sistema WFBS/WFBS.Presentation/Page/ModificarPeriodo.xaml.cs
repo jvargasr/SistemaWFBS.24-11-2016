@@ -29,14 +29,14 @@ namespace MasterPages.Page
         {
             InitializeComponent();
             lblUserInfo.Content = Global.NombreUsuario;
-            pe.idPeriodo = id;
+            pe.ID_PERIODO_EVALUACION = id;
             PeriodoEvaluacionOperacion periodoEOp = new PeriodoEvaluacionOperacion(pe);
             periodoEOp.Read();
-            txtIdPerido.Text = pe.idPeriodo.ToString();
-            DatePeriodo.Text = pe.fechaInicio.ToString();
-            txtVigencia.Text = pe.vigencia.ToString();
-            cmbPorcentajeAE.SelectedIndex = pe.porcentajeAE;
-            cmbPorcentajeE.SelectedIndex = pe.porcentajeE;
+            txtIdPerido.Text = pe.ID_PERIODO_EVALUACION.ToString();
+            DatePeriodo.Text = pe.FECHA_INICIO.ToString();
+            txtVigencia.Text = pe.VIGENCIA.ToString();
+            cmbPorcentajeAE.SelectedIndex = Convert.ToInt32(pe.PORCENTAJE_AUTOEVALUACION);
+            cmbPorcentajeE.SelectedIndex = Convert.ToInt32(pe.PORCENTAJE_EVALUACION);
         }
 
         private void cmbPorcentajeE_Loaded(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace MasterPages.Page
             cmbPorcentajeE.Items.Add("80%");
             cmbPorcentajeE.Items.Add("90%");
             cmbPorcentajeE.Items.Add("100%");
-            cmbPorcentajeE.SelectedIndex = (pe.porcentajeE/10)-1;
+            cmbPorcentajeE.SelectedIndex = (Convert.ToInt32(pe.PORCENTAJE_EVALUACION)/10)-1;
         }
 
         private void cmbPorcentajeAE_Loaded(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace MasterPages.Page
             cmbPorcentajeAE.Items.Add("80%");
             cmbPorcentajeAE.Items.Add("90%");
             cmbPorcentajeAE.Items.Add("100%");
-            cmbPorcentajeAE.SelectedIndex = (pe.porcentajeAE / 10) - 1;
+            cmbPorcentajeAE.SelectedIndex = (Convert.ToInt32(pe.PORCENTAJE_AUTOEVALUACION) / 10) - 1;
         }
 
 
@@ -76,7 +76,7 @@ namespace MasterPages.Page
             try
             {
                 PeriodoEvaluacion pe = new PeriodoEvaluacion();
-                pe.idPeriodo = int.Parse(txtIdPerido.Text);
+                pe.ID_PERIODO_EVALUACION = int.Parse(txtIdPerido.Text);
                 PeriodoEvaluacionOperacion periodoEOp = new PeriodoEvaluacionOperacion(pe);
                 if (periodoEOp.Read())
                 {
@@ -84,45 +84,45 @@ namespace MasterPages.Page
                     {
                         if ((txtVigencia.Text.Length > 0 && txtVigencia.Text.Length <= 10) && txtVigencia.Text.Trim() != "")
                         {
-                            pe.fechaInicio = DatePeriodo.SelectedDate.Value;
-                            pe.vigencia = int.Parse(txtVigencia.Text);
+                            pe.FECHA_INICIO = DatePeriodo.SelectedDate.Value;
+                            pe.VIGENCIA = int.Parse(txtVigencia.Text);
                             #region porcentaje E
                             switch (cmbPorcentajeE.SelectedIndex + 1)
                             {
                                 case 1:
-                                    pe.porcentajeE = 10;
+                                    pe.PORCENTAJE_EVALUACION = 10;
                                     break;
                                 case 2:
-                                    pe.porcentajeE = 20;
+                                    pe.PORCENTAJE_EVALUACION = 20;
                                     break;
                                 case 3:
-                                    pe.porcentajeE = 30;
+                                    pe.PORCENTAJE_EVALUACION = 30;
                                     break;
                                 case 4:
-                                    pe.porcentajeE = 40;
+                                    pe.PORCENTAJE_EVALUACION = 40;
                                     break;
                                 case 5:
-                                    pe.porcentajeE = 50;
+                                    pe.PORCENTAJE_EVALUACION = 50;
                                     break;
                                 case 6:
-                                    pe.porcentajeE = 60;
+                                    pe.PORCENTAJE_EVALUACION = 60;
                                     break;
                                 case 7:
-                                    pe.porcentajeE = 70;
+                                    pe.PORCENTAJE_EVALUACION = 70;
                                     break;
                                 case 8:
-                                    pe.porcentajeE = 80;
+                                    pe.PORCENTAJE_EVALUACION = 80;
                                     break;
                                 case 9:
-                                    pe.porcentajeE = 90;
+                                    pe.PORCENTAJE_EVALUACION = 90;
                                     break;
                                 case 10:
-                                    pe.porcentajeE = 100;
+                                    pe.PORCENTAJE_EVALUACION = 100;
                                     break;
 
 
                                 default:
-                                    pe.porcentajeE = 10;
+                                    pe.PORCENTAJE_EVALUACION = 10;
                                     break;
                             }
                             #endregion
@@ -130,43 +130,43 @@ namespace MasterPages.Page
                             switch (cmbPorcentajeAE.SelectedIndex + 1)
                             {
                                 case 1:
-                                    pe.porcentajeAE = 10;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 10;
                                     break;
                                 case 2:
-                                    pe.porcentajeAE = 20;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 20;
                                     break;
                                 case 3:
-                                    pe.porcentajeAE = 30;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 30;
                                     break;
                                 case 4:
-                                    pe.porcentajeAE = 40;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 40;
                                     break;
                                 case 5:
-                                    pe.porcentajeAE = 50;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 50;
                                     break;
                                 case 6:
-                                    pe.porcentajeAE = 60;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 60;
                                     break;
                                 case 7:
-                                    pe.porcentajeAE = 70;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 70;
                                     break;
                                 case 8:
-                                    pe.porcentajeAE = 80;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 80;
                                     break;
                                 case 9:
-                                    pe.porcentajeAE = 90;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 90;
                                     break;
                                 case 10:
-                                    pe.porcentajeAE = 100;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 100;
                                     break;
 
 
                                 default:
-                                    pe.porcentajeAE = 10;
+                                    pe.PORCENTAJE_AUTOEVALUACION = 10;
                                     break;
                             }
                             #endregion
-                            if (pe.porcentajeE + pe.porcentajeAE != 100)
+                            if (pe.PORCENTAJE_EVALUACION + pe.PORCENTAJE_AUTOEVALUACION != 100)
                             {
                                 MessageBox.Show("La suma de los porcentajes no puede ser mayor a 100", "Aviso!");
                             }
