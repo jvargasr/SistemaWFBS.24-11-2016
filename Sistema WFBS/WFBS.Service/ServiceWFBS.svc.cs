@@ -129,6 +129,22 @@ namespace WFBS.Service
             }
         }
 
+        public bool validarFuncionarioJefe(string xml)
+        {
+            try
+            {
+                XML formato = new XML();
+                Usuario us = formato.Deserializar<Usuario>(xml);
+                UsuarioOperacion usOp = new UsuarioOperacion(us);
+                return usOp.validarFuncionarioJefe();
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo Validar el Usuario: " + ex.ToString());
+                return false;
+            }
+        }
+
 
         /*
 

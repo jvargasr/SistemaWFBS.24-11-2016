@@ -232,6 +232,31 @@ namespace WFBS.Business.Operations
             }
             
         }
+        public bool validarFuncionarioJefe()
+        {
+            try
+            {
+                DAL.WFBSEntities user = new DAL.WFBSEntities();
+                DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT && b.PASSWORD == this._usuario.PASSWORD && b.ID_PERFIL != 1);
+
+                this._usuario.RUT = us.RUT;
+                this._usuario.NOMBRE = us.NOMBRE;
+                this._usuario.SEXO = us.SEXO;
+                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
+                this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
+                this._usuario.PASSWORD = us.JEFE_RESPECTIVO;
+                this._usuario.OBSOLETO = Convert.ToInt32(us.OBSOLETO);
+
+                user = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.log("No se pudo Validar el Usuario: " + ex.ToString());
+                return false;
+            }
+        }
 
         #endregion Metodos
     }

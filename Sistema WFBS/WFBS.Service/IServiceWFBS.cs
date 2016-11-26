@@ -33,7 +33,8 @@ namespace WFBS.Service
         [OperationContract]
         string obtenerFuncionariosPorJefe(string usuariojefexml);
 
-        
+        [OperationContract]
+        bool validarFuncionarioJefe(string usuarioxml);
 
         #region Competencia
         [OperationContract]
