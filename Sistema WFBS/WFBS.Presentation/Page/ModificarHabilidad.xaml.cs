@@ -95,7 +95,12 @@ namespace MasterPages.Page
                 Habilidad hab = new Habilidad();
                 HabilidadOperacion habOp = new HabilidadOperacion(hab);
                 hab.ID_HABILIDAD = int.Parse(txtId_Habilidad.Text);
-                if (habOp.Read())
+
+                XML formato = new XML();
+                string xml = formato.Serializar(hab);
+                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                if (servicio.LeerHabilidad(xml) != null)
                 {
                     if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
                     {
@@ -131,11 +136,9 @@ namespace MasterPages.Page
                         hab.ALTERNATIVA_PREGUNTA = txtAlternativa.Text;
                         hab.ID_COMPETENCIA = id_comp;
 
-                        XML formato = new XML();
-                        string xml = formato.Serializar(hab) ;
-                        WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+                        string xml2 = formato.Serializar(hab);
 
-                        if (servicio.ActualizarHabilidad(xml))
+                        if (servicio.ActualizarHabilidad(xml2))
                         {
                             MessageBox.Show("Actualizado correctamente", "Éxito!");
                             NavigationService navService = NavigationService.GetNavigationService(this);
@@ -163,6 +166,13 @@ namespace MasterPages.Page
 
                 MessageBox.Show("No se ha podido actualizar la Habilidad!", "Alerta");
             }
+        }
+
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            MantenedorHabilidades nextPage = new MantenedorHabilidades(id_comp);
+            navService.Navigate(nextPage);
         }
     }
 }

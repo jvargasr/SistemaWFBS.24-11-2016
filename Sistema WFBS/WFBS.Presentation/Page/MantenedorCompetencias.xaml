@@ -16,19 +16,20 @@
                 <Button Width="210" Name="btnAgregarCompetencia" Click="btnAgregarCompetencia_Click" HorizontalAlignment="Left">Agregar Competencia</Button>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1000" />
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dgCompetencias" HorizontalAlignment="Left" 
-                          ScrollViewer.CanContentScroll="True"
-                          ScrollViewer.VerticalScrollBarVisibility="Auto"
-                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                    <DataGrid x:Name="dgCompetencias" HorizontalAlignment="Left"                               
                           VerticalAlignment="Top" Loaded="dgCompetencias_Loaded" 
                           CanUserAddRows="False" IsReadOnly="True" 
                           SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}"
-                          SelectionMode="Single">
+                          SelectionMode="Single"
+                          AutoGenerateColumns="True"
+                          ScrollViewer.CanContentScroll="True" 
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible">
                     </DataGrid>
                 </Grid>
                 <WrapPanel Orientation="Horizontal">

@@ -115,7 +115,12 @@ namespace MasterPages.Page
                 Usuario us = new Usuario();
                 us.RUT = txtRut.Text;
                 UsuarioOperacion usOp = new UsuarioOperacion(us);
-                if (!usOp.Read())
+
+                XML formato = new XML();
+                string xml = formato.Serializar(us);
+                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                if (servicio.LeerUsuario(xml) == null)
                 {
                     if (txtNombre.Text.Length > 0 && txtRut.Text.Length > 0 && txtPassword.Password.Length > 0)
                     {
@@ -153,11 +158,9 @@ namespace MasterPages.Page
                                 if (rbSiObsoleto.IsChecked == true)
                                     us.OBSOLETO = 1;
 
-                                XML formato = new XML();
-                                string xml = formato.Serializar(us);
-                                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
-
-                                if (servicio.CrearUsuario(xml))
+                                string xml2 = formato.Serializar(us);
+                                
+                                if (servicio.CrearUsuario(xml2))
                                 {
                                     MessageBox.Show("Agregado correctamente", "Éxito!");
                                     this.Limpiar();

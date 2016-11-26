@@ -63,7 +63,12 @@ namespace MasterPages.Page
                 Area ar = new Area();
                 ar.ID_AREA = int.Parse(txtIdArea.Text);
                 AreaOperacion arOp = new AreaOperacion(ar);
-                if (arOp.Read())
+
+                XML formato = new XML();
+                string xml = formato.Serializar(ar);
+                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                if (servicio.LeerArea(xml) != null)
                 {
                     if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
                     {
@@ -76,11 +81,9 @@ namespace MasterPages.Page
                             if (rbSi.IsChecked == true)
                                 ar.OBSOLETA = 1;
 
-                            XML formato = new XML();
-                            string xml = formato.Serializar(ar);
-                            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+                            string xml2 = formato.Serializar(ar);
 
-                            if (servicio.ActualizarArea(xml))
+                            if (servicio.ActualizarArea(xml2))
                             {
                                 MessageBox.Show("Actualizado correctamente", "Éxito!");
                                 NavigationService navService = NavigationService.GetNavigationService(this);

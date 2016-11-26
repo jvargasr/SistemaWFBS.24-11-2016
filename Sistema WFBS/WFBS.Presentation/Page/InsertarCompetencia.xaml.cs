@@ -161,7 +161,7 @@ namespace MasterPages.Page
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
             NavigationService navService = NavigationService.GetNavigationService(this);
-            MantenedorCompetencias nextPage = new MantenedorCompetencias();
+            MantenedorHabilidades nextPage = new MantenedorHabilidades();
             navService.Navigate(nextPage);
         }
     }

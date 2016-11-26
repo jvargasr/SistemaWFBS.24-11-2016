@@ -78,7 +78,12 @@ namespace MasterPages.Page
                 PeriodoEvaluacion pe = new PeriodoEvaluacion();
                 pe.ID_PERIODO_EVALUACION = int.Parse(txtIdPerido.Text);
                 PeriodoEvaluacionOperacion periodoEOp = new PeriodoEvaluacionOperacion(pe);
-                if (periodoEOp.Read())
+
+                XML formato = new XML();
+                string xml = formato.Serializar(pe);
+                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                if (servicio.LeerPeriodoEvaluacion(xml) != null)
                 {
                     if (DatePeriodo.SelectedDate.Value != null)
                     {
@@ -172,11 +177,9 @@ namespace MasterPages.Page
                             }
                             else
                             {
-                                XML formato = new XML();
-                                string xml = formato.Serializar(pe);
-                                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
 
-                                if (servicio.ActualizarPeriodoEvaluacion(xml))
+                                string xml2 = formato.Serializar(pe);
+                                if (servicio.ActualizarPeriodoEvaluacion(xml2))
                                 {
                                     MessageBox.Show("Actualizado correctamente", "Éxito!");
                                     NavigationService navService = NavigationService.GetNavigationService(this);

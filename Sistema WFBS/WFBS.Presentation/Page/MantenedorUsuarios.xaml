@@ -16,7 +16,7 @@
                     <Button Name="btnAgregarUsuario" Click="btnAgregarUsuario_Click" HorizontalAlignment="Left">Agregar Usuario</Button>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1000" />

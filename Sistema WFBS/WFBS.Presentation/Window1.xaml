@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Frame NavigationUIVisibility="Hidden" Name="frmContent" Grid.Column="0" Grid.Row="1" Source="Page/Page1.xaml" />
+        <Frame NavigationUIVisibility="Hidden" Name="frmContent" Grid.Column="0" Grid.Row="1" Source="Page/Page2.xaml" />
 
     </Grid>
 </Window>
