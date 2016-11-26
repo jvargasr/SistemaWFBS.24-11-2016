@@ -94,8 +94,10 @@ namespace MasterPages.Page
             AreaOperacion arOp = new AreaOperacion(ar);
             dgArea.ItemsSource = arOp.Listar();
 
-           dgArea.Columns[3].Header = "OBSOLETA";
-            //dgArea.Columns[6].Visibility = Visibility.Hidden;
+            dgArea.Columns[3].Visibility = Visibility.Hidden;
+            dgArea.Columns[1].Header = "Nombre";
+            dgArea.Columns[2].Header = "Abreviación";
+            dgArea.Columns[4].Header = "Obsoleta";
 
 
             dgArea.Columns[0].Visibility = Visibility.Collapsed;
@@ -103,14 +105,8 @@ namespace MasterPages.Page
 
         private void dgArea_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.Column.Header.ToString() == "area")
-            {
-                e.Column.Header = "Área";
-            }
-            if (e.Column.Header.ToString() == "abreviacion")
-            {
-                e.Column.Header = "Abreviacion";
-            }
+
+            /*Para cambiar nombre de cabecera*/
         }
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {

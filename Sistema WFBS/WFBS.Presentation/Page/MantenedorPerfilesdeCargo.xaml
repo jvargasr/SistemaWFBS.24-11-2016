@@ -16,7 +16,7 @@
                 <Button Name="btnAgregarPerfildeCargo" Click="btnAgregaPerfildeCargo_Click" HorizontalAlignment="Left">Agregar Perfil</Button>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1000" />

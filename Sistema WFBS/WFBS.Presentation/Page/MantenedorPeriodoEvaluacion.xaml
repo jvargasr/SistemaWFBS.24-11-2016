@@ -14,14 +14,22 @@
             <StackPanel HorizontalAlignment="Center">
                 <Label>Para crear un nuevo periodo de clic en:</Label>
                 <Button Name="btnAgregarPeriodo" Click="btnAgregarPeriodo_Click" HorizontalAlignment="Left">Agregar Periodo</Button>
-                <DataGrid x:Name="dgPeriodo" HorizontalAlignment="Left" 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1000" />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dgPeriodo" HorizontalAlignment="Left" 
                           VerticalAlignment="Top" Loaded="dgPeriodo_Loaded" 
                           CanUserAddRows="False" IsReadOnly="True" 
                           SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}"
                           SelectionMode="Single" 
                           AutoGenerateColumns="True"
                           AutoGeneratingColumn="dgPeriodo_AutoGeneratingColumn">
-                </DataGrid>
+                    </DataGrid>
+                </Grid>
                 <Label>Si desea Modificar o Desactivar el periodo seleccionado de clic en:</Label>
                 <WrapPanel Orientation="Horizontal">
                     <Button  Name="btnModificarPeriodo" Click="btnModificarPeriodo_Click">Modificar</Button>

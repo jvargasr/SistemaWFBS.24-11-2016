@@ -14,14 +14,25 @@
             <StackPanel HorizontalAlignment="Center">
                 <Label>Para crear una nueva área de clic en:</Label>
                 <Button Name="btnAgregarArea" Click="btnAgregarArea_Click" HorizontalAlignment="Left">Agregar Área</Button>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1000" />
+                    </Grid.ColumnDefinitions>
                 <DataGrid x:Name="dgArea" HorizontalAlignment="Left" 
                           VerticalAlignment="Top" Loaded="dgArea_Loaded" 
                           CanUserAddRows="False" IsReadOnly="True" 
                           SelectedItem="{Binding Path=SelectedCustomer, Mode=TwoWay}"
                           SelectionMode="Single" 
                           AutoGenerateColumns="True"
+                          ScrollViewer.CanContentScroll="True" 
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                           AutoGeneratingColumn="dgArea_AutoGeneratingColumn">
                 </DataGrid>
+                </Grid>
                 <Label>Para Modificar o Desactivar el área seleccionada de clic en:</Label>
                 <WrapPanel Orientation="Horizontal">
                     <Button  Name="btnModificarArea" Click="btnModificarArea_Click">Modificar</Button>

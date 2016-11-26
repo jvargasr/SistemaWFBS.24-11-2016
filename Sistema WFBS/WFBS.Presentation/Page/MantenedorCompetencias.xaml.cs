@@ -37,19 +37,15 @@ namespace MasterPages.Page
 
             dgCompetencias.ItemsSource = comOp.Listar(); ;
 
+            //dgCompetencias.Columns[8].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[0].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[4].Visibility = Visibility.Collapsed;
-            dgCompetencias.Columns[7].Visibility = Visibility.Collapsed;
-            //dgCompetencias.Columns[8].Visibility = Visibility.Collapsed;
-            dgCompetencias.Columns[9].Visibility = Visibility.Collapsed;
-            //dgCompetencias.Columns[5].Visibility = Visibility.Collapsed;
-            //dgCompetencias.Columns[7].Visibility = Visibility.Hidden;
             dgCompetencias.Columns[1].Header = "Nombre";
             dgCompetencias.Columns[2].Header = "Descripción";
             dgCompetencias.Columns[3].Header = "Sigla";
             dgCompetencias.Columns[5].Header = "Nivel Óptimo";
             dgCompetencias.Columns[6].Header = "Pregunta Asociada";
-            dgCompetencias.Columns[8].Header = "Obsoleta";
+            dgCompetencias.Columns[7].Header = "Obsoleta";
 
 
         }

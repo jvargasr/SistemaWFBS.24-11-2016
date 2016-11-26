@@ -99,7 +99,12 @@ namespace MasterPages.Page
             {
                 Competencia com = new Competencia();
                 com.ID_COMPETENCIA = int.Parse(txtId_Competencia.Text);
-                if (comOp.Read())
+
+                XML formato = new XML();
+                string xml = formato.Serializar(com);
+                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                if (servicio.LeerCompetencia(xml) != null)
                 {
 
                     //--------------------------------------
@@ -144,12 +149,9 @@ namespace MasterPages.Page
                                 }
                                 #endregion
                                 com.PREGUNTA_ASOCIADA = txtPregunta.Text;
-
-                                XML formato = new XML();
-                                string xml = formato.Serializar(com);
-                                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
-
-                                if (servicio.ActualizarCompetencia(xml))
+                                
+                                string xml2 = formato.Serializar(com);
+                                if (servicio.ActualizarCompetencia(xml2))
                                 {
                                     MessageBox.Show("Actualizado correctamente", "Éxito!");
                                     NavigationService navService = NavigationService.GetNavigationService(this);

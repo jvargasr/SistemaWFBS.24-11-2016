@@ -47,12 +47,12 @@ namespace MasterPages.Page
             dgHabilidades.Columns[0].Visibility = Visibility.Collapsed;
             dgHabilidades.Columns[1].Visibility = Visibility.Collapsed;
             dgHabilidades.Columns[3].Visibility = Visibility.Collapsed;
-            dgHabilidades.Columns[5].Visibility = Visibility.Hidden;
+
             dgHabilidades.Columns[2].Header = "Nombre";
             dgHabilidades.Columns[4].Header = "Alternativa de Pregunta";
-            dgHabilidades.Columns[5].Header = "ID Habilidad";
-            dgHabilidades.Columns[6].Header = "Competencia";
-            dgHabilidades.Columns[7].Header = "Orden Asignado";
+            dgHabilidades.Columns[5].Header = "Competencia";
+            dgHabilidades.Columns[6].Header = "Orden Asignado";
+            //dgHabilidades.Columns[7].Header = "Orden Asignado";
 
         }
         private void dgHabilidades_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

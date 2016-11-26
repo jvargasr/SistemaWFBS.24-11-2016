@@ -93,6 +93,7 @@ namespace MasterPages.Page
                         if (c.NOMBRE == (string)cmbId_Competencia.SelectedItem)
                         {
                             hab.ID_COMPETENCIA = Convert.ToInt32(c.ID_COMPETENCIA);
+                            id_comp = Convert.ToInt32(c.ID_COMPETENCIA);
                         }
                     }
                     hab.NOMBRE = txtNombre.Text;
@@ -153,6 +154,12 @@ namespace MasterPages.Page
                 MessageBox.Show("No se pudo agregar la Habilidad!", "Alerta");
             }
         }
-        
+
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            MantenedorHabilidades nextPage = new MantenedorHabilidades(id_comp);
+            navService.Navigate(nextPage);
+        }
     }
 }

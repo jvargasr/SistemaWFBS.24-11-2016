@@ -17,7 +17,7 @@
                 <Button Width="210" Name="btnAgregarHabilidad" Click="btnAgregarHabilidad_Click" HorizontalAlignment="Left">Agregar Habilidad</Button>
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100" />
+                        <RowDefinition Height="150" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1000" />
@@ -30,8 +30,7 @@
                           AutoGenerateColumns="True"
                           ScrollViewer.CanContentScroll="True" 
                           ScrollViewer.VerticalScrollBarVisibility="Visible"
-                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                          AutoGeneratingColumn="dgHabilidades_AutoGeneratingColumn">
+                          ScrollViewer.HorizontalScrollBarVisibility="Visible">
                     </DataGrid>
                 </Grid>
                 <Label>Si desea Modificar o Eliminar la habilidad seleccionada de clic en:</Label>

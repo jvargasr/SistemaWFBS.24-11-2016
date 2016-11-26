@@ -35,11 +35,15 @@ namespace MasterPages.Page
             Usuario us = new Usuario();
             UsuarioOperacion usOp = new UsuarioOperacion(us);
             dgUsuarios.ItemsSource = usOp.Listar();
+
             dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[4].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[6].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[7].Visibility = Visibility.Collapsed;
 
+            dgUsuarios.Columns[0].Header = "Rut";
+            dgUsuarios.Columns[1].Header = "Nombre";
+            dgUsuarios.Columns[2].Header = "Sexo";
             dgUsuarios.Columns[5].Header = "Jefe a cargo";
             dgUsuarios.Columns[8].Header = "Área";
             dgUsuarios.Columns[10].Header = "Obsoleto";
