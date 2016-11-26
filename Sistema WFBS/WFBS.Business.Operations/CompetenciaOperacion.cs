@@ -174,6 +174,24 @@ namespace WFBS.Business.Operations
             return HabiBDD.ToList();
         }
 
+        public List<Competencia> competenciasArea(Area ar)
+        {
+            try
+            {
+                DAL.AREA area = CommonBC.ModeloWFBS.AREA.First(a => a.ID_AREA == ar.ID_AREA);
+                DAL.WFBSEntities modelo = new WFBSEntities();
+                var competencias = area.COMPETENCIA;
+                //var competencias = CommonBC.ModeloWFBS.COMPETENCIA.Where(comp => comp.AREA == area);
+
+                return GenerarListadoCompetencia(competencias.ToList());
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener competencias por área: " + ex.ToString());
+                return null;
+            }
+            
+        }
         #endregion Metodos
     }
 }

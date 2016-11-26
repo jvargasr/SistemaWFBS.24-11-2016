@@ -40,11 +40,11 @@ namespace MasterPages.Page
         {
             PeriodoEvaluacion pe = new PeriodoEvaluacion();
             PeriodoEvaluacionOperacion periodoOp = new PeriodoEvaluacionOperacion(pe);
-            dgPeriodo.ItemsSource = periodoOp.Listar();
+            /*dgPeriodo.ItemsSource = periodoOp.Listar();
             dgPeriodo.Columns[0].Visibility = Visibility.Hidden;
             dgPeriodo.Columns[2].Header = "Vigencia (dias)";
 
-            dgPeriodo.Columns[5].Visibility = Visibility.Collapsed;
+            dgPeriodo.Columns[5].Visibility = Visibility.Collapsed;*/
         }
 
         private void btnModificarPeriodo_Click(object sender, RoutedEventArgs e)

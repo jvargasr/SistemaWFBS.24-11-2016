@@ -212,6 +212,27 @@ namespace WFBS.Business.Operations
             }
             return usuariosController;
         }
+
+        public List<Usuario> ObtenerFuncionariosPorJefe(string rut)
+        {
+            Usuario us = new Usuario();
+            us.RUT = rut;
+            UsuarioOperacion usOp = new UsuarioOperacion(us);
+            try
+            {
+                usOp.Read();
+                string nombre = us.NOMBRE;
+                var Jefes = CommonBC.ModeloWFBS.USUARIO.Where(usu => usu.JEFE_RESPECTIVO == nombre);
+                return (GenerarListado(Jefes.ToList()));
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener funcionarios por jefe: " + ex.ToString());
+                return null;
+            }
+            
+        }
+
         #endregion Metodos
     }
 

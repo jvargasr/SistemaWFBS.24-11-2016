@@ -36,7 +36,7 @@ namespace MasterPages.Page
             CompetenciaOperacion comOp = new CompetenciaOperacion(com);
 
             dgCompetencias.ItemsSource = comOp.Listar(); ;
-
+            /*
             dgCompetencias.Columns[0].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[4].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[7].Visibility = Visibility.Collapsed;
@@ -49,7 +49,7 @@ namespace MasterPages.Page
             dgCompetencias.Columns[3].Header = "Sigla";
             dgCompetencias.Columns[5].Header = "Nivel Óptimo";
             dgCompetencias.Columns[6].Header = "Pregunta Asociada";
-            dgCompetencias.Columns[8].Header = "Obsoleta";
+            dgCompetencias.Columns[8].Header = "Obsoleta";*/
 
 
         }

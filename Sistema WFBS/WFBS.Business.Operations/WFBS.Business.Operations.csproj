@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaOperacion.cs" />
+    <Compile Include="AuditoriaOperacion.cs" />
     <Compile Include="Collections.cs" />
     <Compile Include="CompetenciaOperacion.cs" />
+    <Compile Include="EvaluacionOperacion.cs" />
     <Compile Include="HabilidadOperacion.cs" />
     <Compile Include="PerfildeCargoOperacion.cs" />
     <Compile Include="PeriodoEvaluacionOperacion.cs" />

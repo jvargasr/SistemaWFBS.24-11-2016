@@ -31,19 +31,54 @@ namespace WFBS.Service
                 return false;
             }         
         }
+
         public bool InsertarEvaluacion(string evaluacionxml)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XML formato = new XML();
+                Evaluacion ev = formato.Deserializar<Evaluacion>(evaluacionxml);
+                EvaluacionOperacion evOp = new EvaluacionOperacion(ev);
+                return evOp.Create();
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo Crear la evaluación: " + ex.ToString());
+                return false;
+            }
         }
 
         public bool insertarAuditoria(string auditoriaxml)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XML formato = new XML();
+                Auditoria au=formato.Deserializar<Auditoria>(auditoriaxml);
+                AuditoriaOperacion auOp = new AuditoriaOperacion(au);
+                return auOp.Create();
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo Crear la auditoría: " + ex.ToString());
+                return false;
+            }
         }
 
-        public string obtenerComptenteciasArea(string areaxml)
+        public string obtenerComptentenciasArea(string areaxml)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XML formato = new XML();
+                Area ar = formato.Deserializar<Area>(areaxml);
+                Competencia com = new Competencia();
+                CompetenciaOperacion comOp = new CompetenciaOperacion(com);
+                return formato.Serializar<List<Competencia>>(comOp.competenciasArea(ar));
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtenet competencias por Área: " + ex.ToString());
+                return null;
+            }
         }
 
         public string obtenerHabilidadesCompetencia(string competenciaxml)
@@ -64,13 +99,36 @@ namespace WFBS.Service
 
         public bool usuarioEvaluado(string evaluacionxml)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XML formato = new XML();
+                Evaluacion ev = formato.Deserializar<Evaluacion>(evaluacionxml);
+                EvaluacionOperacion evOp = new EvaluacionOperacion(ev);
+                return evOp.usuarioEvaluado();
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo verificar el Usuario: " + ex.ToString());
+                return false;
+            }
         }
 
         public string obtenerFuncionariosPorJefe(string usuariojefexml)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XML formato = new XML();
+                Usuario us = formato.Deserializar<Usuario>(usuariojefexml);
+                UsuarioOperacion usOp = new UsuarioOperacion(us);
+                return formato.Serializar<List<Usuario>>(usOp.ObtenerFuncionariosPorJefe(us.RUT));
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo realizar la petición en Usuarios: " + ex.ToString());
+                return null;
+            }
         }
+
 
         /*
 

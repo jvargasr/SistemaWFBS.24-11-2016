@@ -142,6 +142,24 @@ namespace WFBS.Business.Operations
 
             return periodosController;
         }
+
+        public int periodoEvaluacionActivo()
+        {
+            try
+            {
+                DAL.WFBSEntities periodo = new DAL.WFBSEntities();
+
+                DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.Where(p => p.FECHA_INICIO <= DateTime.Now).ToList().Where
+                    (p=>DateTime.Now <= p.FECHA_INICIO.AddDays((double)p.VIGENCIA)).ToList().First();
+
+                return (int)pe.ID_PERIODO_EVALUACION;
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener periodo evaluación activo: " + ex.ToString());
+                return 0;
+            }
+        }
         #endregion Metodos
     }
 }

@@ -22,7 +22,7 @@ namespace WFBS.Service
         bool insertarAuditoria(string auditoriaxml);
 
         [OperationContract]
-        string obtenerComptenteciasArea(string areaxml);
+        string obtenerComptentenciasArea(string areaxml);
 
         [OperationContract]
         string obtenerHabilidadesCompetencia(string competenciaxml);
@@ -32,6 +32,8 @@ namespace WFBS.Service
 
         [OperationContract]
         string obtenerFuncionariosPorJefe(string usuariojefexml);
+
+        
 
         #region Competencia
         [OperationContract]

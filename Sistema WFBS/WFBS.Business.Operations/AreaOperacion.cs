@@ -88,7 +88,7 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+      
         public bool Delete()
         {
             try
@@ -144,6 +144,7 @@ namespace WFBS.Business.Operations
 
             return areasController;
         }
+
         #endregion Metodos
     }
 }
