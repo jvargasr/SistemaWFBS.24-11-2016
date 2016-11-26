@@ -12,6 +12,26 @@ namespace WFBS.Service
     [ServiceContract]
     public interface IServiceWFBS
     {
+        [OperationContract]
+        bool log(string msgxml);
+
+        [OperationContract]
+        bool InsertarEvaluacion(string evaluacionxml);
+
+        [OperationContract]
+        bool insertarAuditoria(string auditoriaxml);
+
+        [OperationContract]
+        string obtenerComptenteciasArea(string areaxml);
+
+        [OperationContract]
+        string obtenerHabilidadesCompetencia(string competenciaxml);
+
+        [OperationContract]
+        bool usuarioEvaluado(string evaluacionxml);
+
+        [OperationContract]
+        string obtenerFuncionariosPorJefe(string usuariojefexml);
 
         #region Competencia
         [OperationContract]

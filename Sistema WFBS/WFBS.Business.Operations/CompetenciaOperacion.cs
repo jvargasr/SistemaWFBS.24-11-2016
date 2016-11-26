@@ -158,6 +158,22 @@ namespace WFBS.Business.Operations
 
             return competenciasController;
         }
+        public List<Habilidad> ObtenerHabPorCom(decimal id_comp)
+        {
+            var HabiBDD = from h in CommonBC.ModeloWFBS.HABILIDAD
+                          join c in CommonBC.ModeloWFBS.COMPETENCIA on h.ID_COMPETENCIA equals c.ID_COMPETENCIA
+                          where h.ID_COMPETENCIA == id_comp
+                          select new Habilidad
+                          {
+                              ID_HABILIDAD = h.ID_HABILIDAD,
+                              Competencia = c.NOMBRE,
+                              NOMBRE = h.NOMBRE,
+                              ORDEN_ASIGNADO = h.ORDEN_ASIGNADO,
+                              ALTERNATIVA_PREGUNTA = h.ALTERNATIVA_PREGUNTA
+                          };
+            return HabiBDD.ToList();
+        }
+
         #endregion Metodos
     }
 }

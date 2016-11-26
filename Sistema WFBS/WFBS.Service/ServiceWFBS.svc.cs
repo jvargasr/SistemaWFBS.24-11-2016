@@ -16,6 +16,108 @@ namespace WFBS.Service
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServiceWFBS : IServiceWFBS
     {
+        #region JavaServices
+        public bool log(string msgxml)
+        {
+            try
+            {
+                XML formato = new XML();
+                Logger.log(formato.Deserializar<string>(msgxml));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo registrar log externo: " + ex.ToString());
+                return false;
+            }         
+        }
+        public bool InsertarEvaluacion(string evaluacionxml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool insertarAuditoria(string auditoriaxml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string obtenerComptenteciasArea(string areaxml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string obtenerHabilidadesCompetencia(string competenciaxml)
+        {
+            try
+            {
+                XML formato = new XML();
+                Competencia com = formato.Deserializar<Competencia>(competenciaxml);
+                CompetenciaOperacion comOp = new CompetenciaOperacion(com);
+                return formato.Serializar(comOp.ObtenerHabPorCom(com.ID_COMPETENCIA));
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo Crear la Competencia: " + ex.ToString());
+                return null;
+            }
+        }
+
+        public bool usuarioEvaluado(string evaluacionxml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string obtenerFuncionariosPorJefe(string usuariojefexml)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*
+
+        public bool InsertarEvaluacion(string evaluacionxml)
+        {
+            Evaluacion e = new Evaluacion(evaluacionxml);
+            return e.Create();
+        }
+        public bool insertarAuditoria(string auditoriaxml)
+        {
+            Auditoria a = new Auditoria(auditoriaxml);
+            return a.Create();
+        }
+        public string obtenerComptenteciasArea(string id_area)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Area), new XmlRootAttribute("Area"));
+            StringReader stringReader = new StringReader(id_area);
+            Area a = (Area)serializer.Deserialize(stringReader);
+
+            ColeccionCompetencia cc = new ColeccionCompetencia();
+            return cc.Serializar(cc.ReadAllCompetencias());
+        }
+        public string obtenerHabilidadesCompetencia(string id_competencia)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Competencia), new XmlRootAttribute("Competencia"));
+            StringReader stringReader = new StringReader(id_competencia);
+            Competencia c = (Competencia)serializer.Deserialize(stringReader);
+            ColeccionHabilidad ch = new ColeccionHabilidad();
+            return ch.Serializar(ch.ObtenerHabPorCom(c.Id_competencia));
+        }
+        public bool usuarioEvaluado(string evaluacionxml)
+        {
+            Evaluacion e = new Evaluacion(evaluacionxml);
+            return e.usuarioEvaluado();
+        }
+        public string obtenerFuncionariosPorJefe(string usuariojefexml)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Usuario), new XmlRootAttribute("Usuario"));
+            StringReader stringReader = new StringReader(usuariojefexml);
+            Usuario u = (Usuario)serializer.Deserialize(stringReader);
+
+            ColeccionUsuario c = new ColeccionUsuario();
+            return c.Serializar(c.ObtenerFuncionariosPorJefe(u.Rut));
+        }*/
+
+        #endregion
+
         #region Competencia
         // Competencia
         public bool CrearCompetencia(string xml)
@@ -546,6 +648,7 @@ namespace WFBS.Service
         {
             throw new NotImplementedException();
         }
+
         #endregion PerfildeCargo
     }
 }
