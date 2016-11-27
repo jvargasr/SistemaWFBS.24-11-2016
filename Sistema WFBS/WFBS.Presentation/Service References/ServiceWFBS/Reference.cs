@@ -226,16 +226,16 @@ namespace WFBS.Presentation.ServiceWFBS {
         System.Threading.Tasks.Task<string> LeerAreasAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/CrearPerfildeCargo", ReplyAction="http://tempuri.org/IServiceWFBS/CrearPerfildeCargoResponse")]
-        bool CrearPerfildeCargo(string xml);
+        bool CrearPerfildeCargo(string xml, string areas);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/CrearPerfildeCargo", ReplyAction="http://tempuri.org/IServiceWFBS/CrearPerfildeCargoResponse")]
-        System.Threading.Tasks.Task<bool> CrearPerfildeCargoAsync(string xml);
+        System.Threading.Tasks.Task<bool> CrearPerfildeCargoAsync(string xml, string areas);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/ActualizarPerfildeCargo", ReplyAction="http://tempuri.org/IServiceWFBS/ActualizarPerfildeCargoResponse")]
-        bool ActualizarPerfildeCargo(string xml);
+        bool ActualizarPerfildeCargo(string xml, string areas);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/ActualizarPerfildeCargo", ReplyAction="http://tempuri.org/IServiceWFBS/ActualizarPerfildeCargoResponse")]
-        System.Threading.Tasks.Task<bool> ActualizarPerfildeCargoAsync(string xml);
+        System.Threading.Tasks.Task<bool> ActualizarPerfildeCargoAsync(string xml, string areas);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/EliminarPerfildeCargo", ReplyAction="http://tempuri.org/IServiceWFBS/EliminarPerfildeCargoResponse")]
         bool EliminarPerfildeCargo(string xml);
@@ -563,20 +563,20 @@ namespace WFBS.Presentation.ServiceWFBS {
             return base.Channel.LeerAreasAsync();
         }
         
-        public bool CrearPerfildeCargo(string xml) {
-            return base.Channel.CrearPerfildeCargo(xml);
+        public bool CrearPerfildeCargo(string xml, string areas) {
+            return base.Channel.CrearPerfildeCargo(xml, areas);
         }
         
-        public System.Threading.Tasks.Task<bool> CrearPerfildeCargoAsync(string xml) {
-            return base.Channel.CrearPerfildeCargoAsync(xml);
+        public System.Threading.Tasks.Task<bool> CrearPerfildeCargoAsync(string xml, string areas) {
+            return base.Channel.CrearPerfildeCargoAsync(xml, areas);
         }
         
-        public bool ActualizarPerfildeCargo(string xml) {
-            return base.Channel.ActualizarPerfildeCargo(xml);
+        public bool ActualizarPerfildeCargo(string xml, string areas) {
+            return base.Channel.ActualizarPerfildeCargo(xml, areas);
         }
         
-        public System.Threading.Tasks.Task<bool> ActualizarPerfildeCargoAsync(string xml) {
-            return base.Channel.ActualizarPerfildeCargoAsync(xml);
+        public System.Threading.Tasks.Task<bool> ActualizarPerfildeCargoAsync(string xml, string areas) {
+            return base.Channel.ActualizarPerfildeCargoAsync(xml, areas);
         }
         
         public bool EliminarPerfildeCargo(string xml) {

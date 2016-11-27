@@ -118,7 +118,13 @@ namespace MasterPages.Page
                             pc.OBSOLETO = 0;
                         if (rbSiObsoleto.IsChecked == true)
                             pc.OBSOLETO = 1;
-                        if (perfilOp.Actualize(areasSelec))
+
+                        XML formato = new XML();
+                        string xml = formato.Serializar(pc);
+                        string xml2 = formato.Serializar(areasSelec);
+                        WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+
+                        if (servicio.ActualizarPerfildeCargo(xml,xml2))
                         {
                                 MessageBox.Show("Actualizado correctamente", "Éxito!");
                                 NavigationService navService = NavigationService.GetNavigationService(this);

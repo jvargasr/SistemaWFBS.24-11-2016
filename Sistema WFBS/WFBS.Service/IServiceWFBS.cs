@@ -12,6 +12,8 @@ namespace WFBS.Service
     [ServiceContract]
     public interface IServiceWFBS
     {
+        #region JavaServices
+
         [OperationContract]
         bool log(string msgxml);
 
@@ -36,6 +38,9 @@ namespace WFBS.Service
         [OperationContract]
         bool validarFuncionarioJefe(string usuarioxml);
 
+        #endregion JavaServices
+
+        #region C#Services
         #region Competencia
         [OperationContract]
         bool CrearCompetencia(string xml);
@@ -138,11 +143,11 @@ namespace WFBS.Service
         //---------------------------------------------------------//
         #region PerfildeCargo
         [OperationContract]
-        bool CrearPerfildeCargo(string xml);
+        bool CrearPerfildeCargo(string xml, string areas);
         //bool CrearPerfildeCargo(string xml, List<Area> areaSeleccionada);
 
         [OperationContract]
-        bool ActualizarPerfildeCargo(string xml);
+        bool ActualizarPerfildeCargo(string xml, string areas);
 
         [OperationContract]
         bool EliminarPerfildeCargo(string xml);
@@ -154,6 +159,7 @@ namespace WFBS.Service
         string LeerPerfilesdeCargo();
         #endregion PerfildeCargo
 
+        #endregion C#Services
 
         // TODO: agregue aquí sus operaciones de servicio
     }

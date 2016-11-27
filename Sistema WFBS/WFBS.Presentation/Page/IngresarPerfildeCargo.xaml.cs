@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WFBS.Business.Operations;
 using WFBS.Business.Entities;
+using WFBS.IT.Communication;
 
 namespace MasterPages.Page
 {
@@ -92,8 +93,12 @@ namespace MasterPages.Page
                             pc.OBSOLETO = 0;
                         if (rbSiObsoleto.IsChecked == true)
                             pc.OBSOLETO = 1;
-                        PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(pc);
-                        if (perfilCOp.Insert(areasSelec))
+
+                        XML formato = new XML();
+                        string xml = formato.Serializar(pc);
+                        string xml2 = formato.Serializar(areasSelec);
+                        WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+                        if (servicio.CrearPerfildeCargo(xml,xml2))
                         {
                             MessageBox.Show("Agregado correctamente", "Éxito!");
                                 NavigationService navService = NavigationService.GetNavigationService(this);

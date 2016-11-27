@@ -192,6 +192,8 @@ namespace WFBS.Service
 
         #endregion
 
+        #region C#Services
+
         #region Competencia
         // Competencia
         public bool CrearCompetencia(string xml)
@@ -659,15 +661,15 @@ namespace WFBS.Service
 
         #region PerfildeCargo
 
-        public bool CrearPerfildeCargo(string xml)
+        public bool CrearPerfildeCargo(string xml, string areas)
         {
             try
             {
                 XML formato = new XML();
                 PerfildeCargo perfilC = formato.Deserializar<PerfildeCargo>(xml);
+                List<Area> areasP = formato.Deserializar<List<Area>>(areas);
                 PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(perfilC);
-                List<Area> area = new List<Area>();
-                return perfilCOp.Insert(area);
+                return perfilCOp.Insert(areasP);
             }
             catch (Exception ex)
             {
@@ -676,15 +678,15 @@ namespace WFBS.Service
             }
         }
 
-        public bool ActualizarPerfildeCargo(string xml)
+        public bool ActualizarPerfildeCargo(string xml, string areas)
         {
             try
             {
                 XML formato = new XML();
                 PerfildeCargo perfilC = formato.Deserializar<PerfildeCargo>(xml);
+                List<Area> areasP = formato.Deserializar<List<Area>>(areas);
                 PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(perfilC);
-                List<Area> area = new List<Area>();
-                return perfilCOp.Actualize(area);
+                return perfilCOp.Actualize(areasP);
             }
             catch (Exception ex)
             {
@@ -716,7 +718,6 @@ namespace WFBS.Service
                 XML formato = new XML();
                 PerfildeCargo perfilC = formato.Deserializar<PerfildeCargo>(xml);
                 PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(perfilC);
-                //comOp.Read();
                 if (perfilCOp.Read())
                 {
                     return formato.Serializar(perfilC);
@@ -744,5 +745,7 @@ namespace WFBS.Service
         }
 
         #endregion PerfildeCargo
+
+        #endregion C#Services
     }
 }
