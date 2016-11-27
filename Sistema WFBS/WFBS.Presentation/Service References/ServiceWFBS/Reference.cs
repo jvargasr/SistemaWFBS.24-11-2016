@@ -15,6 +15,54 @@ namespace WFBS.Presentation.ServiceWFBS {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceWFBS.IServiceWFBS")]
     public interface IServiceWFBS {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/log", ReplyAction="http://tempuri.org/IServiceWFBS/logResponse")]
+        bool log(string msgxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/log", ReplyAction="http://tempuri.org/IServiceWFBS/logResponse")]
+        System.Threading.Tasks.Task<bool> logAsync(string msgxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/InsertarEvaluacion", ReplyAction="http://tempuri.org/IServiceWFBS/InsertarEvaluacionResponse")]
+        bool InsertarEvaluacion(string evaluacionxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/InsertarEvaluacion", ReplyAction="http://tempuri.org/IServiceWFBS/InsertarEvaluacionResponse")]
+        System.Threading.Tasks.Task<bool> InsertarEvaluacionAsync(string evaluacionxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/insertarAuditoria", ReplyAction="http://tempuri.org/IServiceWFBS/insertarAuditoriaResponse")]
+        bool insertarAuditoria(string auditoriaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/insertarAuditoria", ReplyAction="http://tempuri.org/IServiceWFBS/insertarAuditoriaResponse")]
+        System.Threading.Tasks.Task<bool> insertarAuditoriaAsync(string auditoriaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerComptentenciasArea", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerComptentenciasAreaResponse")]
+        string obtenerComptentenciasArea(string areaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerComptentenciasArea", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerComptentenciasAreaResponse")]
+        System.Threading.Tasks.Task<string> obtenerComptentenciasAreaAsync(string areaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetencia", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetenciaResponse")]
+        string obtenerHabilidadesCompetencia(string competenciaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetencia", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetenciaResponse")]
+        System.Threading.Tasks.Task<string> obtenerHabilidadesCompetenciaAsync(string competenciaxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/usuarioEvaluado", ReplyAction="http://tempuri.org/IServiceWFBS/usuarioEvaluadoResponse")]
+        bool usuarioEvaluado(string evaluacionxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/usuarioEvaluado", ReplyAction="http://tempuri.org/IServiceWFBS/usuarioEvaluadoResponse")]
+        System.Threading.Tasks.Task<bool> usuarioEvaluadoAsync(string evaluacionxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefe", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefeResponse")]
+        string obtenerFuncionariosPorJefe(string usuariojefexml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefe", ReplyAction="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefeResponse")]
+        System.Threading.Tasks.Task<string> obtenerFuncionariosPorJefeAsync(string usuariojefexml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/validarFuncionarioJefe", ReplyAction="http://tempuri.org/IServiceWFBS/validarFuncionarioJefeResponse")]
+        bool validarFuncionarioJefe(string usuarioxml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/validarFuncionarioJefe", ReplyAction="http://tempuri.org/IServiceWFBS/validarFuncionarioJefeResponse")]
+        System.Threading.Tasks.Task<bool> validarFuncionarioJefeAsync(string usuarioxml);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/CrearCompetencia", ReplyAction="http://tempuri.org/IServiceWFBS/CrearCompetenciaResponse")]
         bool CrearCompetencia(string xml);
         
@@ -69,17 +117,11 @@ namespace WFBS.Presentation.ServiceWFBS {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabilidad", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabilidadResponse")]
         System.Threading.Tasks.Task<string> LeerHabilidadAsync(string xml);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabilidades", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabilidadesResponse")]
-        string LeerHabilidades();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabilidades", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabilidadesResponse")]
-        System.Threading.Tasks.Task<string> LeerHabilidadesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabPorCom", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabPorComResponse")]
+        string LeerHabPorCom(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabPorCom", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabPorComResponse")]
-        string LeerHabPorCom(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/LeerHabPorCom", ReplyAction="http://tempuri.org/IServiceWFBS/LeerHabPorComResponse")]
-        System.Threading.Tasks.Task<string> LeerHabPorComAsync(int id);
+        System.Threading.Tasks.Task<string> LeerHabPorComAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceWFBS/CrearPeriodoEvaluacion", ReplyAction="http://tempuri.org/IServiceWFBS/CrearPeriodoEvaluacionResponse")]
         bool CrearPeriodoEvaluacion(string xml);
@@ -241,6 +283,70 @@ namespace WFBS.Presentation.ServiceWFBS {
                 base(binding, remoteAddress) {
         }
         
+        public bool log(string msgxml) {
+            return base.Channel.log(msgxml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> logAsync(string msgxml) {
+            return base.Channel.logAsync(msgxml);
+        }
+        
+        public bool InsertarEvaluacion(string evaluacionxml) {
+            return base.Channel.InsertarEvaluacion(evaluacionxml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertarEvaluacionAsync(string evaluacionxml) {
+            return base.Channel.InsertarEvaluacionAsync(evaluacionxml);
+        }
+        
+        public bool insertarAuditoria(string auditoriaxml) {
+            return base.Channel.insertarAuditoria(auditoriaxml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> insertarAuditoriaAsync(string auditoriaxml) {
+            return base.Channel.insertarAuditoriaAsync(auditoriaxml);
+        }
+        
+        public string obtenerComptentenciasArea(string areaxml) {
+            return base.Channel.obtenerComptentenciasArea(areaxml);
+        }
+        
+        public System.Threading.Tasks.Task<string> obtenerComptentenciasAreaAsync(string areaxml) {
+            return base.Channel.obtenerComptentenciasAreaAsync(areaxml);
+        }
+        
+        public string obtenerHabilidadesCompetencia(string competenciaxml) {
+            return base.Channel.obtenerHabilidadesCompetencia(competenciaxml);
+        }
+        
+        public System.Threading.Tasks.Task<string> obtenerHabilidadesCompetenciaAsync(string competenciaxml) {
+            return base.Channel.obtenerHabilidadesCompetenciaAsync(competenciaxml);
+        }
+        
+        public bool usuarioEvaluado(string evaluacionxml) {
+            return base.Channel.usuarioEvaluado(evaluacionxml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> usuarioEvaluadoAsync(string evaluacionxml) {
+            return base.Channel.usuarioEvaluadoAsync(evaluacionxml);
+        }
+        
+        public string obtenerFuncionariosPorJefe(string usuariojefexml) {
+            return base.Channel.obtenerFuncionariosPorJefe(usuariojefexml);
+        }
+        
+        public System.Threading.Tasks.Task<string> obtenerFuncionariosPorJefeAsync(string usuariojefexml) {
+            return base.Channel.obtenerFuncionariosPorJefeAsync(usuariojefexml);
+        }
+        
+        public bool validarFuncionarioJefe(string usuarioxml) {
+            return base.Channel.validarFuncionarioJefe(usuarioxml);
+        }
+        
+        public System.Threading.Tasks.Task<bool> validarFuncionarioJefeAsync(string usuarioxml) {
+            return base.Channel.validarFuncionarioJefeAsync(usuarioxml);
+        }
+        
         public bool CrearCompetencia(string xml) {
             return base.Channel.CrearCompetencia(xml);
         }
@@ -313,19 +419,11 @@ namespace WFBS.Presentation.ServiceWFBS {
             return base.Channel.LeerHabilidadAsync(xml);
         }
         
-        public string LeerHabilidades() {
-            return base.Channel.LeerHabilidades();
-        }
-        
-        public System.Threading.Tasks.Task<string> LeerHabilidadesAsync() {
-            return base.Channel.LeerHabilidadesAsync();
-        }
-        
-        public string LeerHabPorCom(int id) {
+        public string LeerHabPorCom(string id) {
             return base.Channel.LeerHabPorCom(id);
         }
         
-        public System.Threading.Tasks.Task<string> LeerHabPorComAsync(int id) {
+        public System.Threading.Tasks.Task<string> LeerHabPorComAsync(string id) {
             return base.Channel.LeerHabPorComAsync(id);
         }
         

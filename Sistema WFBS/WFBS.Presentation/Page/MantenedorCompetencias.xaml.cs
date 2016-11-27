@@ -34,10 +34,11 @@ namespace MasterPages.Page
         {
             Competencia com = new Competencia();
             CompetenciaOperacion comOp = new CompetenciaOperacion(com);
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
 
-            dgCompetencias.ItemsSource = comOp.Listar(); ;
+            dgCompetencias.ItemsSource = formato.Deserializar<List<Competencia>>(servicio.LeerCompetencias());
 
-            //dgCompetencias.Columns[8].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[0].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[4].Visibility = Visibility.Collapsed;
             dgCompetencias.Columns[1].Header = "Nombre";

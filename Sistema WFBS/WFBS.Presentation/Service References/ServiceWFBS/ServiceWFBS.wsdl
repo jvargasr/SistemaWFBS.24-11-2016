@@ -6,6 +6,54 @@
       <xsd:import schemaLocation="http://localhost:49521/ServiceWFBS.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IServiceWFBS_log_InputMessage">
+    <wsdl:part name="parameters" element="tns:log" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_log_OutputMessage">
+    <wsdl:part name="parameters" element="tns:logResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_InsertarEvaluacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarEvaluacion" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_InsertarEvaluacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarEvaluacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_insertarAuditoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertarAuditoria" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_insertarAuditoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertarAuditoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerComptentenciasArea_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerComptentenciasArea" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerComptentenciasArea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerComptentenciasAreaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerHabilidadesCompetencia_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerHabilidadesCompetencia" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerHabilidadesCompetencia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerHabilidadesCompetenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_usuarioEvaluado_InputMessage">
+    <wsdl:part name="parameters" element="tns:usuarioEvaluado" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_usuarioEvaluado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:usuarioEvaluadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerFuncionariosPorJefe_InputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerFuncionariosPorJefe" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_obtenerFuncionariosPorJefe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:obtenerFuncionariosPorJefeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_validarFuncionarioJefe_InputMessage">
+    <wsdl:part name="parameters" element="tns:validarFuncionarioJefe" />
+  </wsdl:message>
+  <wsdl:message name="IServiceWFBS_validarFuncionarioJefe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:validarFuncionarioJefeResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceWFBS_CrearCompetencia_InputMessage">
     <wsdl:part name="parameters" element="tns:CrearCompetencia" />
   </wsdl:message>
@@ -59,12 +107,6 @@
   </wsdl:message>
   <wsdl:message name="IServiceWFBS_LeerHabilidad_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeerHabilidadResponse" />
-  </wsdl:message>
-  <wsdl:message name="IServiceWFBS_LeerHabilidades_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeerHabilidades" />
-  </wsdl:message>
-  <wsdl:message name="IServiceWFBS_LeerHabilidades_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeerHabilidadesResponse" />
   </wsdl:message>
   <wsdl:message name="IServiceWFBS_LeerHabPorCom_InputMessage">
     <wsdl:part name="parameters" element="tns:LeerHabPorCom" />
@@ -205,6 +247,38 @@
     <wsdl:part name="parameters" element="tns:LeerPerfilesdeCargoResponse" />
   </wsdl:message>
   <wsdl:portType name="IServiceWFBS">
+    <wsdl:operation name="log">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/log" message="tns:IServiceWFBS_log_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/logResponse" message="tns:IServiceWFBS_log_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarEvaluacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/InsertarEvaluacion" message="tns:IServiceWFBS_InsertarEvaluacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/InsertarEvaluacionResponse" message="tns:IServiceWFBS_InsertarEvaluacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarAuditoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/insertarAuditoria" message="tns:IServiceWFBS_insertarAuditoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/insertarAuditoriaResponse" message="tns:IServiceWFBS_insertarAuditoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerComptentenciasArea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerComptentenciasArea" message="tns:IServiceWFBS_obtenerComptentenciasArea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerComptentenciasAreaResponse" message="tns:IServiceWFBS_obtenerComptentenciasArea_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerHabilidadesCompetencia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetencia" message="tns:IServiceWFBS_obtenerHabilidadesCompetencia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetenciaResponse" message="tns:IServiceWFBS_obtenerHabilidadesCompetencia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="usuarioEvaluado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/usuarioEvaluado" message="tns:IServiceWFBS_usuarioEvaluado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/usuarioEvaluadoResponse" message="tns:IServiceWFBS_usuarioEvaluado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerFuncionariosPorJefe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefe" message="tns:IServiceWFBS_obtenerFuncionariosPorJefe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefeResponse" message="tns:IServiceWFBS_obtenerFuncionariosPorJefe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="validarFuncionarioJefe">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/validarFuncionarioJefe" message="tns:IServiceWFBS_validarFuncionarioJefe_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/validarFuncionarioJefeResponse" message="tns:IServiceWFBS_validarFuncionarioJefe_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CrearCompetencia">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/CrearCompetencia" message="tns:IServiceWFBS_CrearCompetencia_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/CrearCompetenciaResponse" message="tns:IServiceWFBS_CrearCompetencia_OutputMessage" />
@@ -240,10 +314,6 @@
     <wsdl:operation name="LeerHabilidad">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/LeerHabilidad" message="tns:IServiceWFBS_LeerHabilidad_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/LeerHabilidadResponse" message="tns:IServiceWFBS_LeerHabilidad_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LeerHabilidades">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/LeerHabilidades" message="tns:IServiceWFBS_LeerHabilidades_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServiceWFBS/LeerHabilidadesResponse" message="tns:IServiceWFBS_LeerHabilidades_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LeerHabPorCom">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceWFBS/LeerHabPorCom" message="tns:IServiceWFBS_LeerHabPorCom_InputMessage" />
@@ -340,6 +410,78 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceWFBS" type="tns:IServiceWFBS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="log">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/log" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarEvaluacion">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/InsertarEvaluacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarAuditoria">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/insertarAuditoria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerComptentenciasArea">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/obtenerComptentenciasArea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerHabilidadesCompetencia">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/obtenerHabilidadesCompetencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="usuarioEvaluado">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/usuarioEvaluado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerFuncionariosPorJefe">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/obtenerFuncionariosPorJefe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validarFuncionarioJefe">
+      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/validarFuncionarioJefe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CrearCompetencia">
       <soap:operation soapAction="http://tempuri.org/IServiceWFBS/CrearCompetencia" style="document" />
       <wsdl:input>
@@ -414,15 +556,6 @@
     </wsdl:operation>
     <wsdl:operation name="LeerHabilidad">
       <soap:operation soapAction="http://tempuri.org/IServiceWFBS/LeerHabilidad" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LeerHabilidades">
-      <soap:operation soapAction="http://tempuri.org/IServiceWFBS/LeerHabilidades" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

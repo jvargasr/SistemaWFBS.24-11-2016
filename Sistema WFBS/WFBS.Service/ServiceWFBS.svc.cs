@@ -268,13 +268,12 @@ namespace WFBS.Service
 
         public string LeerCompetencias()
         {
-
             XML formato = new XML();
-            //List<Competencia> competencias = formato.Deserializar<List<Competencia>>();
 
-            //Sstring xmlS = formato.Serializar<List<Competencia>>(competencias);
-
-            return null;
+            Competencia com = new Competencia();
+            CompetenciaOperacion comOp = new CompetenciaOperacion(com);
+            List<Competencia> compes = comOp.Listar();
+            return formato.Serializar(compes);
         }
         #endregion
 
@@ -352,14 +351,15 @@ namespace WFBS.Service
             }
         }
 
-        public string LeerHabilidades()
+        public string LeerHabPorCom(string id)
         {
-            throw new NotImplementedException();
-        }
+            XML formato = new XML();
 
-        public string LeerHabPorCom(int id)
-        {
-            throw new NotImplementedException();
+            Habilidad hab = new Habilidad();
+            HabilidadOperacion habOp = new HabilidadOperacion(hab);
+
+            List<Habilidad> habis = habOp.ObtenerHabPorCom(formato.Deserializar<int>(id));
+            return formato.Serializar(habis);
         }
 
         #endregion Habilidad
@@ -440,7 +440,12 @@ namespace WFBS.Service
         }
         public string LeerPeriodosEvaluaciones()
         {
-            throw new NotImplementedException();
+            XML formato = new XML();
+
+            PeriodoEvaluacion pe = new PeriodoEvaluacion();
+            PeriodoEvaluacionOperacion periodoOp = new PeriodoEvaluacionOperacion(pe);
+            List<PeriodoEvaluacion> periodos = periodoOp.Listar();
+            return formato.Serializar(periodos);
         }
 
         #endregion PeriodoEvaluacion
@@ -554,7 +559,12 @@ namespace WFBS.Service
 
         public string LeerUsuarios()
         {
-            throw new NotImplementedException();
+            XML formato = new XML();
+
+            Usuario us = new Usuario();
+            UsuarioOperacion usOp = new UsuarioOperacion(us);
+            List<Usuario> usuarios = usOp.Listar();
+            return formato.Serializar(usuarios);
         }
 
         #endregion Usuario
@@ -635,7 +645,12 @@ namespace WFBS.Service
 
         public string LeerAreas()
         {
-            throw new NotImplementedException();
+            XML formato = new XML();
+
+            Area ar = new Area();
+            AreaOperacion arOp = new AreaOperacion(ar);
+            List<Area> areas = arOp.Listar();
+            return formato.Serializar(areas);
         }
 
         #endregion Area
@@ -720,7 +735,12 @@ namespace WFBS.Service
 
         public string LeerPerfilesdeCargo()
         {
-            throw new NotImplementedException();
+            XML formato = new XML();
+
+            PerfildeCargo pc = new PerfildeCargo();
+            PerfildeCargoOperacion perfilOp = new PerfildeCargoOperacion(pc);
+            List<PerfildeCargo> perfiles = perfilOp.ReadAllPerfilesdeCargo();
+            return formato.Serializar(perfiles);
         }
 
         #endregion PerfildeCargo

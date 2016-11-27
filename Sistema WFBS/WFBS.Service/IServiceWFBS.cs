@@ -69,10 +69,7 @@ namespace WFBS.Service
         string LeerHabilidad(string xml);
 
         [OperationContract]
-        string LeerHabilidades();
-
-        [OperationContract]
-        string LeerHabPorCom(int id);
+        string LeerHabPorCom(string id);
         #endregion Habilidad
 
         //---------------------------------------------------------//

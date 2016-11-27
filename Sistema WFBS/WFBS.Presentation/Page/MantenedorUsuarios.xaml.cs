@@ -34,7 +34,10 @@ namespace MasterPages.Page
         {
             Usuario us = new Usuario();
             UsuarioOperacion usOp = new UsuarioOperacion(us);
-            dgUsuarios.ItemsSource = usOp.Listar();
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
+
+            dgUsuarios.ItemsSource = formato.Deserializar<List<Usuario>>(servicio.LeerUsuarios());
 
             dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[4].Visibility = Visibility.Collapsed;

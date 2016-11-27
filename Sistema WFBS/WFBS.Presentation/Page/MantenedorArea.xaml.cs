@@ -89,10 +89,12 @@ namespace MasterPages.Page
 
         private void dgArea_Loaded(object sender, RoutedEventArgs e)
         {
-            //Collections col = new Collections();
             Area ar = new Area();
             AreaOperacion arOp = new AreaOperacion(ar);
-            dgArea.ItemsSource = arOp.Listar();
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
+
+            dgArea.ItemsSource = formato.Deserializar<List<Area>>(servicio.LeerAreas());
 
             dgArea.Columns[3].Visibility = Visibility.Hidden;
             dgArea.Columns[1].Header = "Nombre";

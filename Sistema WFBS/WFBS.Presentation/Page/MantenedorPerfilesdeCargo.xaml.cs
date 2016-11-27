@@ -31,8 +31,13 @@ namespace MasterPages.Page
 
         private void dgPerfildeCargo_Loaded(object sender, RoutedEventArgs e)
         {
-            Collections col = new Collections();
-            dgPerfildeCargo.ItemsSource = col.ReadAllPerfilesdeCargo();
+            PerfildeCargo pc = new PerfildeCargo();
+            PerfildeCargoOperacion perfilOp = new PerfildeCargoOperacion(pc);
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
+
+            dgPerfildeCargo.ItemsSource = formato.Deserializar<List<PerfildeCargo>>(servicio.LeerPerfilesdeCargo());
+
             dgPerfildeCargo.Columns[0].Visibility = Visibility.Collapsed;
             dgPerfildeCargo.Columns[2].Visibility = Visibility.Collapsed;
             dgPerfildeCargo.Columns[4].Visibility = Visibility.Collapsed;

@@ -40,7 +40,10 @@ namespace MasterPages.Page
         {
             PeriodoEvaluacion pe = new PeriodoEvaluacion();
             PeriodoEvaluacionOperacion periodoOp = new PeriodoEvaluacionOperacion(pe);
-            dgPeriodo.ItemsSource = periodoOp.Listar();
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
+
+            dgPeriodo.ItemsSource = formato.Deserializar<List<PeriodoEvaluacion>>(servicio.LeerPeriodosEvaluaciones());
 
             dgPeriodo.Columns[0].Visibility = Visibility.Hidden;
 

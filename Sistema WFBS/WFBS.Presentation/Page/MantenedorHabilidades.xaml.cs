@@ -38,11 +38,18 @@ namespace MasterPages.Page
             HabilidadOperacion habOp = new HabilidadOperacion(hab);
             com.ID_COMPETENCIA = id;
             id_com = id;
-            dgHabilidades.ItemsSource = habOp.ObtenerHabPorCom(id);
         }
 
         private void dgHabilidades_Loaded(object sender, RoutedEventArgs e)
         {
+
+            Habilidad h = new Habilidad();
+            HabilidadOperacion habOp = new HabilidadOperacion(h);
+            WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
+            XML formato = new XML();
+            string xml = formato.Serializar(id_com);
+
+            dgHabilidades.ItemsSource = formato.Deserializar<List<Habilidad>>(servicio.LeerHabPorCom(xml));
 
             dgHabilidades.Columns[0].Visibility = Visibility.Collapsed;
             dgHabilidades.Columns[1].Visibility = Visibility.Collapsed;
