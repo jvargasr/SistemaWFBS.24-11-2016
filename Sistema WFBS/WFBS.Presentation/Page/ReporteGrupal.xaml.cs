@@ -25,6 +25,7 @@ namespace MasterPages.Page
     public partial class ReporteGrupal : System.Windows.Controls.Page
     {
         List<PerfildeCargo> Perfiles = new List<PerfildeCargo>();
+        bool bajonivelesperado = false;
         public ReporteGrupal()
         {
             Collections col = new Collections();
@@ -41,15 +42,18 @@ namespace MasterPages.Page
         private void myTab_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             PerfildeCargo PerfilSeleccionado=(PerfildeCargo)TabControl1.SelectedItem;
-            string[] areaspc = new string[] { "" };
-            /*if (PerfilSeleccionado.id_areas != null)************************
-            {
-                areaspc = PerfilSeleccionado.id_areas.Split(',');
-                this.dgEvaluaciones_Loaded(areaspc);
+            Area a = new Area();
+            AreaOperacion aOp = new AreaOperacion(a);
 
-            }*/
+            List<Area> areasPc = new List<Area>();
+            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);
+            if (areasPc != null)
+            {
+                this.dgEvaluaciones_Loaded(areasPc);
+
+            }
         }
-        private void dgEvaluaciones_Loaded(string[] areaspc)
+        private void dgEvaluaciones_Loaded(List<Area> areaspc)
         {
             Collections col = new Collections();
             //dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
@@ -64,14 +68,16 @@ namespace MasterPages.Page
               
             foreach (Area a in areas)
             {
-                if(areaspc.Contains(a.ID_AREA.ToString()))
-                { 
-                    foreach (Competencia com in competencias)
+                foreach (Area item in areaspc)
+                {
+                    if (a.ID_AREA == item.ID_AREA)
                     {
-                        brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
-                        if (brechas.Count > nbrechas)
-                            nbrechas = brechas.Count;
-
+                        foreach (Competencia com in competencias)
+                        {
+                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
+                            if (brechas.Count > nbrechas)
+                                nbrechas = brechas.Count;
+                        }
                     }
                 }
             }
@@ -86,11 +92,14 @@ namespace MasterPages.Page
             column = table.Columns.Add();
             column.ColumnName = "Competencia";
             column.DataType = typeof(string);
-            for (int i = 0; i < nbrechas; i++)
+            if (nbrechas > 0)
             {
-                column = table.Columns.Add();
-                column.ColumnName = "N"+(i+1);
-                column.DataType = typeof(string);
+                for (int i = 0; i < nbrechas; i++)
+                {
+                    column = table.Columns.Add();
+                    column.ColumnName = "N" + (i + 1);
+                    column.DataType = typeof(string);
+                }
             }
             column = table.Columns.Add();
             column.ColumnName = "Brecha Promedio";
@@ -103,28 +112,36 @@ namespace MasterPages.Page
 
             foreach (Area a in areas)
             {
-                if (areaspc.Contains(a.ID_AREA.ToString()))
-                {
-                    foreach (Competencia com in competencias)
+                    foreach (Area item in areaspc)
                     {
-                        sumabrechas = 0;
-                        brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
-                        if (brechas.Count > 0)
+                    if (a.ID_AREA == item.ID_AREA)
+                    {
+                        foreach (Competencia com in competencias)
                         {
-                            row = table.NewRow();
-                            row["Cargo"] = a.NOMBRE;
-                            row["Competencia"] = com.NOMBRE;
-                            for (int i = 0; i < brechas.Count; i++)
+                            sumabrechas = 0;
+                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
+                            if (brechas.Count > 0)
                             {
-                                row["N" + (i + 1)] = brechas[i];
-                                sumabrechas = brechas[i] + sumabrechas;
+                                
+                                row = table.NewRow();
+                                row["Cargo"] = a.NOMBRE;
+                                row["Competencia"] = com.NOMBRE;
+                                for (int i = 0; i < brechas.Count; i++)
+                                {
+                                    row["N" + (i + 1)] = brechas[i];
+                                    sumabrechas = brechas[i] + sumabrechas;
+                                }
+                                float brpromedio = sumabrechas / brechas.Count;
+                                row["Brecha Promedio"] = brpromedio.ToString("0.0");
+                                if (bajonivelesperado == true&& Convert.ToDecimal(brpromedio)>com.NIVEL_OPTIMO_ESPERADO)
+                                    table.Rows.Add(row);
+                                if(bajonivelesperado==false)
+                                    table.Rows.Add(row);
                             }
-                            row["Brecha Promedio"] = (sumabrechas / brechas.Count).ToString("0.0");
-                            table.Rows.Add(row);
                         }
+                    }                  
                     }
                 }
-            }
 
             dgEvaluaciones.ItemsSource = table.AsDataView();
 
@@ -165,74 +182,20 @@ namespace MasterPages.Page
 
         private void btnBajoNivel_Click(object sender, RoutedEventArgs e)
         {
-            Collections col = new Collections();
-            //dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
+            bajonivelesperado = true;
 
-            List<Area> areas = col.ReadAllAreas();
-            List<Competencia> competencias = col.ReadAllCompetencias();
-            List<float> brechas = new List<float>();
+            PerfildeCargo PerfilSeleccionado = (PerfildeCargo)TabControl1.SelectedItem;
+            Area a = new Area();
+            AreaOperacion aOp = new AreaOperacion(a);
 
-            //Calcular cantidad máxima de notas, para definir el ancho de la tabla
-            int nbrechas = 0;
-            foreach (Area a in areas)
+            List<Area> areasPc = new List<Area>();
+            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);
+            if (areasPc != null)
             {
-                foreach (Competencia com in competencias)
-                {
-                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
-                    if (brechas.Count > nbrechas)
-                        nbrechas = brechas.Count;
+                this.dgEvaluaciones_Loaded(areasPc);
 
-                }
-            }
-
-            //dar formato a la tabla
-            DataTable table = new DataTable();
-            DataColumn column;
-            column = table.Columns.Add();
-            column.ColumnName = "Cargo";
-            column.DataType = typeof(string);
-
-            column = table.Columns.Add();
-            column.ColumnName = "Competencia";
-            column.DataType = typeof(string);
-            for (int i = 0; i < nbrechas; i++)
-            {
-                column = table.Columns.Add();
-                column.ColumnName = "N" + (i + 1);
-                column.DataType = typeof(string);
-            }
-            column = table.Columns.Add();
-            column.ColumnName = "Brecha Promedio";
-            column.DataType = typeof(string);
-            //Final formato tabla
-
-            //Listar resultados en la tabla
-            DataRow row;
-            float sumabrechas = 0;
-            foreach (Area a in areas)
-            {
-                foreach (Competencia com in competencias)
-                {
-                    sumabrechas = 0;
-                    brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
-                    if (brechas.Count > 0)
-                    {
-                        row = table.NewRow();
-                        row["Cargo"] = a.NOMBRE;
-                        row["Competencia"] = com.NOMBRE;
-                        for (int i = 0; i < brechas.Count; i++)
-                        {
-                            row["N" + (i + 1)] = brechas[i];
-                            sumabrechas = brechas[i] + sumabrechas;
-                        }
-                        row["Brecha Promedio"] = (sumabrechas / brechas.Count).ToString("0.0");
-                        if((sumabrechas / brechas.Count)<Convert.ToInt32(com.NIVEL_OPTIMO_ESPERADO))
-                        table.Rows.Add(row);
-                    }
-                }
             }
             btnTodas.Visibility = Visibility.Visible;
-            dgEvaluaciones.ItemsSource = table.AsDataView();
         }
         private void btnTodas_Click(object sender, RoutedEventArgs e)
         {

@@ -144,6 +144,12 @@ namespace WFBS.Business.Operations
 
             return areasController;
         }
+        public List<Area> areasPorPerfildeCargo(PerfildeCargo pc)
+        {
+            DAL.WFBSEntities modelo = new WFBSEntities();
+            DAL.PERFIL_DE_CARGO pcargo = modelo.PERFIL_DE_CARGO.First(b => b.ID_PERFIL_DE_CARGO == pc.ID_PERFIL_DE_CARGO);
+            return GenerarListado(pcargo.AREA.ToList());
+        }
 
         #endregion Metodos
     }

@@ -229,8 +229,7 @@ namespace WFBS.Business.Operations
             {
                 Logger.log("No se pudo obtener funcionarios por jefe: " + ex.ToString());
                 return null;
-            }
-            
+            }            
         }
         public bool validarFuncionarioJefe()
         {

@@ -16,8 +16,8 @@
                 <TabControl x:Name="TabControl1" Margin="0" SelectionChanged="myTab_SelectionChanged" Height="50">
                     <TabControl.ItemContainerStyle>
                         <Style TargetType="TabItem">
-                            <Setter Property="Header" Value="{Binding Id_PC}" />
-                            <Setter Property="Content" Value="{Binding descripcion}" />
+                            <Setter Property="Header" Value="{Binding DESCRIPCION}" />
+                            <Setter Property="Content" Value="{Binding DESCRIPCION}" />
                         </Style>
                     </TabControl.ItemContainerStyle>
                 </TabControl>
