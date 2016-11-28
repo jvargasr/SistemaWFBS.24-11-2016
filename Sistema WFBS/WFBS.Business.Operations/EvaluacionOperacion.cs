@@ -77,9 +77,12 @@ namespace WFBS.Business.Operations
         {
             try
             {
+                PeriodoEvaluacion pe = new PeriodoEvaluacion();
+                PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
+                decimal pe_act=peOp.periodoEvaluacionActivo();
                 DAL.WFBSEntities evaluacion = new DAL.WFBSEntities();
                 DAL.EVALUACION ev = evaluacion.EVALUACION.First(b => b.ID_TIPO_EVALUACION == _evaluacion.ID_TIPO_EVALUACION
-                && b.ID_PERIODO_EVALUACION == _evaluacion.ID_PERIODO_EVALUACION && b.RUT_EVALUADO == _evaluacion.RUT_EVALUADO);
+                && b.ID_PERIODO_EVALUACION == pe_act && b.RUT_EVALUADO == _evaluacion.RUT_EVALUADO);
 
                 return true;
             }

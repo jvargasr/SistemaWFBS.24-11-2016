@@ -35,7 +35,7 @@ namespace MasterPages.Page
             lblUserInfo.Content = Global.NombreUsuario;
             lblUserInfo.Content = Global.NombreUsuario;
 
-            Perfiles = col.ReadAllPerfilesdeCargo();
+            Perfiles = col.ReadAllPerfilesdeCargo();/**//**/
             TabControl1.ItemsSource = Perfiles;
 
         }
@@ -46,7 +46,7 @@ namespace MasterPages.Page
             AreaOperacion aOp = new AreaOperacion(a);
 
             List<Area> areasPc = new List<Area>();
-            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);
+            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);/**//**/
             if (areasPc != null)
             {
                 this.dgEvaluaciones_Loaded(areasPc);
@@ -56,10 +56,9 @@ namespace MasterPages.Page
         private void dgEvaluaciones_Loaded(List<Area> areaspc)
         {
             Collections col = new Collections();
-            //dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
 
             List<Area> areas = col.ReadAllAreas();
-            List<Competencia> competencias = col.ReadAllCompetencias();
+            List<Competencia> competencias = col.ReadAllCompetencias();/**//**/
             List<float> brechas = new List<float>();
             List<PerfildeCargo> perfilesdecargo = new List<PerfildeCargo>();
 
@@ -74,7 +73,7 @@ namespace MasterPages.Page
                     {
                         foreach (Competencia com in competencias)
                         {
-                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
+                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);/**//**/
                             if (brechas.Count > nbrechas)
                                 nbrechas = brechas.Count;
                         }
@@ -119,7 +118,7 @@ namespace MasterPages.Page
                         foreach (Competencia com in competencias)
                         {
                             sumabrechas = 0;
-                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);
+                            brechas = col.ObtenerNotasCompetencia((int)a.ID_AREA, (int)com.ID_COMPETENCIA);/**//**/
                             if (brechas.Count > 0)
                             {
                                 
@@ -189,7 +188,7 @@ namespace MasterPages.Page
             AreaOperacion aOp = new AreaOperacion(a);
 
             List<Area> areasPc = new List<Area>();
-            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);
+            areasPc = aOp.areasPorPerfildeCargo(PerfilSeleccionado);/**//**/
             if (areasPc != null)
             {
                 this.dgEvaluaciones_Loaded(areasPc);
