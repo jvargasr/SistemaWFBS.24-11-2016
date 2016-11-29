@@ -17,6 +17,26 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
+        public string periodoActivo()
+        {
+            try
+            {
+                XML formato = new XML();
+                PeriodoEvaluacion pe = new PeriodoEvaluacion();
+                PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
+                int id = peOp.periodoEvaluacionActivo();
+                pe.ID_PERIODO_EVALUACION = id;
+                peOp.Read();
+                return formato.Serializar(pe);
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener el periodo actual: " + ex.ToString());
+                return null;
+            }
+
+        }
+
         public bool log(string msgxml)
         {
             try
@@ -144,51 +164,6 @@ namespace WFBS.Service
                 return false;
             }
         }
-
-
-        /*
-
-        public bool InsertarEvaluacion(string evaluacionxml)
-        {
-            Evaluacion e = new Evaluacion(evaluacionxml);
-            return e.Create();
-        }
-        public bool insertarAuditoria(string auditoriaxml)
-        {
-            Auditoria a = new Auditoria(auditoriaxml);
-            return a.Create();
-        }
-        public string obtenerComptenteciasArea(string id_area)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Area), new XmlRootAttribute("Area"));
-            StringReader stringReader = new StringReader(id_area);
-            Area a = (Area)serializer.Deserialize(stringReader);
-
-            ColeccionCompetencia cc = new ColeccionCompetencia();
-            return cc.Serializar(cc.ReadAllCompetencias());
-        }
-        public string obtenerHabilidadesCompetencia(string id_competencia)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Competencia), new XmlRootAttribute("Competencia"));
-            StringReader stringReader = new StringReader(id_competencia);
-            Competencia c = (Competencia)serializer.Deserialize(stringReader);
-            ColeccionHabilidad ch = new ColeccionHabilidad();
-            return ch.Serializar(ch.ObtenerHabPorCom(c.Id_competencia));
-        }
-        public bool usuarioEvaluado(string evaluacionxml)
-        {
-            Evaluacion e = new Evaluacion(evaluacionxml);
-            return e.usuarioEvaluado();
-        }
-        public string obtenerFuncionariosPorJefe(string usuariojefexml)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Usuario), new XmlRootAttribute("Usuario"));
-            StringReader stringReader = new StringReader(usuariojefexml);
-            Usuario u = (Usuario)serializer.Deserialize(stringReader);
-
-            ColeccionUsuario c = new ColeccionUsuario();
-            return c.Serializar(c.ObtenerFuncionariosPorJefe(u.Rut));
-        }*/
 
         #endregion
 
@@ -742,7 +717,7 @@ namespace WFBS.Service
             PerfildeCargoOperacion perfilOp = new PerfildeCargoOperacion(pc);
             List<PerfildeCargo> perfiles = perfilOp.ReadAllPerfilesdeCargo();
             return formato.Serializar(perfiles);
-        }
+        }       
 
         #endregion PerfildeCargo
 
