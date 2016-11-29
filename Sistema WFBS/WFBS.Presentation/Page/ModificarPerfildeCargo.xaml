@@ -15,13 +15,13 @@
             <StackPanel HorizontalAlignment="Center" >
                 <Label Grid.Row="0" Grid.Column="1" Content="Modifique la(s) área(s) para el Perfil:"/>
                 <WrapPanel Orientation="Horizontal">
-                    <ListBox Name="lbArea" Width="200" MinHeight="100">
+                    <ListBox Name="lbArea" Width="210" MinHeight="100">
                     </ListBox>
-                    <ListBox Name="lbAreaSeleccionadas" Width="200" MinHeight="100" HorizontalAlignment="Right">
+                    <ListBox Name="lbAreaSeleccionadas" Width="210" MinHeight="100" HorizontalAlignment="Right">
                     </ListBox>
 
                 </WrapPanel>
-                <StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <Button Name="btnToRight" Click="btnToRight_Click">Agregar</Button>
                     <Button Name="btnToLeft" Click="btnToLeft_Click" >Remover</Button>
                 </StackPanel>
