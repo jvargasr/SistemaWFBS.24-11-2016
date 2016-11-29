@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFBS.IT.Communication", "WF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WFBS.Business", "WFBS.Business", "{12095EF0-3BC3-4B9F-8B7B-49AE9443F815}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{A004C9E1-BECA-4D40-B199-26E119BFD276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,8 @@ Global
 		{7089DBD0-E6E2-4500-98EA-DAC241949D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7089DBD0-E6E2-4500-98EA-DAC241949D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7089DBD0-E6E2-4500-98EA-DAC241949D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A004C9E1-BECA-4D40-B199-26E119BFD276}.Debug|Any CPU.ActiveCfg = Debug
+		{A004C9E1-BECA-4D40-B199-26E119BFD276}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

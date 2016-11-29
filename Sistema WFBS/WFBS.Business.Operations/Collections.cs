@@ -15,7 +15,7 @@ namespace WFBS.Business.Operations
         public List<Usuario> ReadAllUsuarios()
         {
             var usuariosBDD = from u in CommonBC.ModeloWFBS.USUARIO
-                              join a in CommonBC.ModeloWFBS.AREA on u.ID_AREA equals a.ID_AREA
+                              join a in CommonBC.ModeloWFBS.PERFIL_DE_CARGO on u.ID_PERFIL_DE_CARGO equals a.ID_PERFIL_DE_CARGO
                               join p in CommonBC.ModeloWFBS.PERFIL on u.ID_PERFIL equals p.ID_PERFIL
 
                               select new Usuario
@@ -25,7 +25,7 @@ namespace WFBS.Business.Operations
                                   SEXO = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
                                   JEFE_RESPECTIVO = u.JEFE_RESPECTIVO,
                                   Perfil = p.TIPO_USUARIO,
-                                  Area = (p.TIPO_USUARIO == "administrador" ? "" : (p.TIPO_USUARIO == "jefe" || p.TIPO_USUARIO == "funcionario") ? a.NOMBRE : "No determinado"),
+                                  Area = (p.TIPO_USUARIO == "administrador" ? "" : (p.TIPO_USUARIO == "jefe" || p.TIPO_USUARIO == "funcionario") ? a.DESCRIPCION : "No determinado"),
                                   PASSWORD = u.PASSWORD,
                                   Obs = (u.OBSOLETO == 0 ? "No" : u.OBSOLETO == 1 ? "Si" : "No determinado"),
                               };
@@ -44,7 +44,7 @@ namespace WFBS.Business.Operations
                 us.RUT = item.RUT;
                 us.NOMBRE = item.NOMBRE;
                 us.SEXO = item.SEXO;
-                us.ID_AREA = Convert.ToInt32(item.ID_AREA);
+                us.ID_PERFIL_DE_CARGO = Convert.ToInt32(item.ID_PERFIL_DE_CARGO);
                 us.ID_PERFIL = Convert.ToInt32(item.ID_PERFIL);
                 us.JEFE_RESPECTIVO = item.JEFE_RESPECTIVO;
                 us.OBSOLETO = Convert.ToInt32(item.OBSOLETO);

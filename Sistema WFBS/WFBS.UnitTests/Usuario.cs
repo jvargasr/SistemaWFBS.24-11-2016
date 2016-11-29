@@ -15,7 +15,7 @@ namespace PruebasUnitarias
             WFBS.Business.Entities.Usuario a = new WFBS.Business.Entities.Usuario();
             a.RUT = "5555555-5";
             a.ID_PERFIL = 2;
-            a.ID_AREA = 3;
+            a.ID_PERFIL_DE_CARGO = 3;
             a.NOMBRE = "miguel";
             a.SEXO = "M";
             a.JEFE_RESPECTIVO = null;
@@ -39,7 +39,7 @@ namespace PruebasUnitarias
             WFBS.Business.Entities.Usuario a = new WFBS.Business.Entities.Usuario();
             a.RUT = "5555555-5";
             a.ID_PERFIL = 2;
-            a.ID_AREA = 3;
+            a.ID_PERFIL_DE_CARGO = 3;
             a.NOMBRE = "miguel";
             a.SEXO = "M";
             a.JEFE_RESPECTIVO = null;

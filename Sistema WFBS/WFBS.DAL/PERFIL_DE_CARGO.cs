@@ -16,6 +16,7 @@ namespace WFBS.DAL
     {
         public PERFIL_DE_CARGO()
         {
+            this.USUARIO = new HashSet<USUARIO>();
             this.AREA = new HashSet<AREA>();
         }
     
@@ -23,6 +24,7 @@ namespace WFBS.DAL
         public string DESCRIPCION { get; set; }
         public decimal OBSOLETO { get; set; }
     
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
         public virtual ICollection<AREA> AREA { get; set; }
     }
 }

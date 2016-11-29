@@ -11,7 +11,7 @@ namespace WFBS.Business.Entities
         public string RUT { get; set; }
         public string NOMBRE { get; set; }
         public string SEXO { get; set; }
-        public decimal ID_AREA { get; set; }
+        public decimal ID_PERFIL_DE_CARGO { get; set; }
         public decimal ID_PERFIL { get; set; }
         public string JEFE_RESPECTIVO { get; set; }
         public string PASSWORD { get; set; }
@@ -30,7 +30,7 @@ namespace WFBS.Business.Entities
             this.RUT = string.Empty;
             this.NOMBRE = string.Empty;
             this.SEXO = string.Empty;
-            this.ID_AREA = 0;
+            this.ID_PERFIL_DE_CARGO = 0;
             this.ID_PERFIL = 0;
             this.JEFE_RESPECTIVO = string.Empty;
             this.PASSWORD = string.Empty;

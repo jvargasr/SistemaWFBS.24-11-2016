@@ -18,7 +18,6 @@ namespace WFBS.DAL
         {
             this.EVALUACION = new HashSet<EVALUACION>();
             this.OBSERVACION_COMPETENCIA = new HashSet<OBSERVACION_COMPETENCIA>();
-            this.USUARIO = new HashSet<USUARIO>();
             this.PERFIL_DE_CARGO = new HashSet<PERFIL_DE_CARGO>();
             this.COMPETENCIA = new HashSet<COMPETENCIA>();
         }
@@ -30,7 +29,6 @@ namespace WFBS.DAL
     
         public virtual ICollection<EVALUACION> EVALUACION { get; set; }
         public virtual ICollection<OBSERVACION_COMPETENCIA> OBSERVACION_COMPETENCIA { get; set; }
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
         public virtual ICollection<PERFIL_DE_CARGO> PERFIL_DE_CARGO { get; set; }
         public virtual ICollection<COMPETENCIA> COMPETENCIA { get; set; }
     }

@@ -34,7 +34,7 @@
                 <Label Grid.Row="3" Grid.Column="0" Content="Sexo:" />
                 <Label Grid.Row="4" Grid.Column="0" Content="Contraseña:"/>
                 <Label Grid.Row="5" Grid.Column="0" Content="Confirmar contraseña:"/>
-                <Label Grid.Row="6" Grid.Column="0" Name="lbArea" Content="Área:"/>
+                <Label Grid.Row="6" Grid.Column="0" Name="lbArea" Content="P. Cargo:"/>
                 <Label Grid.Row="7" Grid.Column="0" Name="lbJefe" Content="Jefe Respectivo:"/>
                 <Label Grid.Row="8" Grid.Column="0" Name="lbObsoleto" Content="Obsoleto:"/>
                 <ComboBox Grid.Column="1" Grid.Row="0" Margin="3" Name="cmbPerfil" Loaded="cmbPerfil_Loaded" SelectionChanged="cmbPerfil_SelectionChanged"/>

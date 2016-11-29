@@ -48,7 +48,7 @@ namespace MasterPages.Page
             dgUsuarios.Columns[1].Header = "Nombre";
             dgUsuarios.Columns[2].Header = "Sexo";
             dgUsuarios.Columns[5].Header = "Jefe a cargo";
-            dgUsuarios.Columns[8].Header = "Área";
+            dgUsuarios.Columns[8].Header = "P. Cargo";
             dgUsuarios.Columns[10].Header = "Obsoleto";
 
 

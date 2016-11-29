@@ -20,7 +20,7 @@ namespace WFBS.DAL
         }
     
         public string RUT { get; set; }
-        public Nullable<decimal> ID_AREA { get; set; }
+        public Nullable<decimal> ID_PERFIL_DE_CARGO { get; set; }
         public Nullable<decimal> ID_PERFIL { get; set; }
         public string NOMBRE { get; set; }
         public string SEXO { get; set; }
@@ -28,8 +28,8 @@ namespace WFBS.DAL
         public string PASSWORD { get; set; }
         public decimal OBSOLETO { get; set; }
     
-        public virtual AREA AREA { get; set; }
         public virtual ICollection<DETALLE_EVALUACION> DETALLE_EVALUACION { get; set; }
         public virtual PERFIL PERFIL { get; set; }
+        public virtual PERFIL_DE_CARGO PERFIL_DE_CARGO { get; set; }
     }
 }

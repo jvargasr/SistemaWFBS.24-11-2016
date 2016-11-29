@@ -30,7 +30,7 @@ namespace WFBS.Business.Operations
 
                 us.RUT = this._usuario.RUT;
                 us.NOMBRE = this._usuario.NOMBRE;
-                us.ID_AREA = this._usuario.ID_AREA;
+                us.ID_PERFIL_DE_CARGO = this._usuario.ID_PERFIL_DE_CARGO;
                 us.ID_PERFIL = this._usuario.ID_PERFIL;
                 us.SEXO = this._usuario.SEXO;
                 us.JEFE_RESPECTIVO = this._usuario.JEFE_RESPECTIVO;
@@ -59,7 +59,7 @@ namespace WFBS.Business.Operations
                 this._usuario.RUT = us.RUT;
                 this._usuario.NOMBRE = us.NOMBRE;
                 this._usuario.SEXO = us.SEXO;
-                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL_DE_CARGO = Convert.ToInt32(us.ID_PERFIL_DE_CARGO);
                 this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
                 this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
                 this._usuario.PASSWORD = us.PASSWORD;
@@ -83,7 +83,7 @@ namespace WFBS.Business.Operations
                 DAL.USUARIO us = user.USUARIO.First(b => b.RUT == this._usuario.RUT);
 
                 us.NOMBRE = this._usuario.NOMBRE;
-                us.ID_AREA = this._usuario.ID_AREA;
+                us.ID_PERFIL_DE_CARGO = this._usuario.ID_PERFIL_DE_CARGO;
                 us.ID_PERFIL = this._usuario.ID_PERFIL;
                 us.SEXO = this._usuario.SEXO;
                 us.JEFE_RESPECTIVO = this._usuario.JEFE_RESPECTIVO;
@@ -124,7 +124,7 @@ namespace WFBS.Business.Operations
         public List<Usuario> Listar()
         {
             var usuariosBDD = from u in CommonBC.ModeloWFBS.USUARIO
-                              join a in CommonBC.ModeloWFBS.AREA on u.ID_AREA equals a.ID_AREA
+                              join a in CommonBC.ModeloWFBS.PERFIL_DE_CARGO on u.ID_PERFIL_DE_CARGO equals a.ID_PERFIL_DE_CARGO
                               join p in CommonBC.ModeloWFBS.PERFIL on u.ID_PERFIL equals p.ID_PERFIL
 
                               select new Usuario
@@ -134,7 +134,8 @@ namespace WFBS.Business.Operations
                                   SEXO = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
                                   JEFE_RESPECTIVO = u.JEFE_RESPECTIVO,
                                   Perfil = p.TIPO_USUARIO,
-                                  Area = (p.TIPO_USUARIO == "administrador" ? "" : (p.TIPO_USUARIO == "jefe" || p.TIPO_USUARIO == "funcionario") ? a.NOMBRE : "No determinado"),
+                                  Area=a.DESCRIPCION,
+                                  //Area = (p.TIPO_USUARIO == "Administrador" ? "" : (p.TIPO_USUARIO == "Jefe" || p.TIPO_USUARIO == "Funcionario") ? a.DESCRIPCION : "No determinado"),
                                   PASSWORD = u.PASSWORD,
                                   Obs = (u.OBSOLETO == 0 ? "No" : u.OBSOLETO == 1 ? "Si" : "No determinado"),
                               };
@@ -154,7 +155,7 @@ namespace WFBS.Business.Operations
                 this._usuario.RUT = us.RUT;
                 this._usuario.NOMBRE = us.NOMBRE;
                 this._usuario.SEXO = us.SEXO;
-                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL_DE_CARGO = Convert.ToInt32(us.ID_PERFIL_DE_CARGO);
                 this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
                 this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
                 this._usuario.PASSWORD = us.JEFE_RESPECTIVO;
@@ -203,7 +204,7 @@ namespace WFBS.Business.Operations
                 us.RUT = item.RUT;
                 us.NOMBRE = item.NOMBRE;
                 us.SEXO = item.SEXO;
-                us.ID_AREA = Convert.ToInt32(item.ID_AREA);
+                us.ID_PERFIL_DE_CARGO = Convert.ToInt32(item.ID_PERFIL_DE_CARGO);
                 us.ID_PERFIL = Convert.ToInt32(item.ID_PERFIL);
                 us.JEFE_RESPECTIVO = item.JEFE_RESPECTIVO;
                 us.OBSOLETO = Convert.ToInt32(item.OBSOLETO);
@@ -241,7 +242,7 @@ namespace WFBS.Business.Operations
                 this._usuario.RUT = us.RUT;
                 this._usuario.NOMBRE = us.NOMBRE;
                 this._usuario.SEXO = us.SEXO;
-                this._usuario.ID_AREA = Convert.ToInt32(us.ID_AREA);
+                this._usuario.ID_PERFIL_DE_CARGO = Convert.ToInt32(us.ID_PERFIL_DE_CARGO);
                 this._usuario.ID_PERFIL = Convert.ToInt32(us.ID_PERFIL);
                 this._usuario.JEFE_RESPECTIVO = us.JEFE_RESPECTIVO;
                 this._usuario.PASSWORD = us.JEFE_RESPECTIVO;

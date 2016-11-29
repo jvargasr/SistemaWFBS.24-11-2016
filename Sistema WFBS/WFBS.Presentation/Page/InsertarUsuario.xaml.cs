@@ -37,10 +37,10 @@ namespace MasterPages.Page
         }
         private void cmbArea_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Area> areas = col.ReadAllAreas();
-            foreach (Area item in areas)
+            List<PerfildeCargo> areas = col.ReadAllPerfilesdeCargo();
+            foreach (PerfildeCargo item in areas)
             {
-                cmbArea.Items.Add(item.NOMBRE);
+                cmbArea.Items.Add(item.DESCRIPCION);
             }
             cmbArea.SelectedIndex = 0;
         }
@@ -108,7 +108,7 @@ namespace MasterPages.Page
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            List<Area> areas = col.ReadAllAreas();
+            List<PerfildeCargo> PCargo = col.ReadAllPerfilesdeCargo();
             List<Perfil> perfiles = col.ReadAllPerfiles();
             try
             {
@@ -139,11 +139,11 @@ namespace MasterPages.Page
                                 if (rbMasculino.IsChecked == true)
                                     us.SEXO = "M";
 
-                                foreach (Area a in areas)
+                                foreach (PerfildeCargo a in PCargo)
                                 {
-                                    if (a.NOMBRE == (string)cmbArea.SelectedItem)
+                                    if (a.DESCRIPCION == (string)cmbArea.SelectedItem)
                                     {
-                                        us.ID_AREA = Convert.ToInt32(a.ID_AREA);
+                                        us.ID_PERFIL_DE_CARGO = Convert.ToInt32(a.ID_PERFIL_DE_CARGO);
                                     }
                                 }
                                 foreach (Perfil p in perfiles)

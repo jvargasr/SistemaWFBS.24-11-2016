@@ -21,13 +21,13 @@
           <Property Name="ID_AUDITORIA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IP_CONEXION" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="RUT" Type="varchar2" MaxLength="25" Nullable="false" />
-          <Property Name="FECHA_INGRESO" Type="date" />
+          <Property Name="FECHA_INGRESO" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="COMPETENCIA">
           <Key>
             <PropertyRef Name="ID_COMPETENCIA" />
           </Key>
-          <Property Name="ID_COMPETENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMPETENCIA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="SIGLA" Type="char" MaxLength="10" Nullable="false" />
@@ -139,7 +139,7 @@
             <PropertyRef Name="RUT" />
           </Key>
           <Property Name="RUT" Type="varchar2" MaxLength="25" Nullable="false" />
-          <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" />
           <Property Name="ID_PERFIL" Type="number" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="SEXO" Type="char" MaxLength="2" Nullable="false" />
@@ -315,18 +315,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_USUARIO_R_P_A_AREA">
-          <End Role="AREA" Type="Self.AREA" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AREA">
-              <PropertyRef Name="ID_AREA" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_AREA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_USUARIO_R_P_F_PERFIL">
           <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
@@ -336,6 +324,18 @@
             </Principal>
             <Dependent Role="USUARIO">
               <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_R_PC_U_PERFIL_D">
+          <End Role="PERFIL_DE_CARGO" Type="Self.PERFIL_DE_CARGO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL_DE_CARGO">
+              <PropertyRef Name="ID_PERFIL_DE_CARGO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_PERFIL_DE_CARGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,12 +410,12 @@
             <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
             <End Role="R_P_C" EntitySet="R_P_C" />
           </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_R_P_A_AREA" Association="Self.FK_USUARIO_R_P_A_AREA">
-            <End Role="AREA" EntitySet="AREA" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
           <AssociationSet Name="FK_USUARIO_R_P_F_PERFIL" Association="Self.FK_USUARIO_R_P_F_PERFIL">
             <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_R_PC_U_PERFIL_D" Association="Self.FK_USUARIO_R_PC_U_PERFIL_D">
+            <End Role="PERFIL_DE_CARGO" EntitySet="PERFIL_DE_CARGO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
@@ -434,7 +434,6 @@
           <Property Name="OBSOLETA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="EVALUACION" Relationship="Self.FK_EVALUACI_R_E_A_AREA" FromRole="AREA" ToRole="EVALUACION" />
           <NavigationProperty Name="OBSERVACION_COMPETENCIA" Relationship="Self.FK_OBSERVAC_R_P_O_AREA" FromRole="AREA" ToRole="OBSERVACION_COMPETENCIA" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_R_P_A_AREA" FromRole="AREA" ToRole="USUARIO" />
           <NavigationProperty Name="PERFIL_DE_CARGO" Relationship="Self.R_A_P" FromRole="AREA" ToRole="PERFIL_DE_CARGO" />
           <NavigationProperty Name="COMPETENCIA" Relationship="Self.R_P_C" FromRole="AREA" ToRole="COMPETENCIA" />
         </EntityType>
@@ -445,13 +444,13 @@
           <Property Name="ID_AUDITORIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="IP_CONEXION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RUT" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FECHA_INGRESO" Type="DateTime" />
+          <Property Name="FECHA_INGRESO" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="COMPETENCIA">
           <Key>
             <PropertyRef Name="ID_COMPETENCIA" />
           </Key>
-          <Property Name="ID_COMPETENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_COMPETENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SIGLA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
@@ -540,6 +539,7 @@
           <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_R_PC_U_PERFIL_D" FromRole="PERFIL_DE_CARGO" ToRole="USUARIO" />
           <NavigationProperty Name="AREA" Relationship="Self.R_A_P" FromRole="PERFIL_DE_CARGO" ToRole="AREA" />
         </EntityType>
         <EntityType Name="PERIODO_EVALUACION">
@@ -567,16 +567,16 @@
             <PropertyRef Name="RUT" />
           </Key>
           <Property Name="RUT" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_AREA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="ID_PERFIL" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SEXO" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="JEFE_RESPECTIVO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="OBSOLETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="AREA" Relationship="Self.FK_USUARIO_R_P_A_AREA" FromRole="USUARIO" ToRole="AREA" />
           <NavigationProperty Name="DETALLE_EVALUACION" Relationship="Self.FK_DETALLE__R_DE_F_USUARIO" FromRole="USUARIO" ToRole="DETALLE_EVALUACION" />
           <NavigationProperty Name="PERFIL" Relationship="Self.FK_USUARIO_R_P_F_PERFIL" FromRole="USUARIO" ToRole="PERFIL" />
+          <NavigationProperty Name="PERFIL_DE_CARGO" Relationship="Self.FK_USUARIO_R_PC_U_PERFIL_D" FromRole="USUARIO" ToRole="PERFIL_DE_CARGO" />
         </EntityType>
         <Association Name="FK_EVALUACI_R_E_A_AREA">
           <End Role="AREA" Type="Self.AREA" Multiplicity="0..1" />
@@ -598,18 +598,6 @@
               <PropertyRef Name="ID_AREA" />
             </Principal>
             <Dependent Role="OBSERVACION_COMPETENCIA">
-              <PropertyRef Name="ID_AREA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USUARIO_R_P_A_AREA">
-          <End Role="AREA" Type="Self.AREA" Multiplicity="0..1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AREA">
-              <PropertyRef Name="ID_AREA" />
-            </Principal>
-            <Dependent Role="USUARIO">
               <PropertyRef Name="ID_AREA" />
             </Dependent>
           </ReferentialConstraint>
@@ -722,6 +710,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USUARIO_R_PC_U_PERFIL_D">
+          <End Role="PERFIL_DE_CARGO" Type="Self.PERFIL_DE_CARGO" Multiplicity="0..1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFIL_DE_CARGO">
+              <PropertyRef Name="ID_PERFIL_DE_CARGO" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_PERFIL_DE_CARGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_A_P">
           <End Role="PERFIL_DE_CARGO" Type="Self.PERFIL_DE_CARGO" Multiplicity="*" />
           <End Role="AREA" Type="Self.AREA" Multiplicity="*" />
@@ -750,10 +750,6 @@
           <AssociationSet Name="FK_OBSERVAC_R_P_O_AREA" Association="Self.FK_OBSERVAC_R_P_O_AREA">
             <End Role="AREA" EntitySet="AREA" />
             <End Role="OBSERVACION_COMPETENCIA" EntitySet="OBSERVACION_COMPETENCIA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USUARIO_R_P_A_AREA" Association="Self.FK_USUARIO_R_P_A_AREA">
-            <End Role="AREA" EntitySet="AREA" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
           <AssociationSet Name="FK_EVALUACI_R_E_C_COMPETEN" Association="Self.FK_EVALUACI_R_E_C_COMPETEN">
             <End Role="COMPETENCIA" EntitySet="COMPETENCIA" />
@@ -789,6 +785,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_R_P_F_PERFIL" Association="Self.FK_USUARIO_R_P_F_PERFIL">
             <End Role="PERFIL" EntitySet="PERFIL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_R_PC_U_PERFIL_D" Association="Self.FK_USUARIO_R_PC_U_PERFIL_D">
+            <End Role="PERFIL_DE_CARGO" EntitySet="PERFIL_DE_CARGO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
           <AssociationSet Name="R_A_P" Association="Self.R_A_P">
@@ -934,7 +934,7 @@
             <EntityTypeMapping TypeName="ModeloWfbs.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
-                <ScalarProperty Name="ID_AREA" ColumnName="ID_AREA" />
+                <ScalarProperty Name="ID_PERFIL_DE_CARGO" ColumnName="ID_PERFIL_DE_CARGO" />
                 <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="SEXO" ColumnName="SEXO" />

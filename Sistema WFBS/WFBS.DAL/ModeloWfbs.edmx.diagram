@@ -4,22 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8bb9f676fed4b31ac37490846c6309e" Name="Diagram1">
-        <EntityTypeShape EntityType="ModeloWfbs.AREA" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.AUDITORIA" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.COMPETENCIA" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.DETALLE_EVALUACION" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.EVALUACION" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.HABILIDAD" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.OBSERVACION_COMPETENCIA" Width="1.5" PointX="9" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.PERFIL" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.PERFIL_DE_CARGO" Width="1.5" PointX="1.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.PERIODO_EVALUACION" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.TIPO_EVALUACION" Width="1.5" PointX="3.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloWfbs.USUARIO" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+      <Diagram DiagramId="ee2dea72154042aaadd6651f9b71a542" Name="Diagram1">
+        <EntityTypeShape EntityType="ModeloWfbs.AREA" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.AUDITORIA" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.COMPETENCIA" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.DETALLE_EVALUACION" Width="1.5" PointX="12.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.EVALUACION" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.HABILIDAD" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.OBSERVACION_COMPETENCIA" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.PERFIL" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.PERFIL_DE_CARGO" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.PERIODO_EVALUACION" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.TIPO_EVALUACION" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModeloWfbs.USUARIO" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="ModeloWfbs.FK_EVALUACI_R_E_A_AREA" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_OBSERVAC_R_P_O_AREA" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloWfbs.FK_USUARIO_R_P_A_AREA" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_EVALUACI_R_E_C_COMPETEN" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_HABILIDA_R_C_H_COMPETEN" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_OBSERVAC_R_O_C_COMPETEN" ManuallyRouted="false" />
@@ -29,6 +28,7 @@
         <AssociationConnector Association="ModeloWfbs.FK_EVALUACI_R_E_TE_TIPO_EVA" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_EVALUACI_R_PE_E_PERIODO_" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.FK_USUARIO_R_P_F_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="ModeloWfbs.FK_USUARIO_R_PC_U_PERFIL_D" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.R_A_P" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloWfbs.R_P_C" ManuallyRouted="false" />
       </Diagram>
