@@ -36,10 +36,7 @@ namespace WFBS.Service
         string obtenerFuncionariosPorJefe(string usuariojefexml);
 
         [OperationContract]
-        bool validarFuncionarioJefe(string usuarioxml);
-
-        [OperationContract]
-        int periodoActivo();
+        bool validarFuncionarioJefe(string usuarioxml);       
 
         #endregion JavaServices
 
@@ -97,6 +94,10 @@ namespace WFBS.Service
 
         [OperationContract]
         string LeerPeriodosEvaluaciones();
+
+        [OperationContract]
+        int periodoActivo();
+
         #endregion PeriododeEvaluacion
 
         //---------------------------------------------------------//
