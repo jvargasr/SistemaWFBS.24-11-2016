@@ -17,7 +17,7 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
-        public string periodoActivo()
+        public int periodoActivo()
         {
             try
             {
@@ -27,12 +27,12 @@ namespace WFBS.Service
                 int id = peOp.periodoEvaluacionActivo();
                 pe.ID_PERIODO_EVALUACION = id;
                 peOp.Read();
-                return formato.Serializar(pe);
+                return Convert.ToInt32(pe.ID_PERIODO_EVALUACION);
             }
             catch (Exception ex)
             {
                 Logger.log("No se pudo obtener el periodo actual: " + ex.ToString());
-                return null;
+                return 0;
             }
 
         }

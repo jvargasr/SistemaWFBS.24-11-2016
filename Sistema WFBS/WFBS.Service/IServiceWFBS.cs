@@ -39,7 +39,7 @@ namespace WFBS.Service
         bool validarFuncionarioJefe(string usuarioxml);
 
         [OperationContract]
-        string periodoActivo();
+        int periodoActivo();
 
         #endregion JavaServices
 
