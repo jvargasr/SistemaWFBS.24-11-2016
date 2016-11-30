@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID_AREA" />
           </Key>
-          <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="ABREVIACION" Type="varchar2" MaxLength="50" Nullable="false" />
           <Property Name="OBSOLETA" Type="number" Precision="38" Scale="0" Nullable="false" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="ID_COMPETENCIA" />
           </Key>
-          <Property Name="ID_COMPETENCIA" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_COMPETENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
           <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
           <Property Name="SIGLA" Type="char" MaxLength="10" Nullable="false" />
@@ -75,6 +75,13 @@
           <Property Name="ORDEN_ASIGNADO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ALTERNATIVA_PREGUNTA" Type="clob" />
         </EntityType>
+        <EntityType Name="NIVEL">
+          <Key>
+            <PropertyRef Name="NOTA_ENCUESTA" />
+          </Key>
+          <Property Name="NOTA_ENCUESTA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="OBSERVACION_COMPETENCIA">
           <Key>
             <PropertyRef Name="ID_OBSERVACION" />
@@ -97,8 +104,8 @@
           <Key>
             <PropertyRef Name="ID_PERFIL_DE_CARGO" />
           </Key>
-          <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DESCRIPCION" Type="clob" Nullable="false" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="500" Nullable="false" />
           <Property Name="OBSOLETO" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="PERIODO_EVALUACION">
@@ -118,6 +125,14 @@
           </Key>
           <Property Name="ID_PERFIL_DE_CARGO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_AREA" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="R_C_N">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIA" />
+            <PropertyRef Name="NOTA_ENCUESTA" />
+          </Key>
+          <Property Name="ID_COMPETENCIA" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOTA_ENCUESTA" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="R_P_C">
           <Key>
@@ -291,6 +306,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_R_C_N_R_C_N2_NIVEL">
+          <End Role="NIVEL" Type="Self.NIVEL" Multiplicity="1" />
+          <End Role="R_C_N" Type="Self.R_C_N" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NIVEL">
+              <PropertyRef Name="NOTA_ENCUESTA" />
+            </Principal>
+            <Dependent Role="R_C_N">
+              <PropertyRef Name="NOTA_ENCUESTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_R_P_C_R_P_C_AREA">
           <End Role="AREA" Type="Self.AREA" Multiplicity="1" />
           <End Role="R_P_C" Type="Self.R_P_C" Multiplicity="*" />
@@ -346,11 +373,13 @@
           <EntitySet Name="DETALLE_EVALUACION" EntityType="Self.DETALLE_EVALUACION" Schema="HR" store:Type="Tables" />
           <EntitySet Name="EVALUACION" EntityType="Self.EVALUACION" Schema="HR" store:Type="Tables" />
           <EntitySet Name="HABILIDAD" EntityType="Self.HABILIDAD" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="NIVEL" EntityType="Self.NIVEL" Schema="HR" store:Type="Tables" />
           <EntitySet Name="OBSERVACION_COMPETENCIA" EntityType="Self.OBSERVACION_COMPETENCIA" Schema="HR" store:Type="Tables" />
           <EntitySet Name="PERFIL" EntityType="Self.PERFIL" Schema="HR" store:Type="Tables" />
           <EntitySet Name="PERFIL_DE_CARGO" EntityType="Self.PERFIL_DE_CARGO" Schema="HR" store:Type="Tables" />
           <EntitySet Name="PERIODO_EVALUACION" EntityType="Self.PERIODO_EVALUACION" Schema="HR" store:Type="Tables" />
           <EntitySet Name="R_A_P" EntityType="Self.R_A_P" Schema="HR" store:Type="Tables" />
+          <EntitySet Name="R_C_N" EntityType="Self.R_C_N" Schema="HR" store:Type="Tables" />
           <EntitySet Name="R_P_C" EntityType="Self.R_P_C" Schema="HR" store:Type="Tables" />
           <EntitySet Name="TIPO_EVALUACION" EntityType="Self.TIPO_EVALUACION" Schema="HR" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="HR" store:Type="Tables" />
@@ -402,6 +431,10 @@
             <End Role="AREA" EntitySet="AREA" />
             <End Role="R_A_P" EntitySet="R_A_P" />
           </AssociationSet>
+          <AssociationSet Name="FK_R_C_N_R_C_N2_NIVEL" Association="Self.FK_R_C_N_R_C_N2_NIVEL">
+            <End Role="NIVEL" EntitySet="NIVEL" />
+            <End Role="R_C_N" EntitySet="R_C_N" />
+          </AssociationSet>
           <AssociationSet Name="FK_R_P_C_R_P_C_AREA" Association="Self.FK_R_P_C_R_P_C_AREA">
             <End Role="AREA" EntitySet="AREA" />
             <End Role="R_P_C" EntitySet="R_P_C" />
@@ -428,7 +461,7 @@
           <Key>
             <PropertyRef Name="ID_AREA" />
           </Key>
-          <Property Name="ID_AREA" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_AREA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ABREVIACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
@@ -450,7 +483,7 @@
           <Key>
             <PropertyRef Name="ID_COMPETENCIA" />
           </Key>
-          <Property Name="ID_COMPETENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_COMPETENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SIGLA" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
@@ -511,6 +544,14 @@
           <Property Name="ALTERNATIVA_PREGUNTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMPETENCIA" Relationship="Self.FK_HABILIDA_R_C_H_COMPETEN" FromRole="HABILIDAD" ToRole="COMPETENCIA" />
         </EntityType>
+        <EntityType Name="NIVEL">
+          <Key>
+            <PropertyRef Name="NOTA_ENCUESTA" />
+          </Key>
+          <Property Name="NOTA_ENCUESTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="R_C_N" Relationship="Self.FK_R_C_N_R_C_N2_NIVEL" FromRole="NIVEL" ToRole="R_C_N" />
+        </EntityType>
         <EntityType Name="OBSERVACION_COMPETENCIA">
           <Key>
             <PropertyRef Name="ID_OBSERVACION" />
@@ -536,8 +577,8 @@
           <Key>
             <PropertyRef Name="ID_PERFIL_DE_CARGO" />
           </Key>
-          <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_PERFIL_DE_CARGO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OBSOLETO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_R_PC_U_PERFIL_D" FromRole="PERFIL_DE_CARGO" ToRole="USUARIO" />
           <NavigationProperty Name="AREA" Relationship="Self.R_A_P" FromRole="PERFIL_DE_CARGO" ToRole="AREA" />
@@ -553,6 +594,15 @@
           <Property Name="PORCENTAJE_AUTOEVALUACION" Type="Decimal" Precision="38" Scale="0" />
           <NavigationProperty Name="DETALLE_EVALUACION" Relationship="Self.FK_DETALLE__R_DE_PE_PERIODO_" FromRole="PERIODO_EVALUACION" ToRole="DETALLE_EVALUACION" />
           <NavigationProperty Name="EVALUACION" Relationship="Self.FK_EVALUACI_R_PE_E_PERIODO_" FromRole="PERIODO_EVALUACION" ToRole="EVALUACION" />
+        </EntityType>
+        <EntityType Name="R_C_N">
+          <Key>
+            <PropertyRef Name="ID_COMPETENCIA" />
+            <PropertyRef Name="NOTA_ENCUESTA" />
+          </Key>
+          <Property Name="ID_COMPETENCIA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NOTA_ENCUESTA" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="NIVEL" Relationship="Self.FK_R_C_N_R_C_N2_NIVEL" FromRole="R_C_N" ToRole="NIVEL" />
         </EntityType>
         <EntityType Name="TIPO_EVALUACION">
           <Key>
@@ -698,6 +748,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_R_C_N_R_C_N2_NIVEL">
+          <End Role="NIVEL" Type="Self.NIVEL" Multiplicity="1" />
+          <End Role="R_C_N" Type="Self.R_C_N" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NIVEL">
+              <PropertyRef Name="NOTA_ENCUESTA" />
+            </Principal>
+            <Dependent Role="R_C_N">
+              <PropertyRef Name="NOTA_ENCUESTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_USUARIO_R_P_F_PERFIL">
           <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="0..1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
@@ -737,10 +799,12 @@
           <EntitySet Name="DETALLE_EVALUACION" EntityType="Self.DETALLE_EVALUACION" />
           <EntitySet Name="EVALUACION" EntityType="Self.EVALUACION" />
           <EntitySet Name="HABILIDAD" EntityType="Self.HABILIDAD" />
+          <EntitySet Name="NIVEL" EntityType="Self.NIVEL" />
           <EntitySet Name="OBSERVACION_COMPETENCIA" EntityType="Self.OBSERVACION_COMPETENCIA" />
           <EntitySet Name="PERFIL" EntityType="Self.PERFIL" />
           <EntitySet Name="PERFIL_DE_CARGO" EntityType="Self.PERFIL_DE_CARGO" />
           <EntitySet Name="PERIODO_EVALUACION" EntityType="Self.PERIODO_EVALUACION" />
+          <EntitySet Name="R_C_N" EntityType="Self.R_C_N" />
           <EntitySet Name="TIPO_EVALUACION" EntityType="Self.TIPO_EVALUACION" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <AssociationSet Name="FK_EVALUACI_R_E_A_AREA" Association="Self.FK_EVALUACI_R_E_A_AREA">
@@ -782,6 +846,10 @@
           <AssociationSet Name="FK_EVALUACI_R_PE_E_PERIODO_" Association="Self.FK_EVALUACI_R_PE_E_PERIODO_">
             <End Role="PERIODO_EVALUACION" EntitySet="PERIODO_EVALUACION" />
             <End Role="EVALUACION" EntitySet="EVALUACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_R_C_N_R_C_N2_NIVEL" Association="Self.FK_R_C_N_R_C_N2_NIVEL">
+            <End Role="NIVEL" EntitySet="NIVEL" />
+            <End Role="R_C_N" EntitySet="R_C_N" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_R_P_F_PERFIL" Association="Self.FK_USUARIO_R_P_F_PERFIL">
             <End Role="PERFIL" EntitySet="PERFIL" />
@@ -882,6 +950,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NIVEL">
+            <EntityTypeMapping TypeName="ModeloWfbs.NIVEL">
+              <MappingFragment StoreEntitySet="NIVEL">
+                <ScalarProperty Name="NOTA_ENCUESTA" ColumnName="NOTA_ENCUESTA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OBSERVACION_COMPETENCIA">
             <EntityTypeMapping TypeName="ModeloWfbs.OBSERVACION_COMPETENCIA">
               <MappingFragment StoreEntitySet="OBSERVACION_COMPETENCIA">
@@ -919,6 +995,14 @@
                 <ScalarProperty Name="VIGENCIA" ColumnName="VIGENCIA" />
                 <ScalarProperty Name="PORCENTAJE_EVALUACION" ColumnName="PORCENTAJE_EVALUACION" />
                 <ScalarProperty Name="PORCENTAJE_AUTOEVALUACION" ColumnName="PORCENTAJE_AUTOEVALUACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_C_N">
+            <EntityTypeMapping TypeName="ModeloWfbs.R_C_N">
+              <MappingFragment StoreEntitySet="R_C_N">
+                <ScalarProperty Name="ID_COMPETENCIA" ColumnName="ID_COMPETENCIA" />
+                <ScalarProperty Name="NOTA_ENCUESTA" ColumnName="NOTA_ENCUESTA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

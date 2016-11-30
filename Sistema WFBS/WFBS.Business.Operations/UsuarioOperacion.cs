@@ -134,8 +134,8 @@ namespace WFBS.Business.Operations
                                   SEXO = (u.SEXO == "M" ? "Masculino" : u.SEXO == "F" ? "Femenino" : "No determinado"),
                                   JEFE_RESPECTIVO = u.JEFE_RESPECTIVO,
                                   Perfil = p.TIPO_USUARIO,
-                                  Area=a.DESCRIPCION,
-                                  //Area = (p.TIPO_USUARIO == "Administrador" ? "" : (p.TIPO_USUARIO == "Jefe" || p.TIPO_USUARIO == "Funcionario") ? a.DESCRIPCION : "No determinado"),
+                                  //Area=a.DESCRIPCION,
+                                  Area = (p.TIPO_USUARIO == "Administrador" ? "" : (p.TIPO_USUARIO == "Jefe" || p.TIPO_USUARIO == "Funcionario") ? a.DESCRIPCION : "No determinado"),
                                   PASSWORD = u.PASSWORD,
                                   Obs = (u.OBSOLETO == 0 ? "No" : u.OBSOLETO == 1 ? "Si" : "No determinado"),
                               };

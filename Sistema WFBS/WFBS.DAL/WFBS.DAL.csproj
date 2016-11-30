@@ -81,6 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloWfbs.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NIVEL.cs">
+      <DependentUpon>ModeloWfbs.tt</DependentUpon>
+    </Compile>
     <Compile Include="OBSERVACION_COMPETENCIA.cs">
       <DependentUpon>ModeloWfbs.tt</DependentUpon>
     </Compile>
@@ -94,6 +97,9 @@
       <DependentUpon>ModeloWfbs.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="R_C_N.cs">
+      <DependentUpon>ModeloWfbs.tt</DependentUpon>
+    </Compile>
     <Compile Include="TIPO_EVALUACION.cs">
       <DependentUpon>ModeloWfbs.tt</DependentUpon>
     </Compile>
