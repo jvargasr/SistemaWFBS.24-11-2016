@@ -11,16 +11,27 @@ using WFBS.Business.Log;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase AreaOperacion, contenedor de los metodos relacionados a la Entidad Área.
+    /// </summary>
     public class AreaOperacion : IOperations<Area>
     {
         private Area _area { get; set; }
 
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_ar">Recibe un parametro del tipo Área</param>
         public AreaOperacion(Area _ar)
         {
             this._area = _ar;
         }
 
         #region IOperations
+        /// <summary>
+        /// Crea una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try
@@ -45,6 +56,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Lee una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -66,6 +81,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Actualiza una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Update()
         {
             try
@@ -88,7 +107,11 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-      
+
+        /// <summary>
+        /// Desactiva una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -109,6 +132,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Lista todas las entidades de Área.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Área almacenadas en la BD </returns>
         public List<Area> Listar()
         {
             var AreasBDD = from c in CommonBC.ModeloWFBS.AREA
@@ -125,6 +152,12 @@ namespace WFBS.Business.Operations
         #endregion IOperations
 
         #region Metodos
+
+        /// <summary>
+        /// Crea una entidad Área.
+        /// </summary>
+        /// <param name="comSelec">Recibe un parametro Lista de tipo Competencia</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Insert(List<Competencia> comSelec)
         {
             try
@@ -155,6 +188,12 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
+
+        /// <summary>
+        /// Genera un listado de las Áreas almacenadas en el sistema del tipo de la entidad Área.
+        /// </summary>
+        /// <param name="areasBDD"> Parametro del tipo List<Dal.Area>Referente a la tabla de la BD</Dal.Area></param>
+        /// <returns>Retorna una Lista del tipo List<Área></Área></returns>
         private List<Area> GenerarListado(List<DAL.AREA> areasBDD)
         {
             List<Area> areasController = new List<Area>();
@@ -174,12 +213,24 @@ namespace WFBS.Business.Operations
 
             return areasController;
         }
+
+        /// <summary>
+        /// Genera una lista de los Perfiles de Cargo utilizando el metodo privado GenerarListado.
+        /// </summary>
+        /// <param name="pc"> Recibe un parametro del tipo entidad PerfildeCargo</param>
+        /// <returns>Retorna una Lista del tipo List<AREA></AREA></returns>
         public List<Area> areasPorPerfildeCargo(PerfildeCargo pc)
         {
             DAL.WFBSEntities modelo = new WFBSEntities();
             DAL.PERFIL_DE_CARGO pcargo = modelo.PERFIL_DE_CARGO.First(b => b.ID_PERFIL_DE_CARGO == pc.ID_PERFIL_DE_CARGO);
             return GenerarListado(pcargo.AREA.ToList());
         }
+
+        /// <summary>
+        /// Selecciona todas las Competencias acorde a un Área.
+        /// </summary>
+        /// <param name="ar">Recibe un parametro del tipo Área</param>
+        /// <returns>Retorna un string con las Competencias relacionadas a un Área, acorde a la ejecución satisfactoria del metodo</returns>
         public string competenciasArea(Area ar)
         {
             string txt = null;
@@ -198,6 +249,12 @@ namespace WFBS.Business.Operations
                 return txt;
             }
         }
+
+        /// <summary>
+        /// Actualiza una entidad Área.
+        /// </summary>
+        /// <param name="comSelec">Recibe un parametro Lista de tipo Competencia</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Actualize(List<Competencia> comSelec)
         {
             string areas = string.Empty;
