@@ -31,12 +31,10 @@ namespace WFBS.DAL
         public DbSet<DETALLE_EVALUACION> DETALLE_EVALUACION { get; set; }
         public DbSet<EVALUACION> EVALUACION { get; set; }
         public DbSet<HABILIDAD> HABILIDAD { get; set; }
-        public DbSet<NIVEL> NIVEL { get; set; }
         public DbSet<OBSERVACION_COMPETENCIA> OBSERVACION_COMPETENCIA { get; set; }
         public DbSet<PERFIL> PERFIL { get; set; }
         public DbSet<PERFIL_DE_CARGO> PERFIL_DE_CARGO { get; set; }
         public DbSet<PERIODO_EVALUACION> PERIODO_EVALUACION { get; set; }
-        public DbSet<R_C_N> R_C_N { get; set; }
         public DbSet<TIPO_EVALUACION> TIPO_EVALUACION { get; set; }
         public DbSet<USUARIO> USUARIO { get; set; }
     }
