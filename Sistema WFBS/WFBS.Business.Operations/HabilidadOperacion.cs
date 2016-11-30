@@ -11,16 +11,27 @@ using WFBS.Business.Log;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase HabilidadOperacion, contenedor de los metodos relacionados a la Entidad Habilidad.
+    /// </summary>
     public class HabilidadOperacion : IOperations<Habilidad>
     {
         private Habilidad _habilidad { get; set; }
 
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_habi"> Recibe un parametro del tipo Habilidad</param>
         public HabilidadOperacion(Habilidad _habi)
         {
             this._habilidad = _habi;
         }
 
         #region IOperations
+        /// <summary>
+        /// Crea una entidad Habilidad.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try
@@ -44,7 +55,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lee una entidad Habilidad.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -67,7 +81,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Actualiza una entidad Habilidad.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Update()
         {
             try
@@ -91,7 +108,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Elimina una entidad Habilidad.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -110,7 +130,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lista todas las entidades de Habilidad.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Área almacenadas en la BD </returns>
         public List<Habilidad> Listar() // default va sin parametros
         {
             List<DAL.HABILIDAD> habilidadesBDD = CommonBC.ModeloWFBS.HABILIDAD.ToList();
@@ -139,10 +162,14 @@ namespace WFBS.Business.Operations
 
         }
 
+        /// <summary>
+        /// Genera un listado de las Habilidades almacenadas en el sistema del tipo de la entidad Habilidad.
+        /// </summary>
+        /// <param name="id">Recibe un parametro id referente a una Competencia</param>
+        /// <returns>Retorna un listado con las Habilidades por Competencia almacenadas en el sistema</returns>
         public List<Habilidad> ObtenerHabPorCom(int id)
         {
             decimal id_com = Convert.ToDecimal(id);
-            //var habilidad = CommonBC.ModeloWfbs.HABILIDAD.Where(h => h.ID_COMPETENCIA == id);
             var HabiBDD = from h in CommonBC.ModeloWFBS.HABILIDAD
                           join c in CommonBC.ModeloWFBS.COMPETENCIA on h.ID_COMPETENCIA equals c.ID_COMPETENCIA
                           where h.ID_COMPETENCIA == id_com
@@ -155,7 +182,6 @@ namespace WFBS.Business.Operations
                               ALTERNATIVA_PREGUNTA = h.ALTERNATIVA_PREGUNTA
                           };
             return HabiBDD.ToList();
-            //return (GenerarListado(habilidad.ToList()));
         }
         #endregion Metodos
     }

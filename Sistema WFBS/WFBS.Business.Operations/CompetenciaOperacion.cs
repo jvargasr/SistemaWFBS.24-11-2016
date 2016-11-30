@@ -11,16 +11,28 @@ using WFBS.Business.Log;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase CompetenciaOperacion, contenedor de los metodos relacionados a la Entidad Competencia.
+    /// </summary>
     public class CompetenciaOperacion : IOperations<Competencia>
     {
         private Competencia _competencia { get; set; }
 
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_com">Recibe un parametro del tipo Competencia</param>
         public CompetenciaOperacion(Competencia _com)
         {
             this._competencia = _com;
         }
 
         #region IOperations
+
+        /// <summary>
+        /// Crea una entidad Competencia.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try
@@ -48,6 +60,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Lee una entidad Competencia.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -81,6 +97,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Actualiza una entidad Competencia.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Update()
         {
             try
@@ -107,6 +127,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Desactiva una entidad Competencia.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -127,6 +151,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Lista todas las entidades de Competencia.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Competencia almacenadas en la BD</returns>
         public List<Competencia> Listar()
         {
             List<DAL.COMPETENCIA> CompetenciasBDD = CommonBC.ModeloWFBS.COMPETENCIA.ToList();
@@ -158,6 +186,12 @@ namespace WFBS.Business.Operations
 
             return competenciasController;
         }
+
+        /// <summary>
+        /// Genera un listado de las Habilidades almacenadas en el sistema del tipo de la entidad Habilidad.
+        /// </summary>
+        /// <param name="id_comp">Recibe un parametro id referente a una Competencia</param>
+        /// <returns>Retorna un listado con las Habilidades por Competencia almacenadas en el sistema</returns>
         public List<Habilidad> ObtenerHabPorCom(decimal id_comp)
         {
             var HabiBDD = from h in CommonBC.ModeloWFBS.HABILIDAD
@@ -174,6 +208,11 @@ namespace WFBS.Business.Operations
             return HabiBDD.ToList();
         }
 
+        /// <summary>
+        /// Genera un listado de las Competencias almacenadas en el sistema del tipo de la entidad Competencia.
+        /// </summary>
+        /// <param name="ar">Recibe un parametro ar del Tipo Área</param>
+        /// <returns>Retorna un listado con las Competencias por Área almacenadas en el sistema</returns>
         public List<Competencia> competenciasArea(Area ar)
         {
             try

@@ -12,10 +12,16 @@ using WFBS.Business.Operations;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase AreaOperacion, contenedor de los metodos relacionados a la Entidad Área.
+    /// </summary>
     public class PerfildeCargoOperacion : IOperations<PerfildeCargo>
     {
         private PerfildeCargo _perfildeCargo { get; set; }
-
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_ar"> Recibe un parametro del tipo Área</param>
         public PerfildeCargoOperacion(PerfildeCargo _perfildeC)
         {
             this._perfildeCargo = _perfildeC;
@@ -26,7 +32,10 @@ namespace WFBS.Business.Operations
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Lee una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -39,10 +48,10 @@ namespace WFBS.Business.Operations
                 this._perfildeCargo.ID_PERFIL_DE_CARGO = Convert.ToInt32(pc.ID_PERFIL_DE_CARGO);
                 this._perfildeCargo.DESCRIPCION = pc.DESCRIPCION;
                 this._perfildeCargo.OBSOLETO = Convert.ToInt32(pc.OBSOLETO);
-                string txt="";
+                string txt = "";
                 foreach (AREA item in pc.AREA)
                 {
-                    txt +=item.ID_AREA.ToString()+",";
+                    txt += item.ID_AREA.ToString() + ",";
                 }
                 this._perfildeCargo.areas = txt;
 
@@ -60,7 +69,10 @@ namespace WFBS.Business.Operations
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Desactiva una entidad Área.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -87,6 +99,11 @@ namespace WFBS.Business.Operations
         #endregion IOperations
 
         #region Metodos
+        /// <summary>
+        /// Inserta en la base de datos un perfil de cargo
+        /// </summary>
+        /// <param name="areasSelec"> Recibe un parametro del tipo entidad Área</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Insert(List<Area> areasSelec)
         {
             try
@@ -102,7 +119,7 @@ namespace WFBS.Business.Operations
                     a = modelo.AREA.First(b => b.ID_AREA == areaselec.ID_AREA);
                     p.AREA.Add(a);
                 }
-                
+
                 modelo.PERFIL_DE_CARGO.Add(p);
                 modelo.SaveChanges();
                 modelo = null;
@@ -115,7 +132,11 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Modifica en la base de datos un perfil de cargo
+        /// </summary>
+        /// <param name="areasSelec"> Recibe un parametro del tipo entidad Área</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Actualize(List<Area> areasSelec)
         {
             string areas = string.Empty;
@@ -130,11 +151,11 @@ namespace WFBS.Business.Operations
                 p.OBSOLETO = this._perfildeCargo.OBSOLETO;
                 foreach (AREA item in AreasBDD)
                 {
-                    var delete= modelo.AREA.First(b => b.ID_AREA == item.ID_AREA);
+                    var delete = modelo.AREA.First(b => b.ID_AREA == item.ID_AREA);
                     p.AREA.Remove(delete);
                     modelo.SaveChanges();
                 }
-                
+
                 foreach (Area areaselec in areasSelec)
                 {
                     a = modelo.AREA.First(b => b.ID_AREA == areaselec.ID_AREA);
@@ -152,6 +173,10 @@ namespace WFBS.Business.Operations
             }
         }
 
+        /// <summary>
+        /// Lista todas las entidades de PerfildeCargo.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de PerfildeCargo almacenadas en la BD</returns>
         public List<PerfildeCargo> ReadAllPerfilesdeCargo()
         {
             var PCargoBDD = from pc in CommonBC.ModeloWFBS.PERFIL_DE_CARGO

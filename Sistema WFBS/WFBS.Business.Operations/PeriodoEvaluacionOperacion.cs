@@ -11,16 +11,26 @@ using WFBS.Business.Log;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase PeriodoEvaluacionOperacion, contenedor de los metodos relacionados a la Entidad Periodo.
+    /// </summary>
     public class PeriodoEvaluacionOperacion : IOperations<PeriodoEvaluacion>
     {
         private PeriodoEvaluacion _periodoEvaluacion { get; set; }
-
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_periodoEva"> Recibe un parametro del tipo Área</param>
         public PeriodoEvaluacionOperacion(PeriodoEvaluacion _periodoEva)
         {
             this._periodoEvaluacion = _periodoEva;
         }
 
         #region IOperations
+        /// <summary>
+        /// Crea una entidad Periodo.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try
@@ -45,7 +55,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lee una entidad Periodo.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -68,7 +81,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Actualiza una entidad Periodo.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Update()
         {
             try
@@ -92,7 +108,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Desactiva una entidad Periodo.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -112,7 +131,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lista todas las entidades de Periodo.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Área almacenadas en la BD </returns>
         public List<PeriodoEvaluacion> Listar()
         {
             List<DAL.PERIODO_EVALUACION> periodosBDD = CommonBC.ModeloWFBS.PERIODO_EVALUACION.ToList();
@@ -142,7 +164,10 @@ namespace WFBS.Business.Operations
 
             return periodosController;
         }
-
+        /// <summary>
+        /// Identifica que periodo de evaluacion se encuentra activo.
+        /// </summary>
+        /// <returns>Retorna el id del periodo. </returns>
         public int periodoEvaluacionActivo()
         {
             try
@@ -150,7 +175,7 @@ namespace WFBS.Business.Operations
                 DAL.WFBSEntities periodo = new DAL.WFBSEntities();
 
                 DAL.PERIODO_EVALUACION pe = periodo.PERIODO_EVALUACION.Where(p => p.FECHA_INICIO <= DateTime.Now).ToList().Where
-                    (p=>DateTime.Now <= p.FECHA_INICIO.AddDays((double)p.VIGENCIA)).ToList().First();
+                    (p => DateTime.Now <= p.FECHA_INICIO.AddDays((double)p.VIGENCIA)).ToList().First();
 
                 return (int)pe.ID_PERIODO_EVALUACION;
             }

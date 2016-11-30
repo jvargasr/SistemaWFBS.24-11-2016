@@ -11,16 +11,26 @@ using WFBS.Business.Log;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase UsuarioOperacion, contenedor de los metodos relacionados a la Entidad Usuario.
+    /// </summary>
     public class UsuarioOperacion : IOperations<Usuario>
     {
         private Usuario _usuario { get; set; }
-
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_us"> Recibe un parametro del tipo Usuario</param>
         public UsuarioOperacion(Usuario _us)
         {
             this._usuario = _us;
         }
 
         #region IOperations
+        /// <summary>
+        /// Crea una entidad Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try
@@ -48,7 +58,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lee una entidad Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Read()
         {
             try
@@ -74,7 +87,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Actualiza una entidad Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Update()
         {
             try
@@ -100,7 +116,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Desactiva una entidad Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Delete()
         {
             try
@@ -120,7 +139,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Lista todas las entidades de Usuario.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Área almacenadas en la BD </returns>
         public List<Usuario> Listar()
         {
             var usuariosBDD = from u in CommonBC.ModeloWFBS.USUARIO
@@ -144,7 +166,10 @@ namespace WFBS.Business.Operations
         #endregion IOperations
 
         #region Metodos
-
+        /// <summary>
+        /// Valida que los datos ingresados correspandan al Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ValidarUsuario()
         {
             try
@@ -170,7 +195,10 @@ namespace WFBS.Business.Operations
                 return false;
             }
         }
-
+        /// <summary>
+        /// Desactiva una entidad Usuario.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Desactivado()
         {
             try
@@ -213,7 +241,10 @@ namespace WFBS.Business.Operations
             }
             return usuariosController;
         }
-
+        /// <summary>
+        /// Obtiene todos los funcinoarios asociados a un jefe.
+        /// </summary>
+        /// returns>Retorna una variable Lista con todas los funcionarios asociados a un jefe </returns>
         public List<Usuario> ObtenerFuncionariosPorJefe(string rut)
         {
             Usuario us = new Usuario();
@@ -230,8 +261,12 @@ namespace WFBS.Business.Operations
             {
                 Logger.log("No se pudo obtener funcionarios por jefe: " + ex.ToString());
                 return null;
-            }            
+            }
         }
+        /// <summary>
+        /// Valida que los datos ingresados correspandan al perfil de jefe.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool validarFuncionarioJefe()
         {
             try

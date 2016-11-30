@@ -8,16 +8,27 @@ using WFBS.Business.Entities;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase AuditoriaOperacion, encargada de registrar los datos del Usuario que efectue una evaluación.
+    /// </summary>
     public class AuditoriaOperacion : IOperations<Auditoria>
     {
         private Auditoria _auditoria { get; set; }
 
+        /// <summary>
+        /// Constructor inicializador de la Clase.
+        /// </summary>
+        /// <param name="_au">Recibe un parametro del tipo Auditoria</param>
         public AuditoriaOperacion(Auditoria _au)
         {
             this._auditoria = _au;
         }
 
         #region IOperations
+        /// <summary>
+        /// Crea un registro en la tabla Auditoria de la BD.
+        /// </summary>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Create()
         {
             try

@@ -8,10 +8,16 @@ using System.Data;
 
 namespace WFBS.Business.DataAccess
 {
+    /// <summary>
+    /// Clase CommonBC, accesadora a la capa de datos DAL.
+    /// </summary>
     public class CommonBC
     {
         private static DAL.WFBSEntities _modeloWfbs;
 
+        /// <summary>
+        /// Metodo estatico, crea una instancia del Entity generado en la capa DAL.
+        /// </summary>
         public static DAL.WFBSEntities ModeloWFBS
         {
             get
@@ -24,6 +30,9 @@ namespace WFBS.Business.DataAccess
             }
         }
 
+        /// <summary>
+        /// Constructos por defecto de la Clase.
+        /// </summary>
         public CommonBC()
         {
         }

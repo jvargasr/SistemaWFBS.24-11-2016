@@ -9,8 +9,17 @@ using WFBS.Business.Log;
 
 namespace WFBS.IT.Communication
 {
+    /// <summary>
+    /// Clase XML encargada de transformar a texto plano.
+    /// </summary>
     public class XML
     {
+        /// <summary>
+        /// Serializa un objeto al tipo asignado.
+        /// </summary>
+        /// <typeparam name="T">Variable Generica</typeparam>
+        /// <param name="type">Recibe un parametro del tipo de la Variable asginada</param>
+        /// <returns>Devuelve un objeto del tipo de la variable asignada serializado</returns>
         public string Serializar<T>(T type)
         {
             try
@@ -29,6 +38,12 @@ namespace WFBS.IT.Communication
             }
         }
 
+        /// <summary>
+        /// Deserializa un objeto al tipo asignado.
+        /// </summary>
+        /// <typeparam name="T">Variable Generica</typeparam>
+        /// <param name="xml">Recibe un parametro xml el cual trae un objeto serilizado</param>
+        /// <returns>Retorna un objeto o variable acorde al tipo asignado</returns>
         public T Deserializar<T>(string xml)
         {
             try

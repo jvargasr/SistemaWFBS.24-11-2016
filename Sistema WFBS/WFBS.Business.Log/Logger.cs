@@ -3,6 +3,9 @@ using System.IO;
 
 namespace WFBS.Business.Log
 {
+    /// <summary>
+    /// Clase Logger, encargada de los registros de sucesos importantes en el sistema.
+    /// </summary>
     public class Logger
     {
         /** 
@@ -12,31 +15,27 @@ namespace WFBS.Business.Log
          */
         private static string __log_file_path = @"c:\logfile_wfbs.txt";
 
-        /** 
-         * __log_file_path get/set 
-         */
+        /// <summary>
+        /// Propiedad estatica, recibe la ruta del archivo de log generado, y devuelve la ruta en caso de ser valida.
+        /// </summary>
         public static string filePath
         {
             get { return Logger.__log_file_path; }
             set { if (value.Length > 0) Logger.__log_file_path = value; }
         }
 
-        /** 
-         * Flush log file contents 
-         *  
-         * @return void 
-         */
+        /// <summary>
+        /// Genera un escrito de los sucesos gatillados.
+        /// </summary>
         public static void flush()
         {
             File.WriteAllText(Logger.filePath, string.Empty);
         }
 
-        /** 
-         * Log message 
-         *  
-         * @param string msg 
-         * @return void 
-         */
+        /// <summary>
+        /// Metodo estatico que escribe en texto plano los sucesos gatillados en la ruta especificada.
+        /// </summary>
+        /// <param name="msg">Recibe un parametro msg que contiene el mensaje gatillado en un suceso especifico</param>
 
         public static void log(string msg)
         {

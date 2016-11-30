@@ -6,16 +6,30 @@ using System.Threading.Tasks;
 
 namespace WFBS.Business.Entities
 {
+    /// <summary>
+    /// Clase Perfil, contenedor de las propiedades referente a la tabla Perfil de la BD.
+    /// </summary>
     public class Perfil
     {
+        /// <summary>
+        /// Propiedad id, PK de la Clase.
+        /// </summary>
         public decimal ID_PERFIL { get; set; }
+        /// <summary>
+        /// Propiedad TIPO USUARIO, referente al nivel de usuario con el que ingresa al sistema.
+        /// </summary>
         public string TIPO_USUARIO { get; set; }
 
+        /// <summary>
+        /// Constructor que llama al metodo inicializador de la Clase.
+        /// </summary>
         public Perfil()
         {
             this.Init();
         }
-
+        /// <summary>
+        /// Inicializador de la Clase.
+        /// </summary>
         private void Init()
         {
             this.ID_PERFIL = 0;

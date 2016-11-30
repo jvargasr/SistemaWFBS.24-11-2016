@@ -9,9 +9,16 @@ using WFBS.DAL;
 
 namespace WFBS.Business.Operations
 {
+    /// <summary>
+    /// Clase Collections, encargada de devolver listas relacionadas a las entidades de Business.Entities
+    /// </summary>
     public class Collections
     {
         /* Usuario */
+        /// <summary>
+        /// Lista todas las entidades de Usuario.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Usuario almacenadas en la BD</returns>
         public List<Usuario> ReadAllUsuarios()
         {
             var usuariosBDD = from u in CommonBC.ModeloWFBS.USUARIO
@@ -57,6 +64,10 @@ namespace WFBS.Business.Operations
         }
 
         /* Area */
+        /// <summary>
+        /// Lista todas las entidades de Áreas.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Áreas almacenadas en la BD</returns>
         public List<Area> ReadAllAreas()
         {
             var AreasBDD = from c in CommonBC.ModeloWFBS.AREA /*AreasBDD*/
@@ -90,10 +101,12 @@ namespace WFBS.Business.Operations
             return areasController;
         }
         /* Perfiles de cargo */
+        /// <summary>
+        /// Lista todas las entidades de PerfildeCargo.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de PerfildeCargo almacenadas en la BD</returns>
         public List<PerfildeCargo> ReadAllPerfilesdeCargo()
         {
-            //List<Modelo.PERFIL_DE_CARGO> perfilesdecargoBDD = CommonBC.ModeloWfbs.PERFIL_DE_CARGO.ToList();
-            //return GenerarListado(perfilesdecargoBDD);
             var PCargoBDD = from pc in CommonBC.ModeloWFBS.PERFIL_DE_CARGO
 
                             select new PerfildeCargo
@@ -124,6 +137,10 @@ namespace WFBS.Business.Operations
         }
 
         /* Perfil */
+        /// <summary>
+        /// Lista todas las entidades de Perfil.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Perfil almacenadas en la BD</returns>
         public List<Perfil> ReadAllPerfiles()
         {
             List<DAL.PERFIL> perfilesBDD = CommonBC.ModeloWFBS.PERFIL.ToList();
@@ -148,8 +165,12 @@ namespace WFBS.Business.Operations
         }
 
 
-        /* reporte grupal en construcción */
         /* Obtener competencias por area */
+        /// <summary>
+        /// Lista todas las entidades de Competencias.
+        /// </summary>
+        /// <param name="id_area">Recibe un parametro entero correspondiente al id de un Área</param>
+        /// <returns>Retorna todas las id de Competencias que corresponden a la Área relacionada</returns>
         public List<int> CompetenciasPorArea(int id_area)
         {
             List<int> ids_competencias = new List<int>();
@@ -162,6 +183,10 @@ namespace WFBS.Business.Operations
         }
 
         /* Obtener periodo de evaluación activo */
+        /// <summary>
+        /// Lista el Periodo de Evaluación vigente.
+        /// </summary>
+        /// <returns> Retorna el id del Periodo de Evaluación vigente en el sistema</returns>
         public int ObtenerPeriodoEvaluacion()
         {
             DateTime hoy = DateTime.Now;
@@ -170,6 +195,12 @@ namespace WFBS.Business.Operations
         }
 
         /* Reporte evaluación por grupo */
+        /// <summary>
+        /// Lista de las notas de los funcionarios por cada Competencia.
+        /// </summary>
+        /// <param name="id_area">Recibe un parametro id referente a un Área</param>
+        /// <param name="id_competencia">Recibe un parametro id referente a una Competencia</param>
+        /// <returns>Retorna las notas de los funcionarios evaluados por Área</returns>
         public List<float> ObtenerNotasCompetencia(int id_area, int id_competencia)
         {//      Obtener las brechas de todos los funcionarios
             int id_periodo = 1;//ObtenerPeriodoEvaluacion();
@@ -185,6 +216,10 @@ namespace WFBS.Business.Operations
         /* Fin reporte grupal en construcción */
 
         /* Usuario Jefe */
+        /// <summary>
+        /// Lista los Jefes almacenados en el sistema.
+        /// </summary>
+        /// <returns>Retorna un listado con todos los Jefes registrados en el sistema</returns>
         public List<Usuario> ObtenerJefes()
         {
             var Jefes = CommonBC.ModeloWFBS.USUARIO.Where(usu => usu.ID_PERFIL == 2);
@@ -192,6 +227,10 @@ namespace WFBS.Business.Operations
         }
 
         /* Competencia */
+        /// <summary>
+        /// Lista todas las entidades de Competencia.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Competencia almacenadas en la BD</returns>
         public List<Competencia> ReadAllCompetencias()
         {
             /*List<Modelo.COMPETENCIA> CompetenciasBDD = CommonBC.ModeloWfbs.COMPETENCIA.ToList();
@@ -236,6 +275,10 @@ namespace WFBS.Business.Operations
 
 
         // Periodo Evaluacion
+        /// <summary>
+        /// Lista todas las entidades de PeriodoEvaluacion.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de PeriodoEvaluacion almacenadas en la BD</returns>
         public List<PeriodoEvaluacion> ReadAllPeriodos()
         {
             List<DAL.PERIODO_EVALUACION> periodosBDD = CommonBC.ModeloWFBS.PERIODO_EVALUACION.ToList();
@@ -264,6 +307,10 @@ namespace WFBS.Business.Operations
 
 
         /* Habilidad */
+        /// <summary>
+        /// Lista todas las entidades de Habilidades.
+        /// </summary>
+        /// <returns>Retorna una variable Lista con todas las entidades de Habilidades almacenadas en la BD</returns>
         public List<Habilidad> ReadAllHabilidades()
         {
             List<DAL.HABILIDAD> habilidadesBDD = CommonBC.ModeloWFBS.HABILIDAD.ToList();
@@ -291,6 +338,11 @@ namespace WFBS.Business.Operations
 
         }
 
+        /// <summary>
+        /// Lista todas las entidades de Habilidades.
+        /// </summary>
+        /// <param name="id">Recibe un parametro id Competencia</param>
+        /// <returns>Retorna una variable Lista con todas las entidades de Habilidades por Competencia almacenadas en la BD</returns>
         public List<Habilidad> ObtenerHabPorCom(int id)
         {
             decimal id_com = Convert.ToDecimal(id);
