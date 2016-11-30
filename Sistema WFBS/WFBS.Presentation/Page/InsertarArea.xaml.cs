@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WFBS.Business.Entities;
+using WFBS.Business.Operations;
 using WFBS.IT.Communication;
 
 namespace MasterPages.Page
@@ -22,13 +23,39 @@ namespace MasterPages.Page
     /// </summary>
     public partial class InsertarArea : System.Windows.Controls.Page
     {
+        WFBS.Business.Operations.Collections col = new Collections();
+        List<Competencia> competencias = new List<Competencia>();
+        List<Area> areas = new List<Area>();
         public InsertarArea()
         {
             InitializeComponent();
             lblUserInfo.Content = Global.NombreUsuario;
             rbNo.IsChecked = true;
+            competencias = col.ReadAllCompetencias();
+            foreach (Competencia item in competencias)
+            {
+                if (item.Obs == "No")
+                {
+                    lbCom.Items.Add(item.NOMBRE);
+                }
+            }
         }
+        private void btnToRight_Click(object sender, RoutedEventArgs e)
+        {
+            lbComSeleccionadas.Items.Add(lbCom.SelectedItem);
+            lbCom.Items.Remove(lbCom.SelectedItem);
+            lbComSeleccionadas.Items.Refresh();
+            lbCom.Items.Refresh();
 
+        }
+        private void btnToLeft_Click(object sender, RoutedEventArgs e)
+        {
+            lbCom.Items.Add(lbComSeleccionadas.SelectedItem);
+            lbComSeleccionadas.Items.Remove(lbComSeleccionadas.SelectedItem);
+            lbCom.Items.Refresh();
+            lbComSeleccionadas.Items.Refresh();
+
+        }
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
             this.Limpiar();
@@ -42,51 +69,69 @@ namespace MasterPages.Page
 
         private void btnIngresar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            List<Competencia> comSelec = new List<Competencia>();
+            competencias = col.ReadAllCompetencias();
+            Area a = new Area();
+            foreach (string item in lbComSeleccionadas.Items)
             {
-                Area ar = new Area();
-                if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
+                foreach (Competencia c in competencias)
                 {
-                    if (txtAbreviacion.Text.Length > 0 && txtAbreviacion.Text.Trim() != "")
+                    if (c.NOMBRE == item)
                     {
-                        ar.NOMBRE = txtNombre.Text;
-                        ar.ABREVIACION = txtAbreviacion.Text;
-                        if (rbNo.IsChecked == true)
-                            ar.OBSOLETA = 0;
-                        if (rbSi.IsChecked == true)
-                            ar.OBSOLETA = 1;
-
-                        XML formato = new XML();
-                        string xml = formato.Serializar(ar);
-                        WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
-
-                        if (servicio.CrearArea(xml))
+                        comSelec.Add(c);
+                    }
+                }
+            }
+            if (lbComSeleccionadas.Items.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar las Competencias para el Área");
+            }
+            else
+            {
+                try
+                {
+                    Area ar = new Area();
+                    if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
+                    {
+                        if (txtAbreviacion.Text.Length > 0 && txtAbreviacion.Text.Trim() != "")
                         {
-                            MessageBox.Show("Agregado correctamente", "Éxito!");
-                            this.Limpiar();
-                            NavigationService navService = NavigationService.GetNavigationService(this);
-                            MantenedorArea nextPage = new MantenedorArea();
-                            navService.Navigate(nextPage);
+                            ar.NOMBRE = txtNombre.Text;
+                            ar.ABREVIACION = txtAbreviacion.Text;
+                            if (rbNo.IsChecked == true)
+                                ar.OBSOLETA = 0;
+                            if (rbSi.IsChecked == true)
+                                ar.OBSOLETA = 1;
+
+                            
+                            AreaOperacion aOp = new AreaOperacion(ar);
+                            if (aOp.Insert(comSelec))
+                            {
+                                MessageBox.Show("Agregado correctamente", "Éxito!");
+                                this.Limpiar();
+                                NavigationService navService = NavigationService.GetNavigationService(this);
+                                MantenedorArea nextPage = new MantenedorArea();
+                                navService.Navigate(nextPage);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo agregar el Área, verifique que los datos sean correctos", "Aviso");
+
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo agregar la Área, verifique que los datos sean correctos", "Aviso");
-
+                            MessageBox.Show("El campo Abreviación es obligatorio", "Aviso");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El campo Abreviación es obligatorio", "Aviso");
+                        MessageBox.Show("El campo Nombre es obligatorio", "Aviso");
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("El campo Nombre es obligatorio", "Aviso");
+                    MessageBox.Show("No se pudo agregar el Área!", "Alerta");
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("No se pudo agregar la Área!", "Alerta");
             }
         }
 

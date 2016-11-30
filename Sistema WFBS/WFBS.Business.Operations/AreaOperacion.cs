@@ -40,7 +40,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Agregar la Área:" + ex.ToString());
+                Log.Logger.log("No se pudo Agregar el Área:" + ex.ToString());
                 return false;
             }
         }
@@ -61,7 +61,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Leer la Área:" + ex.ToString());
+                Log.Logger.log("No se pudo Leer el Área:" + ex.ToString());
                 return false;
             }
         }
@@ -84,7 +84,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Actualizar la Área: " + ex.ToString());
+                Log.Logger.log("No se pudo Actualizar el Área: " + ex.ToString());
                 return false;
             }
         }
@@ -104,7 +104,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Desactivar la Área: " + ex.ToString());
+                Log.Logger.log("No se pudo Desactivar el Área: " + ex.ToString());
                 return false;
             }
         }
@@ -125,6 +125,36 @@ namespace WFBS.Business.Operations
         #endregion IOperations
 
         #region Metodos
+        public bool Insert(List<Competencia> comSelec)
+        {
+            try
+            {
+                DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+                DAL.AREA ar = new AREA();
+                DAL.COMPETENCIA c = new COMPETENCIA();
+
+                ar.ID_AREA = this._area.ID_AREA;
+                ar.NOMBRE = this._area.NOMBRE;
+                ar.ABREVIACION = this._area.ABREVIACION;
+                ar.OBSOLETA = this._area.OBSOLETA;
+
+                modelo.AREA.Add(ar);
+                foreach (Competencia item in comSelec)
+                {
+                    c = modelo.COMPETENCIA.First(b => b.ID_COMPETENCIA == item.ID_COMPETENCIA);
+                    ar.COMPETENCIA.Add(c);
+                }
+                modelo.AREA.Add(ar);
+                modelo.SaveChanges();
+                modelo = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.log("No se pudo Agregar el Área:" + ex.ToString());
+                return false;
+            }
+        }
         private List<Area> GenerarListado(List<DAL.AREA> areasBDD)
         {
             List<Area> areasController = new List<Area>();
@@ -150,7 +180,59 @@ namespace WFBS.Business.Operations
             DAL.PERFIL_DE_CARGO pcargo = modelo.PERFIL_DE_CARGO.First(b => b.ID_PERFIL_DE_CARGO == pc.ID_PERFIL_DE_CARGO);
             return GenerarListado(pcargo.AREA.ToList());
         }
+        public string competenciasArea(Area ar)
+        {
+            string txt = null;
+            try
+            {
+                DAL.WFBSEntities modelo = new WFBSEntities();
+                DAL.AREA area = modelo.AREA.First(b => b.ID_AREA == ar.ID_AREA);
+                foreach (DAL.COMPETENCIA item in area.COMPETENCIA)
+                {
+                    txt += item.ID_COMPETENCIA.ToString() + ",";
+                }
+                return txt;
+            }
+            catch (Exception)
+            {
+                return txt;
+            }
+        }
+        public bool Actualize(List<Competencia> comSelec)
+        {
+            string areas = string.Empty;
+            try
+            {
+                DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+                DAL.AREA p = modelo.AREA.First(pc => pc.ID_AREA == this._area.ID_AREA);
+                DAL.COMPETENCIA a = new COMPETENCIA();
+                var ComBDD = CommonBC.ModeloWFBS.COMPETENCIA;
+                p.ID_AREA = this._area.ID_AREA;
+                p.NOMBRE = this._area.NOMBRE;
+                p.OBSOLETA = this._area.OBSOLETA;
+                foreach (COMPETENCIA item in ComBDD)
+                {
+                    var delete = modelo.COMPETENCIA.First(b => b.ID_COMPETENCIA == item.ID_COMPETENCIA);
+                    p.COMPETENCIA.Remove(delete);
+                    modelo.SaveChanges();
+                }
 
+                foreach (Competencia item in comSelec)
+                {
+                    a = modelo.COMPETENCIA.First(b => b.ID_COMPETENCIA == item.ID_COMPETENCIA);
+                    p.COMPETENCIA.Add(a);
+                }
+
+                modelo.SaveChanges();
+                modelo = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.log("No se pudo Actualizar el Área: " + ex.ToString());
+                return false;
+            }
+        }
         #endregion Metodos
     }
 }

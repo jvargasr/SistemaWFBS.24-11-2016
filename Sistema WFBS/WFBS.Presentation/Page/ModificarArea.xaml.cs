@@ -23,15 +23,36 @@ namespace MasterPages.Page
     /// </summary>
     public partial class ModificarArea : System.Windows.Controls.Page
     {
+        Collections col = new Collections();
+        List<Competencia> competencias = new List<Competencia>();
+        static Area ar = new Area();
+        AreaOperacion arOp = new AreaOperacion(ar);
         public ModificarArea(int id)
         {
             InitializeComponent();
             lblUserInfo.Content = Global.NombreUsuario;
+            competencias = col.ReadAllCompetencias();
 
-            Area ar = new Area();
-            AreaOperacion arOp = new AreaOperacion(ar);
             ar.ID_AREA = id;
             arOp.Read();
+            string txt = arOp.competenciasArea(ar);
+            string[] comAr = new string[] { "" };
+            if (txt != null)
+                comAr = txt.Split(',');
+            foreach (Competencia item in competencias)
+            {
+                if (item.OBSOLETA == 0)
+                {
+                    if (comAr.Contains(item.ID_COMPETENCIA.ToString()))
+                    {
+                        lbComSeleccionadas.Items.Add(item.NOMBRE);
+                    }
+                    else
+                    {
+                        lbCom.Items.Add(item.NOMBRE);
+                    }
+                }
+            }
 
             if (ar.OBSOLETA == 0)
                 rbNo.IsChecked = true;
@@ -41,7 +62,22 @@ namespace MasterPages.Page
             txtNombre.Text = ar.NOMBRE;
             txtAbreviacion.Text = ar.ABREVIACION;
         }
+        private void btnToRight_Click(object sender, RoutedEventArgs e)
+        {
+            lbComSeleccionadas.Items.Add(lbCom.SelectedItem);
+            lbCom.Items.Remove(lbCom.SelectedItem);
+            lbComSeleccionadas.Items.Refresh();
+            lbCom.Items.Refresh();
 
+        }
+        private void btnToLeft_Click(object sender, RoutedEventArgs e)
+        {
+            lbCom.Items.Add(lbComSeleccionadas.SelectedItem);
+            lbComSeleccionadas.Items.Remove(lbComSeleccionadas.SelectedItem);
+            lbCom.Items.Refresh();
+            lbComSeleccionadas.Items.Refresh();
+
+        }
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
             this.Limpiar();
@@ -57,18 +93,26 @@ namespace MasterPages.Page
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-
-            try
+            List<Competencia> comSelec = new List<Competencia>();
+            competencias = col.ReadAllCompetencias();
+            Area a = new Area();
+            foreach (string item in lbComSeleccionadas.Items)
             {
-                Area ar = new Area();
-                ar.ID_AREA = int.Parse(txtIdArea.Text);
-                AreaOperacion arOp = new AreaOperacion(ar);
-
-                XML formato = new XML();
-                string xml = formato.Serializar(ar);
-                WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
-
-                if (servicio.LeerArea(xml) != null)
+                foreach (Competencia c in competencias)
+                {
+                    if (c.NOMBRE == item)
+                    {
+                        comSelec.Add(c);
+                    }
+                }
+            }
+            if (lbComSeleccionadas.Items.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar las Competencias para el Área","Aviso");
+            }
+            else
+            {
+                try
                 {
                     if (txtNombre.Text.Length > 0 && txtNombre.Text.Trim() != "")
                     {
@@ -81,18 +125,19 @@ namespace MasterPages.Page
                             if (rbSi.IsChecked == true)
                                 ar.OBSOLETA = 1;
 
-                            string xml2 = formato.Serializar(ar);
-
-                            if (servicio.ActualizarArea(xml2))
+                            AreaOperacion aOp = new AreaOperacion(ar);
+                            if (aOp.Actualize(comSelec))
                             {
-                                MessageBox.Show("Actualizado correctamente", "Éxito!");
+                                MessageBox.Show("Agregado correctamente", "Éxito!");
+                                this.Limpiar();
                                 NavigationService navService = NavigationService.GetNavigationService(this);
                                 MantenedorArea nextPage = new MantenedorArea();
                                 navService.Navigate(nextPage);
                             }
                             else
                             {
-                                MessageBox.Show("No se pudo actualizar la Área, verifique que los datos sean correctos", "Aviso");
+                                MessageBox.Show("No se pudo agregar el Área, verifique que los datos sean correctos", "Aviso");
+
                             }
                         }
                         else
@@ -105,17 +150,11 @@ namespace MasterPages.Page
                         MessageBox.Show("El campo Nombre es obligatorio", "Aviso");
                     }
                 }
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Debe completar los campos antes de continuar", "Aviso");
+                    MessageBox.Show("No se pudo agregar el Área!", "Alerta");
                 }
             }
-            catch (Exception)
-            {
-
-                MessageBox.Show("No se pudo Actualizar la Área!", "Alerta");
-            }
-
         }
         private void RadioButtonChecked(object sender, RoutedEventArgs e)
         {

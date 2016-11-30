@@ -17,26 +17,6 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
-        public string periodoActivo()
-        {
-            try
-            {
-                XML formato = new XML();
-                PeriodoEvaluacion pe = new PeriodoEvaluacion();
-                PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
-                int id = peOp.periodoEvaluacionActivo();
-                pe.ID_PERIODO_EVALUACION = id;
-                peOp.Read();
-                return formato.Serializar(pe);
-            }
-            catch (Exception ex)
-            {
-                Logger.log("No se pudo obtener el periodo actual: " + ex.ToString());
-                return null;
-            }
-
-        }
-
         public bool log(string msgxml)
         {
             try
@@ -424,7 +404,25 @@ namespace WFBS.Service
             List<PeriodoEvaluacion> periodos = periodoOp.Listar();
             return formato.Serializar(periodos);
         }
+        public int periodoActivo()
+        {
+            try
+            {
+                XML formato = new XML();
+                PeriodoEvaluacion pe = new PeriodoEvaluacion();
+                PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
+                int id = peOp.periodoEvaluacionActivo();
+                pe.ID_PERIODO_EVALUACION = id;
+                peOp.Read();
+                return Convert.ToInt32(pe.ID_PERIODO_EVALUACION);
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener el periodo actual: " + ex.ToString());
+                return 0;
+            }
 
+        }
         #endregion PeriodoEvaluacion
 
         //---------------------------------------------------------//
