@@ -63,14 +63,14 @@ namespace MasterPages.Page
 
                     if (servicio.EliminarArea(xml))
                     {
-                        MessageBox.Show("La Área seleccionada ha sido desactivada", "Éxito!");
+                        MessageBox.Show("El Área seleccionada ha sido desactivada", "Éxito!");
                         NavigationService navService = NavigationService.GetNavigationService(this);
                         MantenedorArea nextPage = new MantenedorArea();
                         navService.Navigate(nextPage);
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo desactivar la Área", "Aviso");
+                        MessageBox.Show("No se pudo desactivar el Área", "Aviso");
                     }
                 }
             }

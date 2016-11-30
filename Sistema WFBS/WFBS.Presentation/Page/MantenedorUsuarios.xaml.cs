@@ -39,6 +39,7 @@ namespace MasterPages.Page
 
             dgUsuarios.ItemsSource = formato.Deserializar<List<Usuario>>(servicio.LeerUsuarios());
 
+            dgUsuarios.Columns[2].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[3].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[4].Visibility = Visibility.Collapsed;
             dgUsuarios.Columns[6].Visibility = Visibility.Collapsed;
@@ -46,7 +47,7 @@ namespace MasterPages.Page
 
             dgUsuarios.Columns[0].Header = "Rut";
             dgUsuarios.Columns[1].Header = "Nombre";
-            dgUsuarios.Columns[2].Header = "Sexo";
+            //dgUsuarios.Columns[2].Header = "Sexo";
             dgUsuarios.Columns[5].Header = "Jefe a cargo";
             dgUsuarios.Columns[8].Header = "P. Cargo";
             dgUsuarios.Columns[10].Header = "Obsoleto";
@@ -71,7 +72,6 @@ namespace MasterPages.Page
             if (dgUsuarios.SelectedItem != null)
             {
                 Usuario us = (Usuario)dgUsuarios.SelectedItem;
-                //MessageBox.Show(us.Rut, "Éxito!");
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 ModificarUsuario nextPage = new ModificarUsuario(us.RUT);
                 navService.Navigate(nextPage);

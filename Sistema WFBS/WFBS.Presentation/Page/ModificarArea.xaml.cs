@@ -108,7 +108,7 @@ namespace MasterPages.Page
             }
             if (lbComSeleccionadas.Items.Count == 0)
             {
-                MessageBox.Show("Debe seleccionar las competencias para el área");
+                MessageBox.Show("Debe seleccionar las Competencias para el Área","Aviso");
             }
             else
             {
@@ -125,10 +125,6 @@ namespace MasterPages.Page
                             if (rbSi.IsChecked == true)
                                 ar.OBSOLETA = 1;
 
-                            //XML formato = new XML();
-                            //string xml = formato.Serializar(ar);
-                            //WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
-
                             AreaOperacion aOp = new AreaOperacion(ar);
                             if (aOp.Actualize(comSelec))
                             {
@@ -140,7 +136,7 @@ namespace MasterPages.Page
                             }
                             else
                             {
-                                MessageBox.Show("No se pudo agregar la Área, verifique que los datos sean correctos", "Aviso");
+                                MessageBox.Show("No se pudo agregar el Área, verifique que los datos sean correctos", "Aviso");
 
                             }
                         }
@@ -156,7 +152,7 @@ namespace MasterPages.Page
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("No se pudo agregar la Área!", "Alerta");
+                    MessageBox.Show("No se pudo agregar el Área!", "Alerta");
                 }
             }
         }

@@ -40,7 +40,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Agregar la Área:" + ex.ToString());
+                Log.Logger.log("No se pudo Agregar el Área:" + ex.ToString());
                 return false;
             }
         }
@@ -61,7 +61,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Leer la Área:" + ex.ToString());
+                Log.Logger.log("No se pudo Leer el Área:" + ex.ToString());
                 return false;
             }
         }
@@ -84,7 +84,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Actualizar la Área: " + ex.ToString());
+                Log.Logger.log("No se pudo Actualizar el Área: " + ex.ToString());
                 return false;
             }
         }
@@ -104,7 +104,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Desactivar la Área: " + ex.ToString());
+                Log.Logger.log("No se pudo Desactivar el Área: " + ex.ToString());
                 return false;
             }
         }
@@ -151,7 +151,7 @@ namespace WFBS.Business.Operations
             }
             catch (Exception ex)
             {
-                Log.Logger.log("No se pudo Agregar la Área:" + ex.ToString());
+                Log.Logger.log("No se pudo Agregar el Área:" + ex.ToString());
                 return false;
             }
         }
