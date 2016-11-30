@@ -192,6 +192,36 @@ namespace WFBS.Business.Operations
             }
             
         }
+
+        public bool Insert(Area ar)
+        {
+            try
+            {
+                DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+                DAL.AREA area = new AREA();
+                DAL.COMPETENCIA com = new COMPETENCIA();
+                
+                com.ID_COMPETENCIA = this._competencia.ID_COMPETENCIA;
+                com.NOMBRE = this._competencia.NOMBRE;
+                com.DESCRIPCION = this._competencia.DESCRIPCION;
+                com.SIGLA = this._competencia.SIGLA;
+                com.OBSOLETA = this._competencia.OBSOLETA;
+                com.NIVEL_OPTIMO_ESPERADO = this._competencia.NIVEL_OPTIMO_ESPERADO;
+                com.PREGUNTA_ASOCIADA = this._competencia.PREGUNTA_ASOCIADA;
+
+                com.AREA.Add(area);
+                //area.COMPETENCIA.Add(com);
+                modelo.COMPETENCIA.Add(com);
+                modelo.SaveChanges();
+                modelo = null;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Logger.log("No se pudo Agregar la competencia: " + ex.ToString());
+                return false;
+            }
+        }
         #endregion Metodos
     }
 }

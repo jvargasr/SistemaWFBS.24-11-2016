@@ -12,37 +12,51 @@
             Ingresar nueva Área
         </m:Master.Title>
         <m:Master.Content>
-            <Grid HorizontalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="300" />
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="Nombre:"/>
-                <Label Grid.Row="1" Grid.Column="0" Content="Abreviación:"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Obsoleta:" />
+            <StackPanel HorizontalAlignment="Center" >
+                <Label Grid.Row="0" Grid.Column="1" Content="Seleccione la(s) competencia(s) correspondientes para el Área a ingresar:"/>
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ListBox Name="lbCom" Width="210" MinHeight="100">
+                    </ListBox>
+                    <ListBox Name="lbComSeleccionadas" Width="210" MinHeight="100" HorizontalAlignment="Right">
+                    </ListBox>
 
-                <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Name="txtNombre"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Name="txtAbreviacion"/>
-                <GroupBox x:Name="radioButtons" Grid.Column="1" Grid.Row="2" Margin="3">
-                    <StackPanel >
-                        <RadioButton Content="No" Name="rbNo" />
-                        <RadioButton Content="Si" Name="rbSi" />
-                    </StackPanel>
-                </GroupBox>
-                <WrapPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalAlignment="Left">
-                    <Button Name="btnLimpiar" Click="btnLimpiar_Click" MinWidth="100" Content="Limpiar"/>
                 </WrapPanel>
-                <WrapPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="9" Margin="3" HorizontalAlignment="Right">
-                    <Button Name="btnIngresar" Click="btnIngresar_Click" MinWidth="100" Content="Ingresar"/>
-                    <Button  Name="btnVolver" Click="btnVolver_Click">Volver</Button>
-                </WrapPanel>
-            </Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="btnToRight" Click="btnToRight_Click">Agregar</Button>
+                    <Button Name="btnToLeft" Click="btnToLeft_Click">Remover</Button>
+                </StackPanel>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="300" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Nombre:"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Abreviación:"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Obsoleta:" />
+
+                    <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Name="txtNombre"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Name="txtAbreviacion"/>
+                    <GroupBox x:Name="radioButtons" Grid.Column="1" Grid.Row="2" Margin="3">
+                        <StackPanel >
+                            <RadioButton Content="No" Name="rbNo" />
+                            <RadioButton Content="Si" Name="rbSi" />
+                        </StackPanel>
+                    </GroupBox>
+                    <WrapPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalAlignment="Left">
+                        <Button Name="btnLimpiar" Click="btnLimpiar_Click" MinWidth="100" Content="Limpiar"/>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="9" Margin="3" HorizontalAlignment="Right">
+                        <Button Name="btnIngresar" Click="btnIngresar_Click" MinWidth="100" Content="Ingresar"/>
+                        <Button  Name="btnVolver" Click="btnVolver_Click">Volver</Button>
+                    </WrapPanel>
+                </Grid>
+            </StackPanel>
         </m:Master.Content>
     </m:Master>
 </Page>

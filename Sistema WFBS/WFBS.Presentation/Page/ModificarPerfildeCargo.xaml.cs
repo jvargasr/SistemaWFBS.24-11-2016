@@ -33,7 +33,6 @@ namespace MasterPages.Page
             lblUserInfo.Content = Global.NombreUsuario;
             areas = col.ReadAllAreas();
             pc.ID_PERFIL_DE_CARGO = id;
-            pc.ID_PERFIL_DE_CARGO = id;
             perfilOp.Read();
             string[] areaspc = new string[] {""}; 
             if(pc.areas!=null)
