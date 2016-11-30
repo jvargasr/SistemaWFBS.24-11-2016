@@ -38,6 +38,9 @@ namespace WFBS.Service
         [OperationContract]
         bool validarFuncionarioJefe(string usuarioxml);
 
+        [OperationContract]
+        string periodoActivo();
+
         #endregion JavaServices
 
         #region C#Services
