@@ -45,10 +45,10 @@
                         </StackPanel>
                     </GroupBox>
                 </Grid>
-                <WrapPanel Orientation="Horizontal">
+                <WrapPanel Orientation="Vertical">
                     <Button HorizontalAlignment="Right" Name="btnModificarPerfildeCargo" Click="btnModificarPerfildeCargo_click">Modificar Perfil de Cargo</Button>
                     <Button  Name="btnVolver" Click="btnVolver_Click">Volver</Button>
-                    </WrapPanel>
+                </WrapPanel>
             </StackPanel>
         </m:Master.Content>
     </m:Master>
