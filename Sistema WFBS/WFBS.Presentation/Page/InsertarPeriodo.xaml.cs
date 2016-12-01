@@ -40,7 +40,6 @@ namespace MasterPages.Page
             cmbPorcentajeE.Items.Add("70%");
             cmbPorcentajeE.Items.Add("80%");
             cmbPorcentajeE.Items.Add("90%");
-            cmbPorcentajeE.Items.Add("100%");
             cmbPorcentajeE.SelectedItem = "30%";
         }
 
@@ -55,7 +54,6 @@ namespace MasterPages.Page
             cmbPorcentajeAE.Items.Add("70%");
             cmbPorcentajeAE.Items.Add("80%");
             cmbPorcentajeAE.Items.Add("90%");
-            cmbPorcentajeAE.Items.Add("100%");
             cmbPorcentajeAE.SelectedItem = "70%";
         }
 
@@ -79,7 +77,7 @@ namespace MasterPages.Page
                 {
                     if ((txtVigencia.Text.Length > 0 && txtVigencia.Text.Length <= 10) && txtVigencia.Text.Trim() != "")
                     {
-                        pe.FECHA_INICIO = DatePeriodo.DisplayDate;
+                        pe.FECHA_INICIO = DatePeriodo.SelectedDate.Value;
                         pe.VIGENCIA = int.Parse(txtVigencia.Text);
 
                         #region porcentaje E
