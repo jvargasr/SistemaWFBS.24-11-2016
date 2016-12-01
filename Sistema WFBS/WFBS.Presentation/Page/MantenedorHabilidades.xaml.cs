@@ -29,12 +29,12 @@ namespace MasterPages.Page
         public MantenedorHabilidades()
         {
             InitializeComponent();
-            lblUserInfo.Content = Global.NombreUsuario;
         }
 
         public MantenedorHabilidades(int id)
         {
             InitializeComponent();
+            lblUserInfo.Content = Global.NombreUsuario;
             HabilidadOperacion habOp = new HabilidadOperacion(hab);
             com.ID_COMPETENCIA = id;
             id_com = id;

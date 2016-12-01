@@ -43,8 +43,8 @@ namespace MasterPages.Page
 
                 if (txtUser.Text.Length > 0 && txtPass.Password.Length > 0)
                 {
-                    //if (validarRut())
-                    //{
+                    if (validarRut())
+                    {
                         XML formato = new XML();
                         string xml = formato.Serializar(us);
                         WFBS.Presentation.ServiceWFBS.ServiceWFBSClient servicio = new WFBS.Presentation.ServiceWFBS.ServiceWFBSClient();
@@ -72,11 +72,11 @@ namespace MasterPages.Page
                         {
                             MessageBox.Show("Rut o contraseña inválidos. Asegúrese de entrar con perfil de administrador al sistema.", "Error!");
                         }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Debe ingresar un Rut valido", "Aviso");
-                    //}                    
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe ingresar un Rut valido", "Aviso");
+                    }                    
                 }
                 else
                 {

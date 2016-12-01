@@ -50,7 +50,6 @@ namespace MasterPages.Page
             cmbPorcentajeE.Items.Add("70%");
             cmbPorcentajeE.Items.Add("80%");
             cmbPorcentajeE.Items.Add("90%");
-            cmbPorcentajeE.Items.Add("100%");
             cmbPorcentajeE.SelectedIndex = (Convert.ToInt32(pe.PORCENTAJE_EVALUACION)/10)-1;
         }
 
@@ -65,7 +64,6 @@ namespace MasterPages.Page
             cmbPorcentajeAE.Items.Add("70%");
             cmbPorcentajeAE.Items.Add("80%");
             cmbPorcentajeAE.Items.Add("90%");
-            cmbPorcentajeAE.Items.Add("100%");
             cmbPorcentajeAE.SelectedIndex = (Convert.ToInt32(pe.PORCENTAJE_AUTOEVALUACION) / 10) - 1;
         }
 
@@ -173,7 +171,7 @@ namespace MasterPages.Page
                             #endregion
                             if (pe.PORCENTAJE_EVALUACION + pe.PORCENTAJE_AUTOEVALUACION != 100)
                             {
-                                MessageBox.Show("La suma de los porcentajes no puede ser mayor a 100", "Aviso!");
+                                MessageBox.Show("La suma de los porcentajes debe ser igual a 100", "Aviso!");
                             }
                             else
                             {

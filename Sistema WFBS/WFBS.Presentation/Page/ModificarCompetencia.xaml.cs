@@ -29,12 +29,12 @@ namespace MasterPages.Page
         public ModificarCompetencia()
         {
             InitializeComponent();
-            lblUserInfo.Content = Global.NombreUsuario;
         }
 
         public ModificarCompetencia(int id)
         {
             InitializeComponent();
+            lblUserInfo.Content = Global.NombreUsuario;
 
             com.ID_COMPETENCIA = id;
             comOp.Read();
