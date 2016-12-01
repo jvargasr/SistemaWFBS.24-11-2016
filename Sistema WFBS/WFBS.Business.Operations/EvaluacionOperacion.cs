@@ -61,6 +61,41 @@ namespace WFBS.Business.Operations
             }
         }
 
+        public Evaluacion notaFinalUsuarioPorCom()
+        {
+            try
+            {
+                PeriodoEvaluacion pe = new PeriodoEvaluacion();
+                PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
+                pe.ID_PERIODO_EVALUACION = peOp.periodoEvaluacionActivo();
+                peOp.Read();
+
+                DAL.WFBSEntities evaluacion = new DAL.WFBSEntities();
+                DAL.EVALUACION ev1 = evaluacion.EVALUACION.First(b => b.ID_TIPO_EVALUACION == 1
+                && b.ID_PERIODO_EVALUACION == pe.ID_PERIODO_EVALUACION && b.RUT_EVALUADO == _evaluacion.RUT_EVALUADO &&
+                b.ID_COMPETENCIA == _evaluacion.ID_COMPETENCIA);
+
+                DAL.EVALUACION ev2 = evaluacion.EVALUACION.First(b => b.ID_TIPO_EVALUACION == 2
+                && b.ID_PERIODO_EVALUACION == pe.ID_PERIODO_EVALUACION && b.RUT_EVALUADO == _evaluacion.RUT_EVALUADO &&
+                b.ID_COMPETENCIA == _evaluacion.ID_COMPETENCIA);
+
+                Evaluacion ev = new Evaluacion();
+                EvaluacionOperacion evOp = new EvaluacionOperacion(ev);
+                ev.ID_COMPETENCIA = Convert.ToDecimal(ev1.ID_COMPETENCIA);
+                ev.NOTA_ENCUESTA = ev1.NOTA_ENCUESTA;
+                ev.NOTA_ESPERADA_COMPETENCIA = Convert.ToDecimal(ev1.NOTA_ESPERADA_COMPETENCIA);
+                ev.RUT_EVALUADO = ev1.RUT_EVALUADO;
+                ev.RUT_EVALUADOR = ((ev1.NOTA_ENCUESTA * (pe.PORCENTAJE_AUTOEVALUACION / 10))-(ev2.NOTA_ENCUESTA * (pe.ID_PERIODO_EVALUACION / 10))).ToString();
+
+                return ev;
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener información de la evaluacion: " + ex.ToString());
+                return null;
+            }
+        }
+
         public bool Delete()
         {
             throw new NotImplementedException();

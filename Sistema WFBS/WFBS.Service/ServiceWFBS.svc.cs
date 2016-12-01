@@ -17,6 +17,22 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
+        public string notaFinalUsuarioPorComp(string evaluacionxml)
+        {
+            try
+            {
+                XML formato = new XML();
+                Evaluacion ev = formato.Deserializar<Evaluacion>(evaluacionxml);
+                EvaluacionOperacion evOp = new EvaluacionOperacion(ev);
+                return formato.Serializar<Evaluacion>(evOp.notaFinalUsuarioPorCom());
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo obtener información de la evaluación: " + ex.ToString());
+                return null;
+            }
+        }
+
         public bool log(string msgxml)
         {
             try

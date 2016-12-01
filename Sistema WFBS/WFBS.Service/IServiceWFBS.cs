@@ -14,6 +14,8 @@ namespace WFBS.Service
     {
         #region JavaServices
 
+        [OperationContract]
+        string notaFinalUsuarioPorComp(string evaluacionxml);
         /// <summary>
         /// Operación de contrato log.
         /// </summary>
