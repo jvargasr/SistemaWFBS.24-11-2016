@@ -17,6 +17,11 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
+        /// <summary>
+        /// Operación de servicio log.
+        /// </summary>
+        /// <param name="msgxml">Recibe un parametro msgxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool log(string msgxml)
         {
             try
@@ -32,6 +37,11 @@ namespace WFBS.Service
             }         
         }
 
+        /// <summary>
+        /// Operación de servicio InsertarEvaluación.
+        /// </summary>
+        /// <param name="evaluacionxml">Recibe un parametro evaluacionxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool InsertarEvaluacion(string evaluacionxml)
         {
             try
@@ -48,6 +58,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio insertarAuditoria.
+        /// </summary>
+        /// <param name="auditoriaxml">Recibe un parametro auditoriaxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool insertarAuditoria(string auditoriaxml)
         {
             try
@@ -64,6 +79,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de contrato obtenerComptentenciasArea.
+        /// </summary>
+        /// <param name="areaxml">Recibe un parametro areaxml serializado en xml</param>
+        /// <returns>Retorna una lista de Competencias por Área, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string obtenerComptentenciasArea(string areaxml)
         {
             try
@@ -81,6 +101,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio obtenerHabilidadesCompetencia.
+        /// </summary>
+        /// <param name="competenciaxml">Recibe un parametro competenciaxml serializado en xml</param>
+        /// <returns>Retorna una lista de Habilidades por Competencia, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string obtenerHabilidadesCompetencia(string competenciaxml)
         {
             try
@@ -97,6 +122,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio usuarioEvaluado.
+        /// </summary>
+        /// <param name="evaluacionxml">Recibe un parametro evaluacionxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool usuarioEvaluado(string evaluacionxml)
         {
             try
@@ -113,6 +143,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio obtenerFuncionariosPorJefe.
+        /// </summary>
+        /// <param name="usuariojefexml">Recibe un parametro usuariojefexml serializado en xml</param>
+        /// <returns>Retorna una lista de Funcionarios por jefe a cargo, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string obtenerFuncionariosPorJefe(string usuariojefexml)
         {
             try
@@ -129,6 +164,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio validarFuncionarioJefe.
+        /// </summary>
+        /// <param name="usuarioxml">Recibe un parametro usuarioxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool validarFuncionarioJefe(string xml)
         {
             try
@@ -151,6 +191,11 @@ namespace WFBS.Service
 
         #region Competencia
         // Competencia
+        /// <summary>
+        /// Operación de servicio CrearCompetencia.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearCompetencia(string xml)
         {
             try
@@ -167,6 +212,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarCompetencia.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarCompetencia(string xml)
         {
             try
@@ -183,6 +233,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarCompetencia.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarCompetencia(string xml)
         {
             try
@@ -199,6 +254,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerCompetencia.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna una entidad de Competencias, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerCompetencia(string xml)
         {
             try
@@ -223,6 +283,10 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerCompetencias.
+        /// </summary>
+        /// <returns>Retorna una lista de Competencias, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerCompetencias()
         {
             XML formato = new XML();
@@ -237,6 +301,11 @@ namespace WFBS.Service
         //---------------------------------------------------------//
 
         #region Habilidad
+        /// <summary>
+        /// Operación de servicio CrearHabilidad.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearHabilidad(string xml)
         {
             try
@@ -253,6 +322,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarHabilidad.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarHabilidad(string xml)
         {
             try
@@ -269,6 +343,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarHabilidad.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarHabilidad(string xml)
         {
             try
@@ -285,6 +364,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerHabilidad.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un una entidad Habilidad, serializada acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerHabilidad(string xml)
         {
             try
@@ -308,6 +392,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerHabPorCom.
+        /// </summary>
+        /// <param name="id">Recibe un parametro id serializado en xml</param>
+        /// <returns>Retorna una lista de Habilidades por Competencia, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerHabPorCom(string id)
         {
             XML formato = new XML();
@@ -325,6 +414,11 @@ namespace WFBS.Service
 
         #region PeriodoEvaluacion
 
+        /// <summary>
+        /// Operación de servicio CrearPeriodoEvaluacion.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearPeriodoEvaluacion(string xml)
         {
             try
@@ -341,6 +435,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarPeriodoEvaluacion.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarPeriodoEvaluacion(string xml)
         {
             try
@@ -357,6 +456,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarPeriodoEvaluacion.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarPeriodoEvaluacion(string xml)
         {
             try
@@ -373,6 +477,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerPeriodoEvaluacion.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna una entidad de Periodo de Evaluación, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerPeriodoEvaluacion(string xml)
         {
             try
@@ -395,6 +504,11 @@ namespace WFBS.Service
                 return null;
             }
         }
+
+        /// <summary>
+        /// Operación de servicio LeerPeriodosEvaluaciones.
+        /// </summary>
+        /// <returns>Retorna una lista de Periodos de Evaluación, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerPeriodosEvaluaciones()
         {
             XML formato = new XML();
@@ -429,6 +543,11 @@ namespace WFBS.Service
 
         #region Usuario
 
+        /// <summary>
+        /// Operación de servicio ValidarUsuario.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ValidarUsuario(string xml)
         {
             try
@@ -445,6 +564,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio Desactivado.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool Desactivado(string xml)
         {
             try
@@ -461,6 +585,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio CrearUsuario.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearUsuario(string xml)
         {
             try
@@ -477,6 +606,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarUsuario.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarUsuario(string xml)
         {
             try
@@ -493,6 +627,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarUsuario.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarUsuario(string xml)
         {
             try
@@ -509,6 +648,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerUsuario.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna una entidad de Usuario, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerUsuario(string xml)
         {
             try
@@ -532,6 +676,10 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerUsuarios.
+        /// </summary>
+        /// <returns>Retorna una lista de los Usuarios, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerUsuarios()
         {
             XML formato = new XML();
@@ -547,6 +695,11 @@ namespace WFBS.Service
         //---------------------------------------------------------//
 
         #region Area
+        /// <summary>
+        /// Operación de servicio CrearArea.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearArea(string xml)
         {
             try
@@ -563,6 +716,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarArea.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarArea(string xml)
         {
             try
@@ -579,6 +737,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarArea.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarArea(string xml)
         {
             try
@@ -595,6 +758,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerArea.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna una entidad de Área, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerArea(string xml)
         {
             try
@@ -618,6 +786,10 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerAreas.
+        /// </summary>
+        /// <returns>Retorna una lista de Áreas, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerAreas()
         {
             XML formato = new XML();
@@ -634,6 +806,12 @@ namespace WFBS.Service
 
         #region PerfildeCargo
 
+        /// <summary>
+        /// Operación de servicio CrearPerfildeCargo.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <param name="areas">Recibe una lista areas serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool CrearPerfildeCargo(string xml, string areas)
         {
             try
@@ -651,6 +829,12 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio ActualizarPerfildeCargo.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <param name="areas">Recibe una lista areas serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool ActualizarPerfildeCargo(string xml, string areas)
         {
             try
@@ -668,6 +852,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio EliminarPerfildeCargo.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool EliminarPerfildeCargo(string xml)
         {
             try
@@ -684,6 +873,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerPerfildeCargo.
+        /// </summary>
+        /// <param name="xml">Recibe un parametro xml serializado en xml</param>
+        /// <returns>Retorna una entidad de Perfil de Cargo, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerPerfildeCargo(string xml)
         {
             try
@@ -707,6 +901,10 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio LeerPerfilesdeCargo.
+        /// </summary>
+        /// <returns>Retorna una lista de Perfiles de Cargo, serializada en xml acorde a la ejecucion satisfactoria del metodo</returns>
         public string LeerPerfilesdeCargo()
         {
             XML formato = new XML();
