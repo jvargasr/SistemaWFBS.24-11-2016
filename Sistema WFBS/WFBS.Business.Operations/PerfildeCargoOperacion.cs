@@ -32,6 +32,7 @@ namespace WFBS.Business.Operations
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// Lee una entidad Área.
         /// </summary>
@@ -207,6 +208,7 @@ namespace WFBS.Business.Operations
 
             return perfilesdecargoController;
         }
+
         #endregion Metodos
     }
 }

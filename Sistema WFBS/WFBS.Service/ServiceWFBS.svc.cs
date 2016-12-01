@@ -17,6 +17,27 @@ namespace WFBS.Service
     public class ServiceWFBS : IServiceWFBS
     {
         #region JavaServices
+
+        public string competenciasPerfildeCargo(string perfildecargoxml)
+        {
+            try
+            {
+                XML formato = new XML();
+                PerfildeCargo perfilC = formato.Deserializar<PerfildeCargo>(perfildecargoxml);
+                PerfildeCargoOperacion perfilCOp = new PerfildeCargoOperacion(perfilC);
+
+                Competencia c = new Competencia();
+                CompetenciaOperacion coOp = new CompetenciaOperacion(c);
+
+                return formato.Serializar<List<Competencia>>(coOp.competenciasPerfilC(perfilC.ID_PERFIL_DE_CARGO));
+            }
+            catch (Exception ex)
+            {
+                Logger.log("No se pudo leer el perfil de cargo: " + ex.ToString());
+                return null;
+            }
+        }
+
         public string notaFinalUsuarioPorComp(string evaluacionxml)
         {
             try
@@ -33,6 +54,11 @@ namespace WFBS.Service
             }
         }
 
+        /// <summary>
+        /// Operación de servicio log.
+        /// </summary>
+        /// <param name="msgxml">Recibe un parametro msgxml serializado en xml</param>
+        /// <returns>Retorna un valor bool acorde a la ejecucion satisfactoria del metodo</returns>
         public bool log(string msgxml)
         {
             try

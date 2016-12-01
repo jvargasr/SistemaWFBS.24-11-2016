@@ -163,6 +163,24 @@ namespace WFBS.Business.Operations
         #endregion IOperations
 
         #region Metodos
+        public List<Competencia> competenciasPerfilC(decimal idpc)
+        {
+            DAL.WFBSEntities modelo = new DAL.WFBSEntities();
+            var pc = modelo.PERFIL_DE_CARGO.First(p => p.ID_PERFIL_DE_CARGO == idpc);
+            List<COMPETENCIA> competencias = new List<COMPETENCIA>();
+            foreach (AREA item in pc.AREA)
+            {
+                foreach (COMPETENCIA com in item.COMPETENCIA)
+                {
+                    competencias.Add(com);
+                }
+            }
+            Competencia c = new Competencia();
+            CompetenciaOperacion cOp = new CompetenciaOperacion(c);
+
+            return cOp.GenerarListadoCompetencia(competencias);
+        }
+
         private List<Competencia> GenerarListadoCompetencia(List<DAL.COMPETENCIA> CompetenciaBDD)
         {
             List<Competencia> competenciasController = new List<Competencia>();

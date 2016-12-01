@@ -13,6 +13,8 @@ namespace WFBS.Service
     public interface IServiceWFBS
     {
         #region JavaServices
+        [OperationContract]
+        string competenciasPerfildeCargo(string perfildecargoxml);
 
         [OperationContract]
         string notaFinalUsuarioPorComp(string evaluacionxml);
