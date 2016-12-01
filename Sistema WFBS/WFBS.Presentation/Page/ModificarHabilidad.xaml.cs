@@ -29,12 +29,12 @@ namespace MasterPages.Page
         public ModificarHabilidad()
         {
             InitializeComponent();
-            lblUserInfo.Content = Global.NombreUsuario;
         }
 
         public ModificarHabilidad(int id, int id_com)
         {
             InitializeComponent();
+            lblUserInfo.Content = Global.NombreUsuario;
             hab.ID_HABILIDAD = id;
             habOp.Read();
             id_comp = id_com;

@@ -30,11 +30,13 @@ namespace MasterPages.Page
         public ModificarUsuario()
         {
             InitializeComponent();
+
         }
 
         public ModificarUsuario(string rut)
         {
             InitializeComponent();
+            lblUserInfo.Content = Global.NombreUsuario;
 
             us.RUT = rut;
             usOp.Read();
