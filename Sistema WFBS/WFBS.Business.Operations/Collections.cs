@@ -203,9 +203,13 @@ namespace WFBS.Business.Operations
         /// <returns>Retorna las notas de los funcionarios evaluados por Área</returns>
         public List<float> ObtenerNotasCompetencia(int id_area, int id_competencia)
         {//      Obtener las brechas de todos los funcionarios
-            int id_periodo = 1;//ObtenerPeriodoEvaluacion();
+            PeriodoEvaluacion pe = new PeriodoEvaluacion();
+            PeriodoEvaluacionOperacion peOp = new PeriodoEvaluacionOperacion(pe);
+
+            int id_periodo = peOp.periodoEvaluacionActivo();
+
             var notasDB = CommonBC.ModeloWFBS.EVALUACION.Where(e => e.ID_PERIODO_EVALUACION == id_periodo && e.ID_AREA == id_area
-            && e.ID_COMPETENCIA == id_competencia).Select(e => e.NOTA_ESPERADA_COMPETENCIA - e.NOTA_ENCUESTA);
+            && e.ID_COMPETENCIA == id_competencia).Select(e => e.NOTA_ENCUESTA);
             List<float> notas = new List<float>();
             foreach (var item in notasDB)
             {

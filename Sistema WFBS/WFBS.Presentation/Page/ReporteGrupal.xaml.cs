@@ -132,7 +132,7 @@ namespace MasterPages.Page
                                 }
                                 float brpromedio = sumabrechas / brechas.Count;
                                 row["Brecha Promedio"] = brpromedio.ToString("0.0");
-                                if (bajonivelesperado == true&& Convert.ToDecimal(brpromedio)>com.NIVEL_OPTIMO_ESPERADO)
+                                if (bajonivelesperado == true&& Convert.ToDecimal(brpromedio)<com.NIVEL_OPTIMO_ESPERADO)
                                     table.Rows.Add(row);
                                 if(bajonivelesperado==false)
                                     table.Rows.Add(row);
