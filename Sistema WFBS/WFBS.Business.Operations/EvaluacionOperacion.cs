@@ -85,7 +85,9 @@ namespace WFBS.Business.Operations
                 ev.NOTA_ENCUESTA = ev1.NOTA_ENCUESTA;
                 ev.NOTA_ESPERADA_COMPETENCIA = Convert.ToDecimal(ev1.NOTA_ESPERADA_COMPETENCIA);
                 ev.RUT_EVALUADO = ev1.RUT_EVALUADO;
-                ev.RUT_EVALUADOR = ((ev1.NOTA_ENCUESTA * (pe.PORCENTAJE_AUTOEVALUACION / 100))-(ev2.NOTA_ENCUESTA * (pe.ID_PERIODO_EVALUACION / 100))).ToString();
+                double porc_auto = (double)pe.PORCENTAJE_AUTOEVALUACION / 100;
+                double porc_ev = (double)pe.PORCENTAJE_AUTOEVALUACION / 100;
+                ev.RUT_EVALUADOR = ((ev1.NOTA_ENCUESTA * (pe.PORCENTAJE_AUTOEVALUACION / 100))+(ev2.NOTA_ENCUESTA * (pe.PORCENTAJE_EVALUACION / 100))).ToString();
 
                 return ev;
             }
